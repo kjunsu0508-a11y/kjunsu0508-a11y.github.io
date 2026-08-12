@@ -8,10 +8,6 @@
 
 <style>
 
-/* =========================
-   기본 설정
-   ========================= */
-
 * {
     box-sizing: border-box;
 }
@@ -23,77 +19,38 @@ html {
 body {
     margin: 0;
 
-    background: #080808;
-
-    color: white;
-
     font-family:
         "Arial Rounded MT Bold",
         "Trebuchet MS",
         Arial,
         sans-serif;
+
+    color: white;
+
+    background: #111;
+
+    overflow-x: hidden;
 }
 
 
-/* =========================
-   맨 처음 제목
-   ========================= */
-
-.hero {
-    min-height: 100vh;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    padding: 40px 25px;
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            #31496b 0%,
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            #35213e 0%,
-            transparent 40%
-        ),
-        #080808;
-}
-
-
-.hero-title {
-
-    font-size:
-        clamp(45px, 9vw, 120px);
-
-    line-height: 1.05;
-
-    font-weight: 900;
-
-    letter-spacing: -4px;
-
-    max-width: 1100px;
-
-    text-shadow:
-        0 10px 40px rgba(0,0,0,0.5);
-}
-
-
-/* =========================
-   시간 화면
-   ========================= */
+/* =================================
+   모든 시간 화면
+   ================================= */
 
 .time-section {
 
-    min-height: 100vh;
-
     width: 100%;
+
+    /*
+        모바일 주소창 때문에 100vh가
+        실제 화면보다 커지는 문제를 방지
+    */
+
+    min-height: 100vh;
+    min-height: 100svh;
+
+    height: 100vh;
+    height: 100svh;
 
     display: flex;
 
@@ -105,7 +62,8 @@ body {
 
     text-align: center;
 
-    padding: 50px 20px;
+    padding:
+        40px 25px;
 
     position: relative;
 
@@ -113,111 +71,121 @@ body {
 }
 
 
-/* 배경에 은은한 빛 */
+/* =================================
+   첫 번째 화면 제목
+   ================================= */
 
-.time-section::before {
+.page-title {
 
-    content: "";
+    position: relative;
 
-    position: absolute;
+    font-size:
+        clamp(24px, 4vw, 46px);
 
-    width: 700px;
+    font-weight: 900;
 
-    height: 700px;
+    line-height: 1.2;
 
-    border-radius: 50%;
+    letter-spacing: -1.5px;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,0.08),
-            transparent 70%
-        );
+    margin-bottom: 50px;
 
-    filter: blur(30px);
+    max-width: 900px;
 
-    pointer-events: none;
+    text-shadow:
+        0 5px 25px rgba(0,0,0,0.25);
 }
 
 
-/* =========================
-   단위 이름
-   ========================= */
+/* =================================
+   단위
+   ================================= */
 
 .unit {
 
     position: relative;
 
     font-size:
-        clamp(18px, 3vw, 30px);
+        clamp(17px, 2.5vw, 26px);
 
     font-weight: 800;
 
-    letter-spacing: 10px;
+    letter-spacing: 7px;
+
+    margin-bottom: 20px;
 
     color:
-        rgba(255,255,255,0.55);
-
-    margin-bottom: 30px;
+        rgba(255,255,255,0.65);
 }
 
 
-/* =========================
-   엄청 큰 숫자
-   ========================= */
+/* =================================
+   숫자
+   ================================= */
 
 .number {
 
     position: relative;
 
-    font-size:
-        clamp(90px, 20vw, 280px);
+    /*
+        이전보다 확실히 작게 해서
+        어떤 화면에서도 잘리지 않게 함
+    */
 
-    line-height: 0.9;
+    font-size:
+        clamp(55px, 13vw, 170px);
+
+    line-height: 0.95;
 
     font-weight: 900;
 
-    letter-spacing: -10px;
+    letter-spacing: -5px;
 
     font-variant-numeric:
         tabular-nums;
 
     white-space: nowrap;
 
+    max-width: 100%;
+
     text-shadow:
-        0 15px 50px rgba(0,0,0,0.45);
+        0 10px 35px rgba(0,0,0,0.3);
 }
 
 
-/* 숫자 밑 설명 */
+/* =================================
+   설명
+   ================================= */
 
 .description {
 
     position: relative;
 
-    margin-top: 45px;
+    margin-top: 25px;
 
     font-size:
-        clamp(18px, 3vw, 30px);
+        clamp(17px, 2.5vw, 27px);
 
     font-weight: 700;
 
     color:
-        rgba(255,255,255,0.5);
+        rgba(255,255,255,0.6);
 }
 
 
-/* =========================
-   각 화면 배경
-   ========================= */
+/* =================================
+   화면별 자연스러운 색 변화
+
+   차가운 색 → 따뜻한 색 → 다시 차가운 색
+   ================================= */
 
 .years {
 
     background:
         linear-gradient(
-            135deg,
-            #101c30,
-            #080808
+            180deg,
+            #182a45 0%,
+            #263c5a 100%
         );
 }
 
@@ -226,9 +194,9 @@ body {
 
     background:
         linear-gradient(
-            135deg,
-            #28192f,
-            #080808
+            180deg,
+            #263c5a 0%,
+            #3b3a65 100%
         );
 }
 
@@ -237,9 +205,9 @@ body {
 
     background:
         linear-gradient(
-            135deg,
-            #142c2b,
-            #080808
+            180deg,
+            #3b3a65 0%,
+            #514565 100%
         );
 }
 
@@ -248,9 +216,9 @@ body {
 
     background:
         linear-gradient(
-            135deg,
-            #302718,
-            #080808
+            180deg,
+            #514565 0%,
+            #66504f 100%
         );
 }
 
@@ -259,9 +227,9 @@ body {
 
     background:
         linear-gradient(
-            135deg,
-            #292929,
-            #080808
+            180deg,
+            #66504f 0%,
+            #76543f 100%
         );
 }
 
@@ -270,9 +238,9 @@ body {
 
     background:
         linear-gradient(
-            135deg,
-            #172936,
-            #080808
+            180deg,
+            #76543f 0%,
+            #536a55 100%
         );
 }
 
@@ -281,42 +249,56 @@ body {
 
     background:
         linear-gradient(
-            135deg,
-            #311c1c,
-            #080808
+            180deg,
+            #536a55 0%,
+            #263f3f 100%
         );
 }
 
 
-/* =========================
+/* =================================
    모바일
-   ========================= */
+   ================================= */
 
 @media (max-width: 600px) {
 
-    .hero-title {
+    .time-section {
+
+        padding:
+            30px 18px;
+    }
+
+    .page-title {
 
         font-size:
-            clamp(42px, 13vw, 75px);
+            clamp(22px, 7vw, 34px);
 
-        letter-spacing: -3px;
+        margin-bottom: 38px;
+    }
+
+    .unit {
+
+        font-size: 16px;
+
+        letter-spacing: 5px;
+
+        margin-bottom: 18px;
     }
 
     .number {
 
         font-size:
-            clamp(70px, 22vw, 130px);
+            clamp(48px, 15vw, 100px);
 
-        letter-spacing: -5px;
+        letter-spacing: -3px;
     }
 
-    .unit {
+    .description {
 
-        letter-spacing: 6px;
+        margin-top: 20px;
 
-        margin-bottom: 25px;
+        font-size: 17px;
     }
-
 }
 
 </style>
@@ -327,25 +309,15 @@ body {
 
 
 <!-- =================================
-     맨 처음 제목
-     ================================= -->
-
-<section class="hero">
-
-    <div class="hero-title">
-        준수가 한국으로<br>
-        돌아가기까지...
-    </div>
-
-</section>
-
-
-
-<!-- =================================
      YEARS
+     제목은 여기에서만 표시
      ================================= -->
 
 <section class="time-section years">
+
+    <div class="page-title">
+        준수가 한국으로 돌아가기까지...
+    </div>
 
     <div class="unit">
         YEARS
@@ -535,8 +507,7 @@ const targetDate =
    시간 단위
    ================================= */
 
-const SECOND =
-    1000;
+const SECOND = 1000;
 
 const MINUTE =
     SECOND * 60;
@@ -552,9 +523,7 @@ const WEEK =
 
 
 /*
-    1년의 평균 길이
-
-    윤년까지 고려한 평균값
+   평균 1년
 */
 
 const YEAR =
@@ -562,7 +531,7 @@ const YEAR =
 
 
 /*
-    평균적인 1개월
+   평균 1개월
 */
 
 const MONTH =
@@ -571,7 +540,7 @@ const MONTH =
 
 
 /* =================================
-   숫자를 소수점 한 자리로 표시
+   숫자 포맷
    ================================= */
 
 function formatNumber(number) {
@@ -604,11 +573,7 @@ function updateCountdown() {
         now.getTime();
 
 
-    /*
-        시간이 끝나면 0
-    */
-
-    if (remaining <= 0) {
+    if (remaining < 0) {
 
         remaining = 0;
 
@@ -616,8 +581,8 @@ function updateCountdown() {
 
 
     /*
-        각각의 단위로
-        남은 시간을 표현
+        같은 남은 시간을
+        각각의 단위로 환산
     */
 
     const years =
@@ -644,7 +609,7 @@ function updateCountdown() {
 
 
     /*
-        화면에 표시
+        화면 업데이트
     */
 
     document.getElementById(
@@ -691,23 +656,13 @@ function updateCountdown() {
 }
 
 
-
-/* =================================
-   처음 실행
-   ================================= */
+/* 처음 실행 */
 
 updateCountdown();
 
 
-
 /*
    0.1초마다 업데이트
-
-   10.0
-   9.9
-   9.8
-   9.7
-   ...
 */
 
 setInterval(
