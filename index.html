@@ -1,21 +1,39 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>준수가 한국으로 돌아가기까지...</title>
 
-<!-- 유쾌하고 둥근 느낌의 웹폰트 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- =========================
+     폰트
+     ========================= -->
+
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
 
 <link
-    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
->
+href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Gowun+Dodum&display=swap"
+rel="stylesheet">
+
 
 <style>
+
+/* =====================================
+   기본
+   ===================================== */
 
 * {
     box-sizing: border-box;
@@ -26,32 +44,36 @@ html {
 }
 
 body {
-    margin: 0;
 
-    background: #111;
+    margin: 0;
 
     color: white;
 
+    background: #101010;
+
     font-family:
         "Fredoka",
+        "Gowun Dodum",
         sans-serif;
 
     overflow-x: hidden;
 }
 
 
-/* =========================================
-   모든 화면
-   ========================================= */
+/* =====================================
+   시간 화면
+   ===================================== */
 
 .time-section {
 
     width: 100%;
 
     height: 100vh;
+
     height: 100svh;
 
     min-height: 100vh;
+
     min-height: 100svh;
 
     display: flex;
@@ -72,76 +94,68 @@ body {
 }
 
 
-/* =========================================
+/* =====================================
    첫 화면 제목
-   ========================================= */
+   ===================================== */
 
 .page-title {
 
     position: absolute;
 
-    /*
-       화면 맨 위에서 조금 떨어진 위치
-    */
-
-    top: 9vh;
+    top: 8vh;
 
     left: 20px;
+
     right: 20px;
 
     font-size:
-        clamp(38px, 6vw, 82px);
+        clamp(40px, 6vw, 82px);
 
     font-weight: 700;
 
-    line-height: 1.12;
+    line-height: 1.1;
 
     letter-spacing: -2px;
 
     text-shadow:
-        0 6px 25px rgba(0,0,0,0.25);
+        0 5px 20px rgba(0,0,0,.25);
 
-    z-index: 2;
+    z-index: 10;
 }
 
 
-/* =========================================
-   단위 이름
-   ========================================= */
+/* =====================================
+   단위
+   ===================================== */
 
 .unit {
 
     font-size:
-        clamp(18px, 2.5vw, 30px);
+        clamp(17px, 2.5vw, 29px);
 
     font-weight: 600;
 
     letter-spacing: 8px;
 
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 
     color:
-        rgba(255,255,255,0.65);
+        rgba(255,255,255,.65);
 }
 
 
-/* =========================================
+/* =====================================
    숫자
-   ========================================= */
+   ===================================== */
 
 .number {
 
-    /*
-       너무 커서 잘리지 않도록 제한
-    */
-
     width: 100%;
 
-    padding:
-        0 15px;
+    padding: 0 10px;
 
     font-size:
-        clamp(52px, 12vw, 160px);
+        clamp(50px, 12vw, 160px);
 
     font-weight: 700;
 
@@ -156,173 +170,569 @@ body {
 
     overflow: hidden;
 
-    text-overflow: clip;
-
     text-shadow:
-        0 10px 35px rgba(0,0,0,0.3);
+        0 10px 35px rgba(0,0,0,.3);
 }
 
 
-/* =========================================
+/* =====================================
    설명
-   ========================================= */
+   ===================================== */
 
 .description {
 
-    margin-top: 28px;
+    margin-top: 25px;
 
     font-size:
-        clamp(18px, 2.5vw, 28px);
+        clamp(17px, 2.5vw, 27px);
 
     font-weight: 500;
 
     color:
-        rgba(255,255,255,0.6);
+        rgba(255,255,255,.6);
 }
 
 
-/* =========================================
-   자연스러운 색 변화
-   ========================================= */
+/* =====================================
+   자연스러운 배경
+   ===================================== */
 
 .years {
 
     background:
         linear-gradient(
             180deg,
-            #172b48 0%,
-            #263d5c 100%
+            #172b48,
+            #29425e
         );
 }
-
 
 .months {
 
     background:
         linear-gradient(
             180deg,
-            #263d5c 0%,
-            #3c3b65 100%
+            #29425e,
+            #443e68
         );
 }
-
 
 .weeks {
 
     background:
         linear-gradient(
             180deg,
-            #3c3b65 0%,
-            #514465 100%
+            #443e68,
+            #59466a
         );
 }
-
 
 .days {
 
     background:
         linear-gradient(
             180deg,
-            #514465 0%,
-            #69514e 100%
+            #59466a,
+            #6d514d
         );
 }
-
 
 .hours {
 
     background:
         linear-gradient(
             180deg,
-            #69514e 0%,
-            #76533f 100%
+            #6d514d,
+            #78513c
         );
 }
-
 
 .minutes {
 
     background:
         linear-gradient(
             180deg,
-            #76533f 0%,
-            #526953 100%
+            #78513c,
+            #52694f
         );
 }
-
 
 .seconds {
 
     background:
         linear-gradient(
             180deg,
-            #526953 0%,
-            #263f40 100%
+            #52694f,
+            #263f40
         );
 }
 
 
-/* =========================================
+/* =====================================
+   일기 버튼
+   ===================================== */
+
+.diary-button {
+
+    position: fixed;
+
+    right: 22px;
+
+    bottom: 22px;
+
+    width: 58px;
+
+    height: 58px;
+
+    border-radius: 50%;
+
+    border: 3px solid #fff;
+
+    background: #ffdf7e;
+
+    color: #4b3520;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    z-index: 9999;
+
+    box-shadow:
+        4px 5px 0 rgba(0,0,0,.25);
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+
+.diary-button:hover {
+
+    transform:
+        rotate(-8deg)
+        scale(1.08);
+
+    box-shadow:
+        6px 7px 0 rgba(0,0,0,.25);
+}
+
+
+/* =====================================
+   일기 패널
+   ===================================== */
+
+.diary-panel {
+
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 92px;
+
+    width: min(390px, calc(100vw - 40px));
+
+    background: #fff8df;
+
+    color: #40382f;
+
+    border:
+        4px solid #563e2b;
+
+    border-radius: 18px;
+
+    box-shadow:
+        8px 10px 0 rgba(0,0,0,.3);
+
+    padding: 22px;
+
+    z-index: 9998;
+
+    transform:
+        translateY(30px)
+        scale(.95);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        .25s ease;
+}
+
+
+.diary-panel.open {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* =====================================
+   일기 제목
+   ===================================== */
+
+.diary-header {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+
+.diary-header h2 {
+
+    margin: 0;
+
+    font-size: 25px;
+
+    color: #513a27;
+}
+
+
+.close-button {
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    color: #513a27;
+}
+
+
+/* =====================================
+   입력
+   ===================================== */
+
+.diary-label {
+
+    display: block;
+
+    margin-top: 12px;
+
+    margin-bottom: 5px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+.diary-input,
+.diary-textarea {
+
+    width: 100%;
+
+    border:
+        2px solid #bcae8f;
+
+    border-radius: 10px;
+
+    padding: 11px;
+
+    font-family:
+        "Gowun Dodum",
+        sans-serif;
+
+    font-size: 15px;
+
+    background: #fffdf2;
+
+    color: #40382f;
+
+    outline: none;
+}
+
+
+.diary-textarea {
+
+    height: 120px;
+
+    resize: none;
+}
+
+
+.diary-input:focus,
+.diary-textarea:focus {
+
+    border-color: #75614a;
+}
+
+
+/* =====================================
+   저장 버튼
+   ===================================== */
+
+.save-diary {
+
+    width: 100%;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 12px;
+
+    background: #563e2b;
+
+    color: white;
+
+    font-family:
+        "Fredoka",
+        sans-serif;
+
+    font-size: 17px;
+
+    cursor: pointer;
+}
+
+
+.save-diary:hover {
+
+    background: #76563c;
+}
+
+
+/* =====================================
+   말풍선 영역
+   ===================================== */
+
+#bubble-area {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 500;
+}
+
+
+/* =====================================
+   말풍선
+   ===================================== */
+
+.diary-bubble {
+
+    position: absolute;
+
+    min-width: 90px;
+
+    max-width: 220px;
+
+    padding: 14px 17px;
+
+    border-radius: 22px;
+
+    background: rgba(255,255,255,.92);
+
+    color: #41382e;
+
+    border:
+        3px solid rgba(80,60,40,.8);
+
+    box-shadow:
+        4px 5px 0 rgba(0,0,0,.18);
+
+    font-family:
+        "Gowun Dodum",
+        sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    pointer-events: auto;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+
+/* 말풍선 꼬리 */
+
+.diary-bubble::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -12px;
+
+    left: 24px;
+
+    width: 20px;
+
+    height: 20px;
+
+    background: rgba(255,255,255,.92);
+
+    border-right:
+        3px solid rgba(80,60,40,.8);
+
+    border-bottom:
+        3px solid rgba(80,60,40,.8);
+
+    transform:
+        rotate(45deg);
+}
+
+
+/* =====================================
+   말풍선 내용
+   ===================================== */
+
+.bubble-date {
+
+    font-size: 11px;
+
+    color: #8c7a67;
+
+    margin-bottom: 5px;
+}
+
+
+/* =====================================
+   클릭 시 팝업
+   ===================================== */
+
+.bubble-view {
+
+    position: fixed;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.9);
+
+    width: min(420px, calc(100vw - 40px));
+
+    background: #fff8df;
+
+    color: #40382f;
+
+    border:
+        4px solid #563e2b;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    z-index: 10000;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: .2s;
+
+    box-shadow:
+        8px 10px 0 rgba(0,0,0,.3);
+}
+
+
+.bubble-view.show {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+}
+
+
+.bubble-view h3 {
+
+    margin-top: 0;
+}
+
+
+.bubble-view-text {
+
+    white-space: pre-wrap;
+
+    font-family:
+        "Gowun Dodum",
+        sans-serif;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================
    모바일
-   ========================================= */
+   ===================================== */
 
 @media (max-width: 600px) {
 
     .page-title {
 
-        top: 8vh;
+        top: 7vh;
 
         font-size:
-            clamp(34px, 9vw, 55px);
-
-        letter-spacing:
-            -1.5px;
+            clamp(34px, 9vw, 56px);
     }
 
+    .number {
+
+        font-size:
+            clamp(45px, 14vw, 95px);
+    }
 
     .unit {
 
         font-size: 16px;
 
         letter-spacing: 6px;
-
-        margin-bottom: 18px;
     }
 
+    .diary-button {
 
-    .number {
+        width: 54px;
 
-        font-size:
-            clamp(45px, 14vw, 95px);
+        height: 54px;
 
-        letter-spacing:
-            -2px;
+        right: 16px;
 
-        padding:
-            0 5px;
-    }
-
-
-    .description {
-
-        margin-top: 20px;
-
-        font-size: 17px;
+        bottom: 16px;
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =========================================
+<!-- =====================================
      YEARS
-     제목은 여기서 딱 한 번만
-     ========================================= -->
+     ===================================== -->
 
 <section class="time-section years">
 
@@ -330,18 +740,15 @@ body {
         준수가 한국으로 돌아가기까지...
     </div>
 
-
     <div class="unit">
         YEARS
     </div>
-
 
     <div
         class="number"
         id="years">
         0.0
     </div>
-
 
     <div class="description">
         년으로 보면
@@ -351,9 +758,9 @@ body {
 
 
 
-<!-- =========================================
+<!-- =====================================
      MONTHS
-     ========================================= -->
+     ===================================== -->
 
 <section class="time-section months">
 
@@ -361,13 +768,11 @@ body {
         MONTHS
     </div>
 
-
     <div
         class="number"
         id="months">
         0.0
     </div>
-
 
     <div class="description">
         달로 보면
@@ -377,9 +782,9 @@ body {
 
 
 
-<!-- =========================================
+<!-- =====================================
      WEEKS
-     ========================================= -->
+     ===================================== -->
 
 <section class="time-section weeks">
 
@@ -387,13 +792,11 @@ body {
         WEEKS
     </div>
 
-
     <div
         class="number"
         id="weeks">
         0.0
     </div>
-
 
     <div class="description">
         주일로 보면
@@ -403,9 +806,9 @@ body {
 
 
 
-<!-- =========================================
+<!-- =====================================
      DAYS
-     ========================================= -->
+     ===================================== -->
 
 <section class="time-section days">
 
@@ -413,13 +816,11 @@ body {
         DAYS
     </div>
 
-
     <div
         class="number"
         id="days">
         0.0
     </div>
-
 
     <div class="description">
         일로 보면
@@ -429,9 +830,9 @@ body {
 
 
 
-<!-- =========================================
+<!-- =====================================
      HOURS
-     ========================================= -->
+     ===================================== -->
 
 <section class="time-section hours">
 
@@ -439,13 +840,11 @@ body {
         HOURS
     </div>
 
-
     <div
         class="number"
         id="hours">
         0.0
     </div>
-
 
     <div class="description">
         시간으로 보면
@@ -455,9 +854,9 @@ body {
 
 
 
-<!-- =========================================
+<!-- =====================================
      MINUTES
-     ========================================= -->
+     ===================================== -->
 
 <section class="time-section minutes">
 
@@ -465,13 +864,11 @@ body {
         MINUTES
     </div>
 
-
     <div
         class="number"
         id="minutes">
         0.0
     </div>
-
 
     <div class="description">
         분으로 보면
@@ -481,9 +878,9 @@ body {
 
 
 
-<!-- =========================================
+<!-- =====================================
      SECONDS
-     ========================================= -->
+     ===================================== -->
 
 <section class="time-section seconds">
 
@@ -491,13 +888,11 @@ body {
         SECONDS
     </div>
 
-
     <div
         class="number"
         id="seconds">
         0.0
     </div>
-
 
     <div class="description">
         초로 보면
@@ -507,13 +902,124 @@ body {
 
 
 
+<!-- =====================================
+     일기 버튼
+     ===================================== -->
+
+<button
+    class="diary-button"
+    id="diaryButton"
+    aria-label="일기 쓰기">
+
+    📖
+
+</button>
+
+
+
+<!-- =====================================
+     일기 작성창
+     ===================================== -->
+
+<div
+    class="diary-panel"
+    id="diaryPanel">
+
+    <div class="diary-header">
+
+        <h2>
+            오늘의 기록 ✎
+        </h2>
+
+        <button
+            class="close-button"
+            id="closeDiary">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <label class="diary-label">
+        날짜
+    </label>
+
+    <input
+        type="date"
+        id="diaryDate"
+        class="diary-input"
+    >
+
+
+    <label class="diary-label">
+        오늘은...
+    </label>
+
+    <textarea
+        id="diaryText"
+        class="diary-textarea"
+        placeholder="오늘 있었던 일을 적어보세요 :)"
+    ></textarea>
+
+
+    <button
+        class="save-diary"
+        id="saveDiary">
+
+        ✦ 기록 남기기 ✦
+
+    </button>
+
+</div>
+
+
+
+<!-- =====================================
+     말풍선 영역
+     ===================================== -->
+
+<div id="bubble-area"></div>
+
+
+
+<!-- =====================================
+     말풍선 내용 보기
+     ===================================== -->
+
+<div
+    class="bubble-view"
+    id="bubbleView">
+
+    <h3 id="bubbleViewDate">
+        날짜
+    </h3>
+
+    <div
+        class="bubble-view-text"
+        id="bubbleViewText">
+    </div>
+
+    <button
+        class="save-diary"
+        id="closeBubble"
+        style="margin-top:20px;">
+
+        닫기
+
+    </button>
+
+</div>
+
+
+
 <script>
 
 
-/* =========================================
-   목표 날짜
-   2027년 12월 31일 23:59:59.999
-   ========================================= */
+/* ==========================================
+   카운트다운
+   ========================================== */
 
 const targetDate =
     new Date(
@@ -526,10 +1032,6 @@ const targetDate =
         999
     );
 
-
-/* =========================================
-   시간 단위
-   ========================================= */
 
 const SECOND =
     1000;
@@ -546,23 +1048,13 @@ const DAY =
 const WEEK =
     DAY * 7;
 
-
-/* 평균적인 1년 */
-
 const YEAR =
     DAY * 365.2425;
-
-
-/* 평균적인 1개월 */
 
 const MONTH =
     YEAR / 12;
 
 
-
-/* =========================================
-   숫자 표시
-   ========================================= */
 
 function formatNumber(number) {
 
@@ -578,21 +1070,15 @@ function formatNumber(number) {
 
 
 
-/* =========================================
-   카운트다운
-   ========================================= */
-
 function updateCountdown() {
 
     const now =
         new Date();
 
-
     let remaining =
         targetDate.getTime()
         -
         now.getTime();
-
 
     if (remaining < 0) {
 
@@ -601,99 +1087,777 @@ function updateCountdown() {
     }
 
 
-    /*
-       같은 남은 시간을
-       각각의 단위로 표현
-    */
-
-    const years =
-        remaining / YEAR;
-
-    const months =
-        remaining / MONTH;
-
-    const weeks =
-        remaining / WEEK;
-
-    const days =
-        remaining / DAY;
-
-    const hours =
-        remaining / HOUR;
-
-    const minutes =
-        remaining / MINUTE;
-
-    const seconds =
-        remaining / SECOND;
-
-
-
-    /*
-       화면에 표시
-    */
-
     document.getElementById(
         "years"
     ).textContent =
-        formatNumber(years);
+        formatNumber(
+            remaining / YEAR
+        );
 
 
     document.getElementById(
         "months"
     ).textContent =
-        formatNumber(months);
+        formatNumber(
+            remaining / MONTH
+        );
 
 
     document.getElementById(
         "weeks"
     ).textContent =
-        formatNumber(weeks);
+        formatNumber(
+            remaining / WEEK
+        );
 
 
     document.getElementById(
         "days"
     ).textContent =
-        formatNumber(days);
+        formatNumber(
+            remaining / DAY
+        );
 
 
     document.getElementById(
         "hours"
     ).textContent =
-        formatNumber(hours);
+        formatNumber(
+            remaining / HOUR
+        );
 
 
     document.getElementById(
         "minutes"
     ).textContent =
-        formatNumber(minutes);
+        formatNumber(
+            remaining / MINUTE
+        );
 
 
     document.getElementById(
         "seconds"
     ).textContent =
-        formatNumber(seconds);
+        formatNumber(
+            remaining / SECOND
+        );
 
 }
 
 
-/* =========================================
-   시작
-   ========================================= */
-
 updateCountdown();
-
-
-/*
-   0.1초마다 업데이트
-*/
 
 setInterval(
     updateCountdown,
     100
 );
 
+
+
+/* ==========================================
+   일기 시스템
+   ========================================== */
+
+const diaryButton =
+    document.getElementById(
+        "diaryButton"
+    );
+
+const diaryPanel =
+    document.getElementById(
+        "diaryPanel"
+    );
+
+const closeDiary =
+    document.getElementById(
+        "closeDiary"
+    );
+
+const saveDiary =
+    document.getElementById(
+        "saveDiary"
+    );
+
+const diaryDate =
+    document.getElementById(
+        "diaryDate"
+    );
+
+const diaryText =
+    document.getElementById(
+        "diaryText"
+    );
+
+
+/*
+   오늘 날짜 자동 입력
+*/
+
+const today =
+    new Date();
+
+diaryDate.value =
+    today.toISOString()
+    .split("T")[0];
+
+
+
+/*
+   일기창 열기
+*/
+
+diaryButton.addEventListener(
+    "click",
+    () => {
+
+        diaryPanel.classList.toggle(
+            "open"
+        );
+
+    }
+);
+
+
+
+/*
+   일기창 닫기
+*/
+
+closeDiary.addEventListener(
+    "click",
+    () => {
+
+        diaryPanel.classList.remove(
+            "open"
+        );
+
+    }
+);
+
+
+
+/* ==========================================
+   저장된 일기
+   ========================================== */
+
+let diaries =
+    JSON.parse(
+        localStorage.getItem(
+            "junDiary"
+        ) || "[]"
+    );
+
+
+
+/* ==========================================
+   말풍선
+   ========================================== */
+
+const bubbleArea =
+    document.getElementById(
+        "bubble-area"
+    );
+
+
+let bubbles = [];
+
+
+
+/*
+   랜덤 숫자
+*/
+
+function random(min, max) {
+
+    return Math.random()
+        * (max - min)
+        + min;
+
+}
+
+
+
+/* ==========================================
+   말풍선 생성
+   ========================================== */
+
+function createBubble(diary) {
+
+    const bubble =
+        document.createElement(
+            "div"
+        );
+
+
+    bubble.className =
+        "diary-bubble";
+
+
+    const date =
+        document.createElement(
+            "div"
+        );
+
+    date.className =
+        "bubble-date";
+
+    date.textContent =
+        diary.date;
+
+
+    const text =
+        document.createElement(
+            "div"
+        );
+
+    /*
+       말풍선에는 너무 길게
+       나오지 않도록 일부만 표시
+    */
+
+    text.textContent =
+        diary.text.length > 70
+        ? diary.text.substring(0,70) + "..."
+        : diary.text;
+
+
+    bubble.appendChild(date);
+
+    bubble.appendChild(text);
+
+
+    /*
+       화면 안 랜덤 위치
+    */
+
+    const x =
+        random(
+            5,
+            Math.max(
+                6,
+                window.innerWidth - 240
+            )
+        );
+
+
+    const y =
+        random(
+            15,
+            Math.max(
+                16,
+                window.innerHeight - 180
+            )
+        );
+
+
+    bubble.style.left =
+        x + "px";
+
+    bubble.style.top =
+        y + "px";
+
+
+    /*
+       이동 속도
+    */
+
+    const velocity = {
+
+        x: random(-0.7,0.7),
+
+        y: random(-0.7,0.7)
+
+    };
+
+
+    /*
+       너무 느리지 않도록
+    */
+
+    if (
+        Math.abs(velocity.x)
+        < 0.25
+    ) {
+
+        velocity.x =
+            velocity.x < 0
+            ? -0.4
+            : 0.4;
+
+    }
+
+
+    if (
+        Math.abs(velocity.y)
+        < 0.25
+    ) {
+
+        velocity.y =
+            velocity.y < 0
+            ? -0.4
+            : 0.4;
+
+    }
+
+
+    const bubbleData = {
+
+        element: bubble,
+
+        x: x,
+
+        y: y,
+
+        vx: velocity.x,
+
+        vy: velocity.y,
+
+        diary: diary
+
+    };
+
+
+    bubbles.push(
+        bubbleData
+    );
+
+
+    bubbleArea.appendChild(
+        bubble
+    );
+
+
+    /*
+       클릭하면 내용 보기
+    */
+
+    bubble.addEventListener(
+        "click",
+        () => {
+
+            showDiary(
+                diary
+            );
+
+        }
+    );
+
+}
+
+
+
+/* ==========================================
+   일기 저장
+   ========================================== */
+
+saveDiary.addEventListener(
+    "click",
+    () => {
+
+        const date =
+            diaryDate.value;
+
+        const text =
+            diaryText.value.trim();
+
+
+        if (!text) {
+
+            alert(
+                "일기를 먼저 적어주세요!"
+            );
+
+            return;
+
+        }
+
+
+        const diary = {
+
+            id:
+                Date.now(),
+
+            date:
+                date,
+
+            text:
+                text
+
+        };
+
+
+        diaries.push(
+            diary
+        );
+
+
+        /*
+           브라우저에 저장
+        */
+
+        localStorage.setItem(
+            "junDiary",
+            JSON.stringify(
+                diaries
+            )
+        );
+
+
+        /*
+           말풍선 생성
+        */
+
+        createBubble(
+            diary
+        );
+
+
+        /*
+           입력창 초기화
+        */
+
+        diaryText.value = "";
+
+
+        /*
+           패널 닫기
+        */
+
+        diaryPanel.classList.remove(
+            "open"
+        );
+
+    }
+);
+
+
+
+/* ==========================================
+   기존 일기 불러오기
+   ========================================== */
+
+diaries.forEach(
+    diary => {
+
+        createBubble(
+            diary
+        );
+
+    }
+);
+
+
+
+/* ==========================================
+   말풍선 움직임
+   ========================================== */
+
+function animateBubbles() {
+
+    const width =
+        window.innerWidth;
+
+    const height =
+        window.innerHeight;
+
+
+    bubbles.forEach(
+        bubble => {
+
+            bubble.x +=
+                bubble.vx;
+
+            bubble.y +=
+                bubble.vy;
+
+
+            const rect =
+                bubble.element
+                .getBoundingClientRect();
+
+
+            const bubbleWidth =
+                rect.width;
+
+            const bubbleHeight =
+                rect.height;
+
+
+            /*
+               벽에 부딪히면 튕김
+            */
+
+            if (
+                bubble.x <= 0
+            ) {
+
+                bubble.x = 0;
+
+                bubble.vx =
+                    Math.abs(
+                        bubble.vx
+                    );
+
+            }
+
+
+            if (
+                bubble.x
+                +
+                bubbleWidth
+                >= width
+            ) {
+
+                bubble.x =
+                    width
+                    -
+                    bubbleWidth;
+
+                bubble.vx =
+                    -Math.abs(
+                        bubble.vx
+                    );
+
+            }
+
+
+            if (
+                bubble.y <= 0
+            ) {
+
+                bubble.y = 0;
+
+                bubble.vy =
+                    Math.abs(
+                        bubble.vy
+                    );
+
+            }
+
+
+            if (
+                bubble.y
+                +
+                bubbleHeight
+                >= height
+            ) {
+
+                bubble.y =
+                    height
+                    -
+                    bubbleHeight;
+
+                bubble.vy =
+                    -Math.abs(
+                        bubble.vy
+                    );
+
+            }
+
+
+            bubble.element.style.left =
+                bubble.x + "px";
+
+            bubble.element.style.top =
+                bubble.y + "px";
+
+        }
+    );
+
+
+    /*
+       풍선끼리 충돌
+    */
+
+    for (
+        let i = 0;
+        i < bubbles.length;
+        i++
+    ) {
+
+        for (
+            let j = i + 1;
+            j < bubbles.length;
+            j++
+        ) {
+
+            const a =
+                bubbles[i];
+
+            const b =
+                bubbles[j];
+
+
+            const aRect =
+                a.element
+                .getBoundingClientRect();
+
+            const bRect =
+                b.element
+                .getBoundingClientRect();
+
+
+            const overlap =
+                aRect.left
+                <
+                bRect.right
+                &&
+                aRect.right
+                >
+                bRect.left
+                &&
+                aRect.top
+                <
+                bRect.bottom
+                &&
+                aRect.bottom
+                >
+                bRect.top;
+
+
+            if (overlap) {
+
+                /*
+                   간단한 탄성 충돌
+
+                   서로의 속도를 교환
+                */
+
+                const tempX =
+                    a.vx;
+
+                const tempY =
+                    a.vy;
+
+
+                a.vx =
+                    b.vx;
+
+                a.vy =
+                    b.vy;
+
+
+                b.vx =
+                    tempX;
+
+                b.vy =
+                    tempY;
+
+
+                /*
+                   겹침 방지
+                */
+
+                a.x -=
+                    a.vx * 2;
+
+                b.x -=
+                    b.vx * 2;
+
+            }
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        animateBubbles
+    );
+
+}
+
+
+animateBubbles();
+
+
+
+/* ==========================================
+   말풍선 내용 보기
+   ========================================== */
+
+const bubbleView =
+    document.getElementById(
+        "bubbleView"
+    );
+
+const bubbleViewDate =
+    document.getElementById(
+        "bubbleViewDate"
+    );
+
+const bubbleViewText =
+    document.getElementById(
+        "bubbleViewText"
+    );
+
+const closeBubble =
+    document.getElementById(
+        "closeBubble"
+    );
+
+
+
+function showDiary(diary) {
+
+    bubbleViewDate.textContent =
+        diary.date;
+
+    bubbleViewText.textContent =
+        diary.text;
+
+    bubbleView.classList.add(
+        "show"
+    );
+
+}
+
+
+
+closeBubble.addEventListener(
+    "click",
+    () => {
+
+        bubbleView.classList.remove(
+            "show"
+        );
+
+    }
+);
+
+
+
+/* ==========================================
+   창 크기 변경
+   ========================================== */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        bubbles.forEach(
+            bubble => {
+
+                bubble.x =
+                    Math.min(
+                        bubble.x,
+                        window.innerWidth - 100
+                    );
+
+                bubble.y =
+                    Math.min(
+                        bubble.y,
+                        window.innerHeight - 100
+                    );
+
+            }
+        );
+
+    }
+);
+
 </script>
 
 </body>
+
 </html>
