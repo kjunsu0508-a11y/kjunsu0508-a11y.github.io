@@ -7,244 +7,169 @@
 <title>준수가 한국으로 돌아가기까지...</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-    }
 
-    body {
-        margin: 0;
-        min-height: 100vh;
+* {
+    box-sizing: border-box;
+}
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+body {
+    margin: 0;
+    min-height: 100vh;
 
-        font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        color: white;
+    font-family: Arial, Helvetica, sans-serif;
 
-        background:
-            radial-gradient(
-                circle at 20% 20%,
-                #243b55 0%,
-                transparent 35%
-            ),
-            radial-gradient(
-                circle at 80% 80%,
-                #141e30 0%,
-                transparent 40%
-            ),
-            #050505;
+    color: white;
 
-        overflow-x: hidden;
-    }
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #243b55 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            #141e30 0%,
+            transparent 40%
+        ),
+        #050505;
+
+    overflow-x: hidden;
+}
+
+
+.container {
+    width: min(1100px, 92%);
+
+    padding: 45px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,0.06);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    border-radius: 30px;
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.5);
+}
+
+
+.title {
+    margin-bottom: 45px;
+
+    font-size:
+        clamp(25px, 4vw, 50px);
+
+    font-weight: 600;
+
+    letter-spacing: -1px;
+}
+
+
+.main {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+
+.card {
+    padding: 28px 10px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.05);
+
+    border:
+        1px solid rgba(255,255,255,0.08);
+
+    transition: 0.3s;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+
+    background:
+        rgba(255,255,255,0.09);
+}
+
+
+.number {
+    font-size:
+        clamp(28px, 5vw, 58px);
+
+    font-weight: bold;
+
+    letter-spacing: -2px;
+
+    font-variant-numeric:
+        tabular-nums;
+
+    white-space: nowrap;
+}
+
+
+/* 초를 조금 더 강조 */
+
+#seconds {
+    text-shadow:
+        0 0 20px rgba(255,255,255,0.45);
+}
+
+
+.label {
+    margin-top: 10px;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(255,255,255,0.45);
+}
+
+
+.message {
+    margin-top: 35px;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+@media (max-width: 700px) {
 
     .container {
-        width: min(1000px, 92%);
-        padding: 45px;
-
-        text-align: center;
-
-        background: rgba(255,255,255,0.06);
-
-        border: 1px solid rgba(255,255,255,0.12);
-
-        border-radius: 30px;
-
-        backdrop-filter: blur(20px);
-
-        box-shadow:
-            0 30px 80px rgba(0,0,0,0.5);
-    }
-
-    .title {
-        margin-bottom: 35px;
-
-        font-size: clamp(25px, 4vw, 50px);
-
-        font-weight: 600;
-
-        letter-spacing: -1px;
-    }
-
-    .date-box {
-        display: flex;
-
-        justify-content: center;
-
-        gap: 10px;
-
-        flex-wrap: wrap;
-
-        margin-bottom: 45px;
-    }
-
-    input {
-        padding: 15px 18px;
-
-        border: 1px solid rgba(255,255,255,0.2);
-
-        border-radius: 12px;
-
-        background: rgba(255,255,255,0.1);
-
-        color: white;
-
-        font-size: 17px;
-
-        outline: none;
-    }
-
-    button {
-        padding: 15px 25px;
-
-        border: none;
-
-        border-radius: 12px;
-
-        background: white;
-
-        color: black;
-
-        font-size: 17px;
-
-        font-weight: bold;
-
-        cursor: pointer;
-
-        transition: 0.2s;
-    }
-
-    button:hover {
-        transform: translateY(-2px);
-
-        box-shadow:
-            0 8px 25px rgba(255,255,255,0.15);
+        padding: 30px 15px;
     }
 
     .main {
-        display: grid;
-
         grid-template-columns:
-            repeat(4, 1fr);
-
-        gap: 15px;
-    }
-
-    .card {
-        padding: 25px 10px;
-
-        border-radius: 20px;
-
-        background:
-            rgba(255,255,255,0.05);
-
-        border:
-            1px solid rgba(255,255,255,0.08);
-
-        transition: 0.3s;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-
-        background:
-            rgba(255,255,255,0.09);
+            repeat(2, 1fr);
     }
 
     .number {
-        font-size:
-            clamp(30px, 5vw, 60px);
-
-        font-weight: bold;
-
-        letter-spacing: -2px;
-
-        font-variant-numeric:
-            tabular-nums;
+        font-size: 30px;
     }
 
-    /* 초 숫자는 조금 더 강조 */
-    #seconds {
-        text-shadow:
-            0 0 20px rgba(255,255,255,0.4);
-    }
+}
 
-    .label {
-        margin-top: 8px;
-
-        font-size: 12px;
-
-        letter-spacing: 3px;
-
-        color:
-            rgba(255,255,255,0.45);
-    }
-
-    .totals {
-        margin-top: 25px;
-
-        display: grid;
-
-        grid-template-columns:
-            repeat(3, 1fr);
-
-        gap: 15px;
-    }
-
-    .total-card {
-        padding: 20px;
-
-        border-radius: 18px;
-
-        background:
-            rgba(255,255,255,0.025);
-
-        border:
-            1px solid rgba(255,255,255,0.06);
-    }
-
-    .total-number {
-        font-size:
-            clamp(22px, 3vw, 35px);
-
-        font-weight: bold;
-
-        font-variant-numeric:
-            tabular-nums;
-    }
-
-    .message {
-        margin-top: 30px;
-
-        font-size: 20px;
-
-        font-weight: bold;
-
-        letter-spacing: 3px;
-    }
-
-    @media (max-width: 700px) {
-
-        .container {
-            padding: 30px 18px;
-        }
-
-        .main {
-            grid-template-columns:
-                repeat(2, 1fr);
-        }
-
-        .totals {
-            grid-template-columns:
-                1fr;
-        }
-
-        input,
-        button {
-            width: 100%;
-        }
-    }
 </style>
 </head>
 
@@ -258,160 +183,199 @@
     </div>
 
 
-    <div class="date-box">
-
-        <input
-            type="datetime-local"
-            id="targetDate"
-        >
-
-        <button onclick="setTarget()">
-            START
-        </button>
-
-    </div>
-
-
     <div class="main">
 
         <div class="card">
-            <div class="number" id="years">0.0</div>
-            <div class="label">YEARS</div>
+            <div
+                class="number"
+                id="years">
+                0.0
+            </div>
+
+            <div class="label">
+                YEARS
+            </div>
         </div>
 
-        <div class="card">
-            <div class="number" id="months">0.0</div>
-            <div class="label">MONTHS</div>
-        </div>
 
         <div class="card">
-            <div class="number" id="weeks">0.0</div>
-            <div class="label">WEEKS</div>
+            <div
+                class="number"
+                id="months">
+                0.0
+            </div>
+
+            <div class="label">
+                MONTHS
+            </div>
         </div>
 
-        <div class="card">
-            <div class="number" id="days">0.0</div>
-            <div class="label">DAYS</div>
-        </div>
 
         <div class="card">
-            <div class="number" id="hours">0.0</div>
-            <div class="label">HOURS</div>
+            <div
+                class="number"
+                id="weeks">
+                0.0
+            </div>
+
+            <div class="label">
+                WEEKS
+            </div>
         </div>
 
-        <div class="card">
-            <div class="number" id="minutes">0.0</div>
-            <div class="label">MINUTES</div>
-        </div>
 
         <div class="card">
-            <div class="number" id="seconds">0.0</div>
-            <div class="label">SECONDS</div>
+            <div
+                class="number"
+                id="days">
+                0.0
+            </div>
+
+            <div class="label">
+                DAYS
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div
+                class="number"
+                id="hours">
+                0.0
+            </div>
+
+            <div class="label">
+                HOURS
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div
+                class="number"
+                id="minutes">
+                0.0
+            </div>
+
+            <div class="label">
+                MINUTES
+            </div>
+        </div>
+
+
+        <div class="card">
+            <div
+                class="number"
+                id="seconds">
+                0.0
+            </div>
+
+            <div class="label">
+                SECONDS
+            </div>
         </div>
 
     </div>
 
 
-    <div class="totals">
-
-        <div class="total-card">
-            <div class="total-number" id="totalDays">0.0</div>
-            <div class="label">TOTAL DAYS</div>
-        </div>
-
-        <div class="total-card">
-            <div class="total-number" id="totalHours">0.0</div>
-            <div class="label">TOTAL HOURS</div>
-        </div>
-
-        <div class="total-card">
-            <div class="total-number" id="totalMinutes">0.0</div>
-            <div class="label">TOTAL MINUTES</div>
-        </div>
-
+    <div
+        class="message"
+        id="message">
     </div>
-
-
-    <div class="message" id="message"></div>
 
 </div>
 
 
 <script>
 
-let target =
-    localStorage.getItem("countdownTarget");
 
-const input =
-    document.getElementById("targetDate");
+/*
+    ====================================
+    목표 날짜
+    ====================================
 
+    2027년 12월 31일
+    오후 11시 59분 59.999초
 
-if (target) {
+    즉, 2027년 12월 31일이
+    끝나는 순간까지 카운트다운.
+*/
 
-    const savedDate =
-        new Date(target);
-
-    if (!isNaN(savedDate.getTime())) {
-
-        input.value =
-            formatDateForInput(savedDate);
-    }
-}
-
-
-function formatDateForInput(date) {
-
-    const year =
-        date.getFullYear();
-
-    const month =
-        String(date.getMonth() + 1)
-        .padStart(2, "0");
-
-    const day =
-        String(date.getDate())
-        .padStart(2, "0");
-
-    const hours =
-        String(date.getHours())
-        .padStart(2, "0");
-
-    const minutes =
-        String(date.getMinutes())
-        .padStart(2, "0");
-
-    return (
-        year + "-" +
-        month + "-" +
-        day + "T" +
-        hours + ":" +
-        minutes
-    );
-}
-
-
-function setTarget() {
-
-    if (!input.value) {
-
-        alert(
-            "목표 날짜와 시간을 선택해주세요."
-        );
-
-        return;
-    }
-
-    target =
-        new Date(input.value).toISOString();
-
-    localStorage.setItem(
-        "countdownTarget",
-        target
+const targetDate =
+    new Date(
+        2027,
+        11,
+        31,
+        23,
+        59,
+        59,
+        999
     );
 
-    updateCountdown();
-}
 
+/*
+    1초 = 1000밀리초
+*/
+
+const SECOND =
+    1000;
+
+
+/*
+    1분
+*/
+
+const MINUTE =
+    SECOND * 60;
+
+
+/*
+    1시간
+*/
+
+const HOUR =
+    MINUTE * 60;
+
+
+/*
+    1일
+*/
+
+const DAY =
+    HOUR * 24;
+
+
+/*
+    1주일
+*/
+
+const WEEK =
+    DAY * 7;
+
+
+/*
+    평균적인 달의 길이
+
+    365.2425일 ÷ 12개월
+*/
+
+const MONTH =
+    DAY * (365.2425 / 12);
+
+
+/*
+    평균적인 1년
+*/
+
+const YEAR =
+    DAY * 365.2425;
+
+
+
+/*
+    숫자를 항상 소수점
+    한 자리로 표시
+*/
 
 function formatNumber(number) {
 
@@ -422,44 +386,78 @@ function formatNumber(number) {
             maximumFractionDigits: 1
         }
     );
+
 }
 
 
+
+/*
+    카운트다운 업데이트
+*/
+
 function updateCountdown() {
 
-    if (!target) return;
+
+    /*
+        현재 시간
+    */
+
+    const now =
+        new Date();
 
 
-    const now = new Date();
+    /*
+        목표 날짜까지 남은 시간
 
-    const targetDate =
-        new Date(target);
+        밀리초 단위
+    */
 
-
-    const difference =
+    let remaining =
         targetDate.getTime()
         -
         now.getTime();
 
 
-    if (difference <= 0) {
 
-        document
-            .querySelectorAll(".number")
-            .forEach(element => {
+    /*
+        시간이 끝났으면
+    */
 
-                element.textContent = "0.0";
+    if (remaining <= 0) {
 
-            });
+        document.getElementById(
+            "years"
+        ).textContent = "0.0";
 
 
-        document
-            .querySelectorAll(".total-number")
-            .forEach(element => {
+        document.getElementById(
+            "months"
+        ).textContent = "0.0";
 
-                element.textContent = "0.0";
 
-            });
+        document.getElementById(
+            "weeks"
+        ).textContent = "0.0";
+
+
+        document.getElementById(
+            "days"
+        ).textContent = "0.0";
+
+
+        document.getElementById(
+            "hours"
+        ).textContent = "0.0";
+
+
+        document.getElementById(
+            "minutes"
+        ).textContent = "0.0";
+
+
+        document.getElementById(
+            "seconds"
+        ).textContent = "0.0";
 
 
         document.getElementById(
@@ -467,120 +465,50 @@ function updateCountdown() {
         ).textContent =
             "한국 도착! 🇰🇷";
 
+
         return;
     }
 
 
-    document.getElementById(
-        "message"
-    ).textContent = "";
-
 
     /*
-        총 시간 계산
+        ====================================
+        모든 단위를 "전체 남은 시간"으로 계산
+        ====================================
     */
 
-    const totalSeconds =
-        difference / 1000;
 
-    const totalMinutes =
-        totalSeconds / 60;
-
-    const totalHours =
-        totalMinutes / 60;
-
-    const totalDays =
-        totalHours / 24;
-
-    const totalWeeks =
-        totalDays / 7;
+    const years =
+        remaining / YEAR;
 
 
-    /*
-        달력 기준 YEARS / MONTHS / DAYS
-    */
-
-    let years =
-        targetDate.getFullYear()
-        -
-        now.getFullYear();
-
-    let months =
-        targetDate.getMonth()
-        -
-        now.getMonth();
-
-    let days =
-        targetDate.getDate()
-        -
-        now.getDate();
-
-    let hours =
-        targetDate.getHours()
-        -
-        now.getHours();
-
-    let minutes =
-        targetDate.getMinutes()
-        -
-        now.getMinutes();
-
-    let seconds =
-        targetDate.getSeconds()
-        -
-        now.getSeconds();
+    const months =
+        remaining / MONTH;
 
 
-    if (seconds < 0) {
-
-        seconds += 60;
-
-        minutes--;
-    }
+    const weeks =
+        remaining / WEEK;
 
 
-    if (minutes < 0) {
-
-        minutes += 60;
-
-        hours--;
-    }
+    const days =
+        remaining / DAY;
 
 
-    if (hours < 0) {
-
-        hours += 24;
-
-        days--;
-    }
+    const hours =
+        remaining / HOUR;
 
 
-    if (days < 0) {
-
-        months--;
-
-        const previousMonth =
-            new Date(
-                targetDate.getFullYear(),
-                targetDate.getMonth(),
-                0
-            );
-
-        days +=
-            previousMonth.getDate();
-    }
+    const minutes =
+        remaining / MINUTE;
 
 
-    if (months < 0) {
+    const seconds =
+        remaining / SECOND;
 
-        months += 12;
-
-        years--;
-    }
 
 
     /*
-        표시
+        화면에 표시
     */
 
     document.getElementById(
@@ -598,7 +526,7 @@ function updateCountdown() {
     document.getElementById(
         "weeks"
     ).textContent =
-        formatNumber(totalWeeks);
+        formatNumber(weeks);
 
 
     document.getElementById(
@@ -619,38 +547,11 @@ function updateCountdown() {
         formatNumber(minutes);
 
 
-    /*
-        ⭐ 핵심:
-        실제 남은 밀리초를 이용해서
-        0.1초 단위로 표시
-    */
-
-    const preciseSeconds =
-        difference / 1000;
-
-
     document.getElementById(
         "seconds"
     ).textContent =
-        formatNumber(preciseSeconds);
+        formatNumber(seconds);
 
-
-    document.getElementById(
-        "totalDays"
-    ).textContent =
-        formatNumber(totalDays);
-
-
-    document.getElementById(
-        "totalHours"
-    ).textContent =
-        formatNumber(totalHours);
-
-
-    document.getElementById(
-        "totalMinutes"
-    ).textContent =
-        formatNumber(totalMinutes);
 }
 
 
@@ -663,6 +564,12 @@ updateCountdown();
 
 /*
     ⭐ 0.1초마다 업데이트
+
+    10.0
+    9.9
+    9.8
+    9.7
+    ...
 */
 
 setInterval(
