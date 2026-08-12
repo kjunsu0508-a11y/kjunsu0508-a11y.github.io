@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Time Remaining</title>
+<title>준수가 한국으로 돌아가기까지...</title>
 
 <style>
     * {
@@ -19,10 +19,7 @@
         justify-content: center;
         align-items: center;
 
-        font-family:
-            Arial,
-            Helvetica,
-            sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
 
         color: white;
 
@@ -61,21 +58,13 @@
     }
 
     .title {
-        font-size: 15px;
+        margin-bottom: 35px;
 
-        letter-spacing: 8px;
+        font-size: clamp(25px, 4vw, 50px);
 
-        color: rgba(255,255,255,0.55);
+        font-weight: 600;
 
-        margin-bottom: 15px;
-    }
-
-    h1 {
-        margin: 0 0 35px;
-
-        font-size: clamp(35px, 6vw, 70px);
-
-        letter-spacing: -2px;
+        letter-spacing: -1px;
     }
 
     .date-box {
@@ -104,10 +93,6 @@
         font-size: 17px;
 
         outline: none;
-    }
-
-    input:focus {
-        border-color: rgba(255,255,255,0.7);
     }
 
     button {
@@ -179,6 +164,12 @@
             tabular-nums;
     }
 
+    /* 초 숫자는 조금 더 강조 */
+    #seconds {
+        text-shadow:
+            0 0 20px rgba(255,255,255,0.4);
+    }
+
     .label {
         margin-top: 8px;
 
@@ -214,7 +205,8 @@
     }
 
     .total-number {
-        font-size: clamp(22px, 3vw, 35px);
+        font-size:
+            clamp(22px, 3vw, 35px);
 
         font-weight: bold;
 
@@ -262,10 +254,8 @@
 <div class="container">
 
     <div class="title">
-        TIME REMAINING
+        준수가 한국으로 돌아가기까지...
     </div>
-
-    <h1>COUNTDOWN</h1>
 
 
     <div class="date-box">
@@ -285,93 +275,38 @@
     <div class="main">
 
         <div class="card">
-            <div
-                class="number"
-                id="years">
-                0.0
-            </div>
-
-            <div class="label">
-                YEARS
-            </div>
+            <div class="number" id="years">0.0</div>
+            <div class="label">YEARS</div>
         </div>
 
-
         <div class="card">
-            <div
-                class="number"
-                id="months">
-                0.0
-            </div>
-
-            <div class="label">
-                MONTHS
-            </div>
+            <div class="number" id="months">0.0</div>
+            <div class="label">MONTHS</div>
         </div>
 
-
         <div class="card">
-            <div
-                class="number"
-                id="weeks">
-                0.0
-            </div>
-
-            <div class="label">
-                WEEKS
-            </div>
+            <div class="number" id="weeks">0.0</div>
+            <div class="label">WEEKS</div>
         </div>
 
-
         <div class="card">
-            <div
-                class="number"
-                id="days">
-                0.0
-            </div>
-
-            <div class="label">
-                DAYS
-            </div>
+            <div class="number" id="days">0.0</div>
+            <div class="label">DAYS</div>
         </div>
 
-
         <div class="card">
-            <div
-                class="number"
-                id="hours">
-                0.0
-            </div>
-
-            <div class="label">
-                HOURS
-            </div>
+            <div class="number" id="hours">0.0</div>
+            <div class="label">HOURS</div>
         </div>
 
-
         <div class="card">
-            <div
-                class="number"
-                id="minutes">
-                0.0
-            </div>
-
-            <div class="label">
-                MINUTES
-            </div>
+            <div class="number" id="minutes">0.0</div>
+            <div class="label">MINUTES</div>
         </div>
 
-
         <div class="card">
-            <div
-                class="number"
-                id="seconds">
-                0.0
-            </div>
-
-            <div class="label">
-                SECONDS
-            </div>
+            <div class="number" id="seconds">0.0</div>
+            <div class="label">SECONDS</div>
         </div>
 
     </div>
@@ -380,56 +315,24 @@
     <div class="totals">
 
         <div class="total-card">
-
-            <div
-                class="total-number"
-                id="totalDays">
-                0.0
-            </div>
-
-            <div class="label">
-                TOTAL DAYS
-            </div>
-
+            <div class="total-number" id="totalDays">0.0</div>
+            <div class="label">TOTAL DAYS</div>
         </div>
 
-
         <div class="total-card">
-
-            <div
-                class="total-number"
-                id="totalHours">
-                0.0
-            </div>
-
-            <div class="label">
-                TOTAL HOURS
-            </div>
-
+            <div class="total-number" id="totalHours">0.0</div>
+            <div class="label">TOTAL HOURS</div>
         </div>
 
-
         <div class="total-card">
-
-            <div
-                class="total-number"
-                id="totalMinutes">
-                0.0
-            </div>
-
-            <div class="label">
-                TOTAL MINUTES
-            </div>
-
+            <div class="total-number" id="totalMinutes">0.0</div>
+            <div class="label">TOTAL MINUTES</div>
         </div>
 
     </div>
 
 
-    <div
-        class="message"
-        id="message">
-    </div>
+    <div class="message" id="message"></div>
 
 </div>
 
@@ -437,15 +340,10 @@
 <script>
 
 let target =
-    localStorage.getItem(
-        "countdownTarget"
-    );
-
+    localStorage.getItem("countdownTarget");
 
 const input =
-    document.getElementById(
-        "targetDate"
-    );
+    document.getElementById("targetDate");
 
 
 if (target) {
@@ -456,9 +354,7 @@ if (target) {
     if (!isNaN(savedDate.getTime())) {
 
         input.value =
-            formatDateForInput(
-                savedDate
-            );
+            formatDateForInput(savedDate);
     }
 }
 
@@ -469,34 +365,26 @@ function formatDateForInput(date) {
         date.getFullYear();
 
     const month =
-        String(
-            date.getMonth() + 1
-        ).padStart(2, "0");
+        String(date.getMonth() + 1)
+        .padStart(2, "0");
 
     const day =
-        String(
-            date.getDate()
-        ).padStart(2, "0");
+        String(date.getDate())
+        .padStart(2, "0");
 
     const hours =
-        String(
-            date.getHours()
-        ).padStart(2, "0");
+        String(date.getHours())
+        .padStart(2, "0");
 
     const minutes =
-        String(
-            date.getMinutes()
-        ).padStart(2, "0");
+        String(date.getMinutes())
+        .padStart(2, "0");
 
     return (
-        year +
-        "-" +
-        month +
-        "-" +
-        day +
-        "T" +
-        hours +
-        ":" +
+        year + "-" +
+        month + "-" +
+        day + "T" +
+        hours + ":" +
         minutes
     );
 }
@@ -507,24 +395,19 @@ function setTarget() {
     if (!input.value) {
 
         alert(
-            "Please choose a target date and time."
+            "목표 날짜와 시간을 선택해주세요."
         );
 
         return;
     }
 
-
     target =
-        new Date(
-            input.value
-        ).toISOString();
-
+        new Date(input.value).toISOString();
 
     localStorage.setItem(
         "countdownTarget",
         target
     );
-
 
     updateCountdown();
 }
@@ -547,8 +430,7 @@ function updateCountdown() {
     if (!target) return;
 
 
-    const now =
-        new Date();
+    const now = new Date();
 
     const targetDate =
         new Date(target);
@@ -564,28 +446,26 @@ function updateCountdown() {
 
         document
             .querySelectorAll(".number")
-            .forEach(
-                element => {
-                    element.textContent =
-                        "0.0";
-                }
-            );
+            .forEach(element => {
+
+                element.textContent = "0.0";
+
+            });
 
 
         document
             .querySelectorAll(".total-number")
-            .forEach(
-                element => {
-                    element.textContent =
-                        "0.0";
-                }
-            );
+            .forEach(element => {
+
+                element.textContent = "0.0";
+
+            });
 
 
         document.getElementById(
             "message"
         ).textContent =
-            "TIME'S UP";
+            "한국 도착! 🇰🇷";
 
         return;
     }
@@ -597,7 +477,7 @@ function updateCountdown() {
 
 
     /*
-        Total values
+        총 시간 계산
     */
 
     const totalSeconds =
@@ -617,8 +497,7 @@ function updateCountdown() {
 
 
     /*
-        Calendar-based
-        years and months
+        달력 기준 YEARS / MONTHS / DAYS
     */
 
     let years =
@@ -626,30 +505,25 @@ function updateCountdown() {
         -
         now.getFullYear();
 
-
     let months =
         targetDate.getMonth()
         -
         now.getMonth();
-
 
     let days =
         targetDate.getDate()
         -
         now.getDate();
 
-
     let hours =
         targetDate.getHours()
         -
         now.getHours();
 
-
     let minutes =
         targetDate.getMinutes()
         -
         now.getMinutes();
-
 
     let seconds =
         targetDate.getSeconds()
@@ -706,7 +580,7 @@ function updateCountdown() {
 
 
     /*
-        Display
+        표시
     */
 
     document.getElementById(
@@ -745,10 +619,20 @@ function updateCountdown() {
         formatNumber(minutes);
 
 
+    /*
+        ⭐ 핵심:
+        실제 남은 밀리초를 이용해서
+        0.1초 단위로 표시
+    */
+
+    const preciseSeconds =
+        difference / 1000;
+
+
     document.getElementById(
         "seconds"
     ).textContent =
-        formatNumber(seconds);
+        formatNumber(preciseSeconds);
 
 
     document.getElementById(
@@ -770,12 +654,20 @@ function updateCountdown() {
 }
 
 
+/*
+    처음 실행
+*/
+
 updateCountdown();
 
 
+/*
+    ⭐ 0.1초마다 업데이트
+*/
+
 setInterval(
     updateCountdown,
-    1000
+    100
 );
 
 </script>
