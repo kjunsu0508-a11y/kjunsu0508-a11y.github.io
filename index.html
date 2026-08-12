@@ -12,160 +12,260 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #050505;
+
+    color: white;
+}
+
+
+/* =========================
+   공통 화면
+   ========================= */
+
+.time-section {
+
+    width: 100%;
+
     min-height: 100vh;
 
     display: flex;
+
+    flex-direction: column;
+
     justify-content: center;
+
     align-items: center;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    color: white;
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            #243b55 0%,
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            #141e30 0%,
-            transparent 40%
-        ),
-        #050505;
-
-    overflow-x: hidden;
-}
-
-
-.container {
-    width: min(1100px, 92%);
-
-    padding: 45px;
 
     text-align: center;
 
-    background: rgba(255,255,255,0.06);
+    padding: 40px 20px;
 
-    border:
-        1px solid rgba(255,255,255,0.12);
+    position: relative;
 
-    border-radius: 30px;
-
-    backdrop-filter: blur(20px);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.5);
+    overflow: hidden;
 }
 
 
+/* 은은한 배경 */
+
+.time-section::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+
+    height: 600px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(70,100,180,0.25),
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    pointer-events: none;
+}
+
+
+/* 제목 */
+
 .title {
-    margin-bottom: 45px;
 
     font-size:
-        clamp(25px, 4vw, 50px);
+        clamp(22px, 4vw, 48px);
 
     font-weight: 600;
 
     letter-spacing: -1px;
+
+    margin-bottom: 60px;
+
+    position: relative;
 }
 
 
-.main {
-    display: grid;
+/* 단위 이름 */
 
-    grid-template-columns:
-        repeat(4, 1fr);
+.unit {
 
-    gap: 15px;
+    font-size:
+        clamp(15px, 2vw, 22px);
+
+    letter-spacing: 8px;
+
+    color:
+        rgba(255,255,255,0.45);
+
+    margin-bottom: 20px;
+
+    position: relative;
 }
 
 
-.card {
-    padding: 28px 10px;
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,0.05);
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    transition: 0.3s;
-}
-
-
-.card:hover {
-    transform: translateY(-5px);
-
-    background:
-        rgba(255,255,255,0.09);
-}
-
+/* 엄청 큰 숫자 */
 
 .number {
+
     font-size:
-        clamp(28px, 5vw, 58px);
+        clamp(80px, 18vw, 240px);
 
-    font-weight: bold;
+    font-weight: 700;
 
-    letter-spacing: -2px;
+    line-height: 1;
+
+    letter-spacing: -8px;
 
     font-variant-numeric:
         tabular-nums;
 
-    white-space: nowrap;
-}
+    position: relative;
 
-
-/* 초를 조금 더 강조 */
-
-#seconds {
     text-shadow:
-        0 0 20px rgba(255,255,255,0.45);
+        0 0 40px rgba(255,255,255,0.12);
 }
 
 
-.label {
-    margin-top: 10px;
+/* 설명 */
 
-    font-size: 12px;
+.description {
 
-    letter-spacing: 3px;
+    margin-top: 35px;
+
+    font-size:
+        clamp(16px, 2vw, 24px);
 
     color:
         rgba(255,255,255,0.45);
+
+    position: relative;
 }
 
 
-.message {
-    margin-top: 35px;
+/* 스크롤 안내 */
 
-    font-size: 22px;
+.scroll {
 
-    font-weight: bold;
+    position: absolute;
 
-    letter-spacing: 2px;
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,255,255,0.3);
 }
 
 
-@media (max-width: 700px) {
+/* =========================
+   각각의 화면
+   ========================= */
 
-    .container {
-        padding: 30px 15px;
-    }
+.years {
+    background:
+        linear-gradient(
+            180deg,
+            #050505,
+            #101827
+        );
+}
 
-    .main {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
+.months {
+    background:
+        linear-gradient(
+            180deg,
+            #101827,
+            #17131f
+        );
+}
+
+.weeks {
+    background:
+        linear-gradient(
+            180deg,
+            #17131f,
+            #101b1b
+        );
+}
+
+.days {
+    background:
+        linear-gradient(
+            180deg,
+            #101b1b,
+            #19160f
+        );
+}
+
+.hours {
+    background:
+        linear-gradient(
+            180deg,
+            #19160f,
+            #171717
+        );
+}
+
+.minutes {
+    background:
+        linear-gradient(
+            180deg,
+            #171717,
+            #0d1620
+        );
+}
+
+.seconds {
+    background:
+        linear-gradient(
+            180deg,
+            #0d1620,
+            #050505
+        );
+}
+
+
+/* =========================
+   모바일
+   ========================= */
+
+@media (max-width: 600px) {
 
     .number {
-        font-size: 30px;
+
+        font-size:
+            clamp(65px, 20vw, 130px);
+
+        letter-spacing:
+            -4px;
+    }
+
+    .title {
+
+        margin-bottom: 40px;
     }
 
 }
@@ -176,130 +276,247 @@ body {
 
 <body>
 
-<div class="container">
+
+<!-- =========================
+     YEARS
+     ========================= -->
+
+<section class="time-section years">
 
     <div class="title">
         준수가 한국으로 돌아가기까지...
     </div>
 
-
-    <div class="main">
-
-        <div class="card">
-            <div
-                class="number"
-                id="years">
-                0.0
-            </div>
-
-            <div class="label">
-                YEARS
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div
-                class="number"
-                id="months">
-                0.0
-            </div>
-
-            <div class="label">
-                MONTHS
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div
-                class="number"
-                id="weeks">
-                0.0
-            </div>
-
-            <div class="label">
-                WEEKS
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div
-                class="number"
-                id="days">
-                0.0
-            </div>
-
-            <div class="label">
-                DAYS
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div
-                class="number"
-                id="hours">
-                0.0
-            </div>
-
-            <div class="label">
-                HOURS
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div
-                class="number"
-                id="minutes">
-                0.0
-            </div>
-
-            <div class="label">
-                MINUTES
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div
-                class="number"
-                id="seconds">
-                0.0
-            </div>
-
-            <div class="label">
-                SECONDS
-            </div>
-        </div>
-
+    <div class="unit">
+        YEARS
     </div>
-
 
     <div
-        class="message"
-        id="message">
+        class="number"
+        id="years">
+
+        0.0
+
     </div>
 
-</div>
+    <div class="description">
+        년으로 보면
+    </div>
+
+    <div class="scroll">
+        SCROLL ↓
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MONTHS
+     ========================= -->
+
+<section class="time-section months">
+
+    <div class="title">
+        준수가 한국으로 돌아가기까지...
+    </div>
+
+    <div class="unit">
+        MONTHS
+    </div>
+
+    <div
+        class="number"
+        id="months">
+
+        0.0
+
+    </div>
+
+    <div class="description">
+        달로 보면
+    </div>
+
+    <div class="scroll">
+        SCROLL ↓
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WEEKS
+     ========================= -->
+
+<section class="time-section weeks">
+
+    <div class="title">
+        준수가 한국으로 돌아가기까지...
+    </div>
+
+    <div class="unit">
+        WEEKS
+    </div>
+
+    <div
+        class="number"
+        id="weeks">
+
+        0.0
+
+    </div>
+
+    <div class="description">
+        주일로 보면
+    </div>
+
+    <div class="scroll">
+        SCROLL ↓
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DAYS
+     ========================= -->
+
+<section class="time-section days">
+
+    <div class="title">
+        준수가 한국으로 돌아가기까지...
+    </div>
+
+    <div class="unit">
+        DAYS
+    </div>
+
+    <div
+        class="number"
+        id="days">
+
+        0.0
+
+    </div>
+
+    <div class="description">
+        일로 보면
+    </div>
+
+    <div class="scroll">
+        SCROLL ↓
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     HOURS
+     ========================= -->
+
+<section class="time-section hours">
+
+    <div class="title">
+        준수가 한국으로 돌아가기까지...
+    </div>
+
+    <div class="unit">
+        HOURS
+    </div>
+
+    <div
+        class="number"
+        id="hours">
+
+        0.0
+
+    </div>
+
+    <div class="description">
+        시간으로 보면
+    </div>
+
+    <div class="scroll">
+        SCROLL ↓
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MINUTES
+     ========================= -->
+
+<section class="time-section minutes">
+
+    <div class="title">
+        준수가 한국으로 돌아가기까지...
+    </div>
+
+    <div class="unit">
+        MINUTES
+    </div>
+
+    <div
+        class="number"
+        id="minutes">
+
+        0.0
+
+    </div>
+
+    <div class="description">
+        분으로 보면
+    </div>
+
+    <div class="scroll">
+        SCROLL ↓
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SECONDS
+     ========================= -->
+
+<section class="time-section seconds">
+
+    <div class="title">
+        준수가 한국으로 돌아가기까지...
+    </div>
+
+    <div class="unit">
+        SECONDS
+    </div>
+
+    <div
+        class="number"
+        id="seconds">
+
+        0.0
+
+    </div>
+
+    <div class="description">
+        초로 보면
+    </div>
+
+</section>
+
 
 
 <script>
 
 
-/*
-    ====================================
-    목표 날짜
-    ====================================
-
-    2027년 12월 31일
-    오후 11시 59분 59.999초
-
-    즉, 2027년 12월 31일이
-    끝나는 순간까지 카운트다운.
-*/
+/* =================================
+   목표 날짜
+   ================================= */
 
 const targetDate =
     new Date(
@@ -313,69 +530,43 @@ const targetDate =
     );
 
 
-/*
-    1초 = 1000밀리초
-*/
+/* =================================
+   시간 단위
+   ================================= */
 
 const SECOND =
     1000;
 
-
-/*
-    1분
-*/
-
 const MINUTE =
     SECOND * 60;
-
-
-/*
-    1시간
-*/
 
 const HOUR =
     MINUTE * 60;
 
-
-/*
-    1일
-*/
-
 const DAY =
     HOUR * 24;
-
-
-/*
-    1주일
-*/
 
 const WEEK =
     DAY * 7;
 
 
 /*
-    평균적인 달의 길이
+    평균적인 달과 년
 
-    365.2425일 ÷ 12개월
-*/
-
-const MONTH =
-    DAY * (365.2425 / 12);
-
-
-/*
-    평균적인 1년
+    1년 = 365.2425일
 */
 
 const YEAR =
     DAY * 365.2425;
 
+const MONTH =
+    YEAR / 12;
 
 
-/*
-    숫자를 항상 소수점
-    한 자리로 표시
-*/
+
+/* =================================
+   숫자 표시
+   ================================= */
 
 function formatNumber(number) {
 
@@ -391,26 +582,15 @@ function formatNumber(number) {
 
 
 
-/*
-    카운트다운 업데이트
-*/
+/* =================================
+   카운트다운
+   ================================= */
 
 function updateCountdown() {
-
-
-    /*
-        현재 시간
-    */
 
     const now =
         new Date();
 
-
-    /*
-        목표 날짜까지 남은 시간
-
-        밀리초 단위
-    */
 
     let remaining =
         targetDate.getTime()
@@ -418,89 +598,41 @@ function updateCountdown() {
         now.getTime();
 
 
-
     /*
-        시간이 끝났으면
+        목표 시간이 지나면 0
     */
 
     if (remaining <= 0) {
 
-        document.getElementById(
-            "years"
-        ).textContent = "0.0";
+        remaining = 0;
 
-
-        document.getElementById(
-            "months"
-        ).textContent = "0.0";
-
-
-        document.getElementById(
-            "weeks"
-        ).textContent = "0.0";
-
-
-        document.getElementById(
-            "days"
-        ).textContent = "0.0";
-
-
-        document.getElementById(
-            "hours"
-        ).textContent = "0.0";
-
-
-        document.getElementById(
-            "minutes"
-        ).textContent = "0.0";
-
-
-        document.getElementById(
-            "seconds"
-        ).textContent = "0.0";
-
-
-        document.getElementById(
-            "message"
-        ).textContent =
-            "한국 도착! 🇰🇷";
-
-
-        return;
     }
 
 
-
     /*
-        ====================================
-        모든 단위를 "전체 남은 시간"으로 계산
-        ====================================
-    */
+        각각 독립적으로 계산
 
+        같은 시간을 다른 단위로
+        표현하는 방식
+    */
 
     const years =
         remaining / YEAR;
 
-
     const months =
         remaining / MONTH;
-
 
     const weeks =
         remaining / WEEK;
 
-
     const days =
         remaining / DAY;
-
 
     const hours =
         remaining / HOUR;
 
-
     const minutes =
         remaining / MINUTE;
-
 
     const seconds =
         remaining / SECOND;
@@ -508,7 +640,7 @@ function updateCountdown() {
 
 
     /*
-        화면에 표시
+        화면 업데이트
     */
 
     document.getElementById(
@@ -555,15 +687,15 @@ function updateCountdown() {
 }
 
 
-/*
-    처음 실행
-*/
+
+/* 처음 실행 */
 
 updateCountdown();
 
 
+
 /*
-    ⭐ 0.1초마다 업데이트
+    0.1초마다 업데이트
 
     10.0
     9.9
