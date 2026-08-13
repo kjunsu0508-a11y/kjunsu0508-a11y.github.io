@@ -1,38 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>준수가 한국으로 돌아가기까지...</title>
 
-
-<!-- =====================================================
-     FONTS
-===================================================== -->
-
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Gowun+Dodum&display=swap"
-rel="stylesheet">
-
+  href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Gowun+Dodum&display=swap"
+  rel="stylesheet"
+>
 
 <style>
 
 /* =====================================================
-   RESET
+   기본
 ===================================================== */
 
 * {
@@ -44,72 +29,49 @@ html {
 }
 
 body {
-
     margin: 0;
-
     background: #111;
-
     color: white;
-
     font-family:
         "Fredoka",
         "Gowun Dodum",
         sans-serif;
-
     overflow-x: hidden;
 }
 
 
 /* =====================================================
-   COUNTDOWN
+   카운트다운
 ===================================================== */
 
 .time-section {
-
     width: 100%;
-
     height: 100vh;
-
     height: 100svh;
-
     min-height: 100vh;
-
     min-height: 100svh;
 
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
 
     text-align: center;
 
     position: relative;
-
     overflow: hidden;
 
     padding: 30px 20px;
 }
 
-
-/* =====================================================
-   TITLE
-===================================================== */
-
 .page-title {
-
     position: absolute;
 
     top: 8vh;
-
     left: 20px;
-
     right: 20px;
 
-    font-size:
-        clamp(38px, 6vw, 80px);
+    font-size: clamp(38px, 6vw, 80px);
 
     font-weight: 700;
 
@@ -123,15 +85,8 @@ body {
     z-index: 10;
 }
 
-
-/* =====================================================
-   UNIT
-===================================================== */
-
 .unit {
-
-    font-size:
-        clamp(17px, 2.5vw, 29px);
+    font-size: clamp(17px, 2.5vw, 29px);
 
     font-weight: 600;
 
@@ -139,23 +94,15 @@ body {
 
     margin-bottom: 20px;
 
-    color:
-        rgba(255,255,255,.65);
+    color: rgba(255,255,255,.65);
 }
 
-
-/* =====================================================
-   NUMBER
-===================================================== */
-
 .number {
-
     width: 100%;
 
     padding: 0 10px;
 
-    font-size:
-        clamp(50px, 12vw, 160px);
+    font-size: clamp(50px, 12vw, 160px);
 
     font-weight: 700;
 
@@ -163,8 +110,7 @@ body {
 
     letter-spacing: -3px;
 
-    font-variant-numeric:
-        tabular-nums;
+    font-variant-numeric: tabular-nums;
 
     white-space: nowrap;
 
@@ -174,31 +120,22 @@ body {
         4px 7px 0 rgba(0,0,0,.18);
 }
 
-
-/* =====================================================
-   DESCRIPTION
-===================================================== */
-
 .description {
-
     margin-top: 25px;
 
-    font-size:
-        clamp(17px, 2.5vw, 27px);
+    font-size: clamp(17px, 2.5vw, 27px);
 
     font-weight: 500;
 
-    color:
-        rgba(255,255,255,.65);
+    color: rgba(255,255,255,.65);
 }
 
 
 /* =====================================================
-   BACKGROUNDS
+   배경
 ===================================================== */
 
 .years {
-
     background:
         linear-gradient(
             180deg,
@@ -208,7 +145,6 @@ body {
 }
 
 .months {
-
     background:
         linear-gradient(
             180deg,
@@ -218,7 +154,6 @@ body {
 }
 
 .weeks {
-
     background:
         linear-gradient(
             180deg,
@@ -228,7 +163,6 @@ body {
 }
 
 .days {
-
     background:
         linear-gradient(
             180deg,
@@ -238,7 +172,6 @@ body {
 }
 
 .hours {
-
     background:
         linear-gradient(
             180deg,
@@ -248,7 +181,6 @@ body {
 }
 
 .minutes {
-
     background:
         linear-gradient(
             180deg,
@@ -258,7 +190,6 @@ body {
 }
 
 .seconds {
-
     background:
         linear-gradient(
             180deg,
@@ -269,43 +200,34 @@ body {
 
 
 /* =====================================================
-   RIGHT MENU
+   오른쪽 메뉴
 ===================================================== */
 
 .site-menu {
-
     position: fixed;
 
     right: 18px;
-
     bottom: 18px;
 
     z-index: 9000;
 
     display: flex;
-
     flex-direction: column;
 
     gap: 9px;
 }
 
-
 .menu-button {
-
     width: 62px;
-
     height: 62px;
 
-    border:
-        3px solid #4e3927;
+    border: 3px solid #4e3927;
 
     border-radius: 10px;
 
-    background:
-        #f4d58d;
+    background: #f4d58d;
 
-    color:
-        #4e3927;
+    color: #4e3927;
 
     font-size: 26px;
 
@@ -314,13 +236,10 @@ body {
     box-shadow:
         4px 5px 0 #38291d;
 
-    transition:
-        .2s;
+    transition: .2s;
 }
 
-
 .menu-button:hover {
-
     transform:
         translateY(-3px)
         rotate(-3deg);
@@ -331,15 +250,13 @@ body {
 
 
 /* =====================================================
-   DIARY PANEL
+   일기 패널
 ===================================================== */
 
 .diary-panel {
-
     position: fixed;
 
     right: 95px;
-
     bottom: 18px;
 
     width:
@@ -348,27 +265,20 @@ body {
             calc(100vw - 115px)
         );
 
-    background:
-        #fff4c9;
+    background: #fff4c9;
 
-    color:
-        #493827;
+    color: #493827;
 
-    border:
-        4px solid #5b402b;
+    border: 4px solid #5b402b;
 
-    border-radius:
-        8px;
+    border-radius: 8px;
 
-    padding:
-        22px;
+    padding: 22px;
 
-    z-index:
-        8999;
+    z-index: 8999;
 
     box-shadow:
-        8px 9px 0
-        rgba(0,0,0,.35);
+        8px 9px 0 rgba(0,0,0,.35);
 
     opacity: 0;
 
@@ -376,58 +286,42 @@ body {
         translateY(20px)
         scale(.95);
 
-    pointer-events:
-        none;
+    pointer-events: none;
 
-    transition:
-        .2s;
+    transition: .2s;
 }
 
-
 .diary-panel.open {
-
     opacity: 1;
 
     transform:
         translateY(0)
         scale(1);
 
-    pointer-events:
-        auto;
+    pointer-events: auto;
 }
 
-
 .diary-header {
-
     display: flex;
 
-    justify-content:
-        space-between;
+    justify-content: space-between;
 
-    align-items:
-        center;
+    align-items: center;
 
     border-bottom:
         2px dashed #b49a68;
 
-    padding-bottom:
-        12px;
+    padding-bottom: 12px;
 
-    margin-bottom:
-        15px;
+    margin-bottom: 15px;
 }
 
-
 .diary-header h2 {
-
     margin: 0;
-
     font-size: 23px;
 }
 
-
 .close-button {
-
     border: none;
 
     background: transparent;
@@ -439,13 +333,10 @@ body {
     cursor: pointer;
 }
 
-
 .diary-label {
-
     display: block;
 
     margin-top: 12px;
-
     margin-bottom: 5px;
 
     font-size: 14px;
@@ -453,9 +344,7 @@ body {
     font-weight: bold;
 }
 
-
 .diary-textarea {
-
     width: 100%;
 
     height: 125px;
@@ -465,70 +354,53 @@ body {
     border:
         2px solid #bba477;
 
-    border-radius:
-        5px;
+    border-radius: 5px;
 
-    padding:
-        10px;
+    padding: 10px;
 
-    background:
-        #fffbea;
+    background: #fffbea;
 
-    color:
-        #493827;
+    color: #493827;
 
     font-family:
         "Gowun Dodum",
         sans-serif;
 
-    font-size:
-        15px;
+    font-size: 15px;
 
-    outline:
-        none;
+    outline: none;
 }
 
-
 .save-diary {
-
     width: 100%;
 
     margin-top: 15px;
 
     padding: 11px;
 
-    border:
-        3px solid #4e3927;
+    border: 3px solid #4e3927;
 
-    border-radius:
-        5px;
+    border-radius: 5px;
 
-    background:
-        #dfb967;
+    background: #dfb967;
 
-    color:
-        #4e3927;
+    color: #4e3927;
 
     font-family:
         "Fredoka",
         sans-serif;
 
-    font-size:
-        16px;
+    font-size: 16px;
 
-    font-weight:
-        600;
+    font-weight: 600;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
     box-shadow:
         3px 3px 0 #4e3927;
 }
 
-
 .save-diary:active {
-
     transform:
         translate(2px,2px);
 
@@ -538,57 +410,40 @@ body {
 
 
 /* =====================================================
-   BALLOON AREA
+   풍선
 ===================================================== */
 
 #balloon-area {
-
     position: fixed;
 
     inset: 0;
 
-    pointer-events:
-        none;
+    pointer-events: none;
 
-    z-index:
-        500;
+    z-index: 500;
 }
-
 
 .balloon-wrapper {
-
     position: absolute;
 
-    width:
-        130px;
+    width: 130px;
+    height: 180px;
 
-    height:
-        180px;
+    pointer-events: auto;
 
-    pointer-events:
-        auto;
+    cursor: pointer;
 
-    cursor:
-        pointer;
-
-    user-select:
-        none;
+    user-select: none;
 }
 
-
 .balloon {
-
     position: absolute;
 
     left: 10px;
-
     top: 0;
 
-    width:
-        105px;
-
-    height:
-        125px;
+    width: 105px;
+    height: 125px;
 
     border-radius:
         50% 50% 48% 48%;
@@ -613,171 +468,112 @@ body {
         rgba(0,0,0,.15);
 }
 
-
 .balloon::after {
-
     content: "";
 
     position: absolute;
 
     left: 43px;
-
     bottom: -10px;
 
-    width:
-        18px;
+    width: 18px;
+    height: 18px;
 
-    height:
-        18px;
+    background: inherit;
 
-    background:
-        inherit;
-
-    transform:
-        rotate(45deg);
+    transform: rotate(45deg);
 }
 
-
 .balloon::before {
-
     content: "";
 
     position: absolute;
 
-    width:
-        25px;
+    width: 25px;
+    height: 38px;
 
-    height:
-        38px;
-
-    left:
-        18px;
-
-    top:
-        17px;
+    left: 18px;
+    top: 17px;
 
     background:
         rgba(255,255,255,.38);
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
-    transform:
-        rotate(25deg);
+    transform: rotate(25deg);
 }
 
-
 .balloon-text {
-
     position: absolute;
 
-    left:
-        15px;
+    left: 15px;
+    right: 15px;
 
-    right:
-        15px;
+    top: 43px;
 
-    top:
-        43px;
+    text-align: center;
 
-    text-align:
-        center;
-
-    color:
-        white;
+    color: white;
 
     font-family:
         "Gowun Dodum",
         sans-serif;
 
-    font-size:
-        13px;
+    font-size: 13px;
 
-    line-height:
-        1.3;
+    line-height: 1.3;
 
-    font-weight:
-        bold;
+    font-weight: bold;
 
-    z-index:
-        2;
+    z-index: 2;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    display:
-        -webkit-box;
+    display: -webkit-box;
 
-    -webkit-line-clamp:
-        3;
+    -webkit-line-clamp: 3;
 
-    -webkit-box-orient:
-        vertical;
+    -webkit-box-orient: vertical;
 
     text-shadow:
         1px 1px 2px
         rgba(0,0,0,.25);
 }
 
-
 .balloon-string {
-
     position: absolute;
 
-    left:
-        62px;
+    left: 62px;
+    top: 132px;
 
-    top:
-        132px;
-
-    width:
-        2px;
-
-    height:
-        47px;
+    width: 2px;
+    height: 47px;
 
     background:
         rgba(255,255,255,.75);
 
-    transform:
-        rotate(3deg);
+    transform: rotate(3deg);
 
-    transform-origin:
-        top;
+    transform-origin: top;
 }
-
 
 .balloon-knot {
-
     position: absolute;
 
-    left:
-        53px;
+    left: 53px;
+    top: 117px;
 
-    top:
-        117px;
+    width: 18px;
+    height: 18px;
 
-    width:
-        18px;
+    background: inherit;
 
-    height:
-        18px;
+    transform: rotate(45deg);
 
-    background:
-        inherit;
-
-    transform:
-        rotate(45deg);
-
-    z-index:
-        1;
+    z-index: 1;
 }
 
-
-/* Balloon colors */
-
 .balloon.red {
-
     background:
         linear-gradient(
             135deg,
@@ -787,7 +583,6 @@ body {
 }
 
 .balloon.blue {
-
     background:
         linear-gradient(
             135deg,
@@ -797,7 +592,6 @@ body {
 }
 
 .balloon.yellow {
-
     background:
         linear-gradient(
             135deg,
@@ -807,7 +601,6 @@ body {
 }
 
 .balloon.purple {
-
     background:
         linear-gradient(
             135deg,
@@ -817,7 +610,6 @@ body {
 }
 
 .balloon.green {
-
     background:
         linear-gradient(
             135deg,
@@ -828,18 +620,14 @@ body {
 
 
 /* =====================================================
-   DIARY VIEW
+   일기 보기
 ===================================================== */
 
 .diary-view {
-
     position: fixed;
 
-    left:
-        50%;
-
-    top:
-        50%;
+    left: 50%;
+    top: 50%;
 
     width:
         min(
@@ -847,374 +635,284 @@ body {
             calc(100vw - 40px)
         );
 
-    background:
-        #fff4c9;
+    background: #fff4c9;
 
-    color:
-        #493827;
+    color: #493827;
 
-    border:
-        4px solid #5b402b;
+    border: 4px solid #5b402b;
 
-    border-radius:
-        8px;
+    border-radius: 8px;
 
-    padding:
-        25px;
+    padding: 25px;
 
-    z-index:
-        10000;
+    z-index: 10000;
 
     box-shadow:
         9px 10px 0
         rgba(0,0,0,.4);
 
-    opacity:
-        0;
+    opacity: 0;
 
-    pointer-events:
-        none;
+    pointer-events: none;
 
     transform:
         translate(-50%,-50%)
         scale(.9);
 
-    transition:
-        .2s;
+    transition: .2s;
 }
 
-
 .diary-view.show {
+    opacity: 1;
 
-    opacity:
-        1;
-
-    pointer-events:
-        auto;
+    pointer-events: auto;
 
     transform:
         translate(-50%,-50%)
         scale(1);
 }
 
-
 .diary-view-date {
+    font-size: 14px;
 
-    font-size:
-        14px;
+    color: #927957;
 
-    color:
-        #927957;
-
-    margin-bottom:
-        12px;
+    margin-bottom: 12px;
 
     border-bottom:
         2px dashed #b49a68;
 
-    padding-bottom:
-        8px;
+    padding-bottom: 8px;
 }
 
-
 .diary-view-text {
-
     font-family:
         "Gowun Dodum",
         sans-serif;
 
-    white-space:
-        pre-wrap;
+    white-space: pre-wrap;
 
-    line-height:
-        1.7;
+    line-height: 1.7;
 
-    min-height:
-        80px;
+    min-height: 80px;
 
-    word-break:
-        break-word;
+    word-break: break-word;
 }
-
 
 .view-buttons {
+    display: flex;
 
-    display:
-        flex;
+    gap: 10px;
 
-    gap:
-        10px;
-
-    margin-top:
-        20px;
+    margin-top: 20px;
 }
-
 
 .delete-diary,
 .close-view {
+    flex: 1;
 
-    flex:
-        1;
+    padding: 10px;
 
-    padding:
-        10px;
-
-    border-radius:
-        5px;
+    border-radius: 5px;
 
     font-family:
         "Fredoka",
         sans-serif;
 
-    font-weight:
-        600;
+    font-weight: 600;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 }
 
-
 .delete-diary {
-
     border:
         3px solid #7b3131;
 
-    background:
-        #ef9999;
+    background: #ef9999;
 
-    color:
-        #572020;
+    color: #572020;
 }
 
-
 .close-view {
-
     border:
         3px solid #4e3927;
 
-    background:
-        #dfb967;
+    background: #dfb967;
 
-    color:
-        #4e3927;
+    color: #4e3927;
 }
 
 
 /* =====================================================
    =====================================================
-   MEME / IMAGE BOARD
-   =====================================================
+   짤방 보드
 ===================================================== */
 
-
-/*
-   전체 이미지 보드
-*/
-
 #meme-board {
+    position: fixed;
 
-    position:
-        fixed;
+    inset: 0;
 
-    inset:
-        0;
+    background: white;
 
-    background:
-        #ffffff;
+    color: #222;
 
-    color:
-        #222;
+    z-index: 20000;
 
-    z-index:
-        20000;
+    display: none;
 
-    display:
-        none;
-
-    overflow:
-        hidden;
+    overflow: hidden;
 }
 
-
-/*
-   보드가 열렸을 때
-*/
-
 #meme-board.open {
-
-    display:
-        block;
+    display: block;
 }
 
 
 /* =====================================================
-   MEME HEADER
+   짤방 헤더
 ===================================================== */
 
 .meme-header {
+    position: absolute;
 
-    position:
-        absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 
-    top:
-        0;
+    height: 64px;
 
-    left:
-        0;
-
-    right:
-        0;
-
-    height:
-        64px;
-
-    background:
-        #f3f3f3;
+    background: #f3f3f3;
 
     border-bottom:
         2px solid #222;
 
-    display:
-        flex;
+    display: flex;
 
-    align-items:
-        center;
+    align-items: center;
 
-    gap:
-        8px;
+    gap: 8px;
 
-    padding:
-        10px 15px;
+    padding: 10px 15px;
 
-    z-index:
-        30000;
+    z-index: 30000;
 }
-
 
 .meme-title {
+    font-weight: 700;
 
-    font-weight:
-        700;
+    font-size: 20px;
 
-    font-size:
-        20px;
-
-    margin-right:
-        auto;
+    margin-right: auto;
 }
 
-
-/* =====================================================
-   MEME BUTTONS
-===================================================== */
-
 .meme-control {
-
     border:
         2px solid #222;
 
-    background:
-        #fff;
+    background: white;
 
-    color:
-        #222;
+    color: #222;
 
-    border-radius:
-        5px;
+    border-radius: 5px;
 
-    padding:
-        8px 12px;
+    padding: 8px 12px;
 
     font-family:
         "Fredoka",
         sans-serif;
 
-    font-size:
-        14px;
+    font-size: 14px;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
     box-shadow:
         2px 2px 0 #222;
 }
 
-
 .meme-control:hover {
-
-    background:
-        #eeeeee;
+    background: #eeeeee;
 }
 
-
 .meme-control:active {
-
     transform:
         translate(2px,2px);
 
-    box-shadow:
-        none;
+    box-shadow: none;
 }
 
 
 /* =====================================================
-   MEME CANVAS
+   줌 표시
+===================================================== */
+
+.zoom-display {
+    min-width: 65px;
+
+    text-align: center;
+
+    font-weight: 600;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   짤방 캔버스
 ===================================================== */
 
 #meme-canvas {
+    position: absolute;
 
-    position:
-        absolute;
+    left: 0;
+    top: 64px;
 
-    left:
-        0;
-
-    top:
-        64px;
-
-    width:
-        100%;
-
+    width: 100%;
     height:
         calc(100% - 64px);
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
-    background:
-        white;
+    background: white;
+
+    cursor: grab;
 }
 
 
 /*
-   이미지 객체
+   실제 확대/축소되는 공간
 */
 
-.meme-image {
+#meme-world {
+    position: absolute;
 
-    position:
-        absolute;
+    left: 0;
+    top: 0;
 
-    width:
-        240px;
-
-    height:
-        auto;
-
-    left:
-        100px;
-
-    top:
-        100px;
-
-    cursor:
-        grab;
-
-    user-select:
-        none;
+    width: 100%;
+    height: 100%;
 
     transform-origin:
-        center center;
+        0 0;
+}
+
+
+/* =====================================================
+   이미지
+===================================================== */
+
+.meme-image {
+    position: absolute;
+
+    width: 240px;
+    height: auto;
+
+    left: 100px;
+    top: 100px;
+
+    cursor: grab;
+
+    user-select: none;
 
     box-shadow:
         0 3px 12px
@@ -1225,42 +923,56 @@ body {
         rgba(0,0,0,.1);
 }
 
-
 .meme-image:active {
-
-    cursor:
-        grabbing;
+    cursor: grabbing;
 }
 
-
-/*
-   선택된 이미지
-*/
-
 .meme-image.selected {
-
     outline:
         3px dashed #333;
 
-    outline-offset:
-        4px;
+    outline-offset: 4px;
 }
 
 
 /* =====================================================
-   IMAGE INFO
+   이미지 배경 제거 전/후 표시
+===================================================== */
+
+.image-status {
+    position: absolute;
+
+    left: 15px;
+    top: 15px;
+
+    background:
+        rgba(255,255,255,.95);
+
+    border:
+        1px solid #bbb;
+
+    padding:
+        7px 10px;
+
+    font-size: 12px;
+
+    color: #555;
+
+    z-index: 2000;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   도움말
 ===================================================== */
 
 .meme-help {
+    position: absolute;
 
-    position:
-        absolute;
-
-    left:
-        15px;
-
-    bottom:
-        12px;
+    left: 15px;
+    bottom: 12px;
 
     padding:
         7px 10px;
@@ -1271,96 +983,33 @@ body {
     border:
         1px solid #bbb;
 
-    font-size:
-        12px;
+    font-size: 12px;
 
-    color:
-        #555;
+    color: #555;
 
-    z-index:
-        30000;
+    z-index: 30000;
 
-    pointer-events:
-        none;
+    pointer-events: none;
 }
 
 
 /* =====================================================
-   IMAGE SIZE POPUP
+   크기 패널 제거 대신 배경 제거 안내
 ===================================================== */
 
-.image-size-panel {
-
-    position:
-        absolute;
-
-    top:
-        75px;
-
-    right:
-        15px;
-
-    width:
-        190px;
-
-    background:
-        white;
-
-    border:
-        2px solid #222;
-
-    padding:
-        12px;
-
-    box-shadow:
-        4px 4px 0
-        rgba(0,0,0,.2);
-
-    z-index:
-        30000;
-
-    display:
-        none;
-}
-
-
-.image-size-panel.show {
-
-    display:
-        block;
-}
-
-
-.image-size-panel label {
-
-    display:
-        block;
-
-    font-size:
-        12px;
-
-    margin-bottom:
-        5px;
-}
-
-
-#size-slider {
-
-    width:
-        100%;
+.remove-bg-button {
+    display: none;
 }
 
 
 /* =====================================================
-   MOBILE
+   모바일
 ===================================================== */
 
 @media (max-width: 600px) {
 
     .page-title {
-
-        top:
-            7vh;
+        top: 7vh;
 
         font-size:
             clamp(
@@ -1370,9 +1019,7 @@ body {
             );
     }
 
-
     .number {
-
         font-size:
             clamp(
                 45px,
@@ -1381,47 +1028,27 @@ body {
             );
     }
 
-
     .unit {
+        font-size: 16px;
 
-        font-size:
-            16px;
-
-        letter-spacing:
-            6px;
+        letter-spacing: 6px;
     }
-
 
     .site-menu {
-
-        right:
-            12px;
-
-        bottom:
-            12px;
+        right: 12px;
+        bottom: 12px;
     }
-
 
     .menu-button {
+        width: 54px;
+        height: 54px;
 
-        width:
-            54px;
-
-        height:
-            54px;
-
-        font-size:
-            22px;
+        font-size: 22px;
     }
 
-
     .diary-panel {
-
-        right:
-            76px;
-
-        bottom:
-            12px;
+        right: 76px;
+        bottom: 12px;
 
         width:
             calc(
@@ -1429,49 +1056,39 @@ body {
             );
     }
 
-
     .meme-header {
+        height: 58px;
 
-        height:
-            58px;
-
-        padding:
-            8px;
+        padding: 8px;
     }
-
 
     .meme-title {
-
-        display:
-            none;
+        display: none;
     }
 
-
     .meme-control {
-
         padding:
             7px 8px;
 
-        font-size:
-            12px;
+        font-size: 12px;
     }
 
+    .zoom-display {
+        min-width: 45px;
+        font-size: 12px;
+    }
 
     #meme-canvas {
-
-        top:
-            58px;
+        top: 58px;
 
         height:
             calc(
                 100% - 58px
             );
     }
-
 }
 
 </style>
-
 </head>
 
 
@@ -1479,7 +1096,7 @@ body {
 
 
 <!-- =====================================================
-     COUNTDOWN
+     카운트다운
 ===================================================== -->
 
 <section class="time-section years">
@@ -1620,14 +1237,14 @@ body {
 
 
 <!-- =====================================================
-     BALLOONS
+     풍선
 ===================================================== -->
 
 <div id="balloon-area"></div>
 
 
 <!-- =====================================================
-     RIGHT MENU
+     메뉴
 ===================================================== -->
 
 <div class="site-menu">
@@ -1640,7 +1257,6 @@ body {
         📔
 
     </button>
-
 
     <button
         class="menu-button"
@@ -1655,7 +1271,7 @@ body {
 
 
 <!-- =====================================================
-     DIARY PANEL
+     일기 입력
 ===================================================== -->
 
 <div
@@ -1678,18 +1294,15 @@ body {
 
     </div>
 
-
     <label class="diary-label">
         오늘의 기록
     </label>
-
 
     <textarea
         id="diaryText"
         class="diary-textarea"
         placeholder="오늘 있었던 일을 적어보세요..."
     ></textarea>
-
 
     <button
         class="save-diary"
@@ -1703,7 +1316,7 @@ body {
 
 
 <!-- =====================================================
-     DIARY VIEW
+     일기 보기
 ===================================================== -->
 
 <div
@@ -1715,12 +1328,10 @@ body {
         id="diaryViewDate">
     </div>
 
-
     <div
         class="diary-view-text"
         id="diaryViewText">
     </div>
-
 
     <div class="view-buttons">
 
@@ -1731,7 +1342,6 @@ body {
             🗑 삭제
 
         </button>
-
 
         <button
             class="close-view"
@@ -1747,14 +1357,12 @@ body {
 
 
 <!-- =====================================================
-     MEME BOARD
+     짤방 보드
 ===================================================== -->
 
 <div
     id="meme-board">
 
-
-    <!-- HEADER -->
 
     <div class="meme-header">
 
@@ -1762,8 +1370,6 @@ body {
             🖼️ 짤방 보관소
         </div>
 
-
-        <!-- 이미지 업로드 -->
 
         <input
             type="file"
@@ -1779,6 +1385,51 @@ body {
             id="add-image">
 
             ＋ 이미지
+
+        </button>
+
+
+        <button
+            class="meme-control"
+            id="remove-background">
+
+            🤍 배경 제거
+
+        </button>
+
+
+        <button
+            class="meme-control"
+            id="zoom-out">
+
+            −
+
+        </button>
+
+
+        <div
+            class="zoom-display"
+            id="zoom-display">
+
+            100%
+
+        </div>
+
+
+        <button
+            class="meme-control"
+            id="zoom-in">
+
+            ＋
+
+        </button>
+
+
+        <button
+            class="meme-control"
+            id="zoom-reset">
+
+            100%
 
         </button>
 
@@ -1803,38 +1454,16 @@ body {
     </div>
 
 
-    <!-- CANVAS -->
-
     <div id="meme-canvas">
 
+        <div id="meme-world"></div>
 
         <div class="meme-help">
 
-            이미지 클릭 → 크기 조절<br>
-            드래그 → 이동<br>
-            마우스 휠 → 확대 / 축소
-
-        </div>
-
-
-        <!-- SIZE PANEL -->
-
-        <div
-            class="image-size-panel"
-            id="image-size-panel">
-
-            <label>
-                이미지 크기
-            </label>
-
-
-            <input
-                type="range"
-                id="size-slider"
-                min="50"
-                max="800"
-                value="240"
-            >
+            🖱️ 휠 → 전체 확대/축소<br>
+            드래그 → 화면 이동<br>
+            이미지 클릭 → 선택<br>
+            🤍 → 흰색 배경 제거
 
         </div>
 
@@ -1846,7 +1475,7 @@ body {
 <script>
 
 /* =====================================================
-   COUNTDOWN
+   카운트다운
 ===================================================== */
 
 const targetDate =
@@ -1862,24 +1491,12 @@ const targetDate =
 
 
 const SECOND = 1000;
-
-const MINUTE =
-    SECOND * 60;
-
-const HOUR =
-    MINUTE * 60;
-
-const DAY =
-    HOUR * 24;
-
-const WEEK =
-    DAY * 7;
-
-const YEAR =
-    DAY * 365.2425;
-
-const MONTH =
-    YEAR / 12;
+const MINUTE = SECOND * 60;
+const HOUR = MINUTE * 60;
+const DAY = HOUR * 24;
+const WEEK = DAY * 7;
+const YEAR = DAY * 365.2425;
+const MONTH = YEAR / 12;
 
 
 function formatNumber(number) {
@@ -1888,7 +1505,6 @@ function formatNumber(number) {
         "en-US",
         {
             minimumFractionDigits: 1,
-
             maximumFractionDigits: 1
         }
     );
@@ -1981,7 +1597,7 @@ setInterval(
 
 
 /* =====================================================
-   DIARY
+   일기
 ===================================================== */
 
 const diaryButton =
@@ -2047,7 +1663,7 @@ closeDiary.addEventListener(
 
 
 /* =====================================================
-   BALLOONS
+   풍선
 ===================================================== */
 
 const balloonArea =
@@ -2068,10 +1684,10 @@ const balloonColors = [
 let balloons = [];
 
 
-function random(min,max) {
+function random(min, max) {
 
     return Math.random()
-        * (max-min)
+        * (max - min)
         + min;
 
 }
@@ -2084,7 +1700,6 @@ function createBalloon(diary) {
             "div"
         );
 
-
     wrapper.className =
         "balloon-wrapper";
 
@@ -2093,7 +1708,6 @@ function createBalloon(diary) {
         document.createElement(
             "div"
         );
-
 
     balloon.className =
         "balloon "
@@ -2112,10 +1726,8 @@ function createBalloon(diary) {
             "div"
         );
 
-
     text.className =
         "balloon-text";
-
 
     text.textContent =
         diary.text.length > 55
@@ -2131,7 +1743,6 @@ function createBalloon(diary) {
             "div"
         );
 
-
     knot.className =
         "balloon-knot";
 
@@ -2140,7 +1751,6 @@ function createBalloon(diary) {
         document.createElement(
             "div"
         );
-
 
     string.className =
         "balloon-string";
@@ -2153,7 +1763,6 @@ function createBalloon(diary) {
     balloon.appendChild(
         knot
     );
-
 
     wrapper.appendChild(
         balloon
@@ -2186,7 +1795,6 @@ function createBalloon(diary) {
 
     wrapper.style.left =
         x + "px";
-
 
     wrapper.style.top =
         y + "px";
@@ -2222,8 +1830,7 @@ function createBalloon(diary) {
 
 
     if (
-        Math.abs(data.vx)
-        < .25
+        Math.abs(data.vx) < .25
     ) {
 
         data.vx =
@@ -2235,8 +1842,7 @@ function createBalloon(diary) {
 
 
     if (
-        Math.abs(data.vy)
-        < .25
+        Math.abs(data.vy) < .25
     ) {
 
         data.vy =
@@ -2250,7 +1856,6 @@ function createBalloon(diary) {
     balloons.push(
         data
     );
-
 
     balloonArea.appendChild(
         wrapper
@@ -2362,7 +1967,7 @@ diaries.forEach(
 
 
 /* =====================================================
-   BALLOON PHYSICS
+   풍선 움직임
 ===================================================== */
 
 function animateBalloons() {
@@ -2378,7 +1983,6 @@ function animateBalloons() {
         b => {
 
             b.x += b.vx;
-
             b.y += b.vy;
 
 
@@ -2394,9 +1998,7 @@ function animateBalloons() {
                 rect.height;
 
 
-            if (
-                b.x <= 0
-            ) {
+            if (b.x <= 0) {
 
                 b.x = 0;
 
@@ -2423,9 +2025,7 @@ function animateBalloons() {
             }
 
 
-            if (
-                b.y <= 0
-            ) {
+            if (b.y <= 0) {
 
                 b.y = 0;
 
@@ -2520,13 +2120,6 @@ function animateBalloons() {
                 b.vy =
                     vy;
 
-
-                a.x -=
-                    a.vx * 3;
-
-                b.x -=
-                    b.vx * 3;
-
             }
 
         }
@@ -2545,7 +2138,7 @@ animateBalloons();
 
 
 /* =====================================================
-   DIARY VIEW
+   일기 보기
 ===================================================== */
 
 const diaryView =
@@ -2637,8 +2230,7 @@ deleteDiary.addEventListener(
         diaries =
             diaries.filter(
                 diary =>
-                    diary.id
-                    !==
+                    diary.id !==
                     selectedDiaryId
             );
 
@@ -2687,8 +2279,7 @@ deleteDiary.addEventListener(
 
 /* =====================================================
    =====================================================
-   MEME BOARD
-   =====================================================
+   짤방 시스템
 ===================================================== */
 
 const memeButton =
@@ -2721,35 +2312,45 @@ const memeCanvas =
         "meme-canvas"
     );
 
+const memeWorld =
+    document.getElementById(
+        "meme-world"
+    );
+
 const deleteImage =
     document.getElementById(
         "delete-image"
     );
 
-const sizePanel =
+const removeBackground =
     document.getElementById(
-        "image-size-panel"
+        "remove-background"
     );
 
-const sizeSlider =
+const zoomIn =
     document.getElementById(
-        "size-slider"
+        "zoom-in"
+    );
+
+const zoomOut =
+    document.getElementById(
+        "zoom-out"
+    );
+
+const zoomReset =
+    document.getElementById(
+        "zoom-reset"
+    );
+
+const zoomDisplay =
+    document.getElementById(
+        "zoom-display"
     );
 
 
-/*
-   저장된 이미지
-
-   구조:
-
-   {
-       id,
-       src,
-       x,
-       y,
-       width
-   }
-*/
+/* =====================================================
+   이미지 데이터
+===================================================== */
 
 let memeImages =
     JSON.parse(
@@ -2764,7 +2365,380 @@ let selectedImage =
 
 
 /* =====================================================
-   MEME BOARD OPEN
+   전체 보드 줌
+===================================================== */
+
+let boardZoom =
+    Number(
+        localStorage.getItem(
+            "junBoardZoom"
+        ) || 1
+    );
+
+
+let boardPanX =
+    Number(
+        localStorage.getItem(
+            "junBoardPanX"
+        ) || 0
+    );
+
+
+let boardPanY =
+    Number(
+        localStorage.getItem(
+            "junBoardPanY"
+        ) || 0
+    );
+
+
+function updateWorldTransform() {
+
+    memeWorld.style.transform =
+        `translate(
+            ${boardPanX}px,
+            ${boardPanY}px
+        )
+        scale(
+            ${boardZoom}
+        )`;
+
+
+    zoomDisplay.textContent =
+        Math.round(
+            boardZoom * 100
+        ) + "%";
+
+
+    localStorage.setItem(
+        "junBoardZoom",
+        boardZoom
+    );
+
+    localStorage.setItem(
+        "junBoardPanX",
+        boardPanX
+    );
+
+    localStorage.setItem(
+        "junBoardPanY",
+        boardPanY
+    );
+
+}
+
+
+updateWorldTransform();
+
+
+function changeZoom(amount) {
+
+    const oldZoom =
+        boardZoom;
+
+
+    boardZoom =
+        Math.max(
+            .25,
+            Math.min(
+                4,
+                boardZoom + amount
+            )
+        );
+
+
+    /*
+       마우스 휠로 확대할 때
+       화면 중앙을 기준으로 확대
+    */
+
+    const rect =
+        memeCanvas.getBoundingClientRect();
+
+
+    const centerX =
+        rect.width / 2;
+
+    const centerY =
+        rect.height / 2;
+
+
+    const worldX =
+        (centerX - boardPanX)
+        / oldZoom;
+
+
+    const worldY =
+        (centerY - boardPanY)
+        / oldZoom;
+
+
+    boardPanX =
+        centerX
+        -
+        worldX * boardZoom;
+
+
+    boardPanY =
+        centerY
+        -
+        worldY * boardZoom;
+
+
+    updateWorldTransform();
+
+}
+
+
+zoomIn.addEventListener(
+    "click",
+    () => {
+
+        changeZoom(
+            .25
+        );
+
+    }
+);
+
+
+zoomOut.addEventListener(
+    "click",
+    () => {
+
+        changeZoom(
+            -.25
+        );
+
+    }
+);
+
+
+zoomReset.addEventListener(
+    "click",
+    () => {
+
+        boardZoom = 1;
+
+        boardPanX = 0;
+
+        boardPanY = 0;
+
+        updateWorldTransform();
+
+    }
+);
+
+
+/* =====================================================
+   마우스 휠로 전체 확대
+===================================================== */
+
+memeCanvas.addEventListener(
+    "wheel",
+    event => {
+
+        /*
+           이미지 위에서도
+           전체 보드가 확대됨
+        */
+
+        event.preventDefault();
+
+
+        const oldZoom =
+            boardZoom;
+
+
+        const direction =
+            event.deltaY < 0
+            ? 1
+            : -1;
+
+
+        const newZoom =
+            Math.max(
+                .25,
+                Math.min(
+                    4,
+                    oldZoom
+                    +
+                    direction * .1
+                )
+            );
+
+
+        const rect =
+            memeCanvas
+            .getBoundingClientRect();
+
+
+        /*
+           마우스 위치를 기준으로 줌
+        */
+
+        const mouseX =
+            event.clientX
+            -
+            rect.left;
+
+
+        const mouseY =
+            event.clientY
+            -
+            rect.top;
+
+
+        const worldX =
+            (mouseX - boardPanX)
+            / oldZoom;
+
+
+        const worldY =
+            (mouseY - boardPanY)
+            / oldZoom;
+
+
+        boardZoom =
+            newZoom;
+
+
+        boardPanX =
+            mouseX
+            -
+            worldX * boardZoom;
+
+
+        boardPanY =
+            mouseY
+            -
+            worldY * boardZoom;
+
+
+        updateWorldTransform();
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* =====================================================
+   보드 이동
+===================================================== */
+
+let panning =
+    false;
+
+let panStartX =
+    0;
+
+let panStartY =
+    0;
+
+let originalPanX =
+    0;
+
+let originalPanY =
+    0;
+
+
+memeCanvas.addEventListener(
+    "mousedown",
+    event => {
+
+        /*
+           이미지 자체를 누른 경우에는
+           이미지 이동을 우선
+        */
+
+        if (
+            event.target.classList.contains(
+                "meme-image"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        panning = true;
+
+        memeCanvas.style.cursor =
+            "grabbing";
+
+
+        panStartX =
+            event.clientX;
+
+        panStartY =
+            event.clientY;
+
+
+        originalPanX =
+            boardPanX;
+
+        originalPanY =
+            boardPanY;
+
+    }
+);
+
+
+window.addEventListener(
+    "mousemove",
+    event => {
+
+        if (!panning) {
+
+            return;
+
+        }
+
+
+        boardPanX =
+            originalPanX
+            +
+            (
+                event.clientX
+                -
+                panStartX
+            );
+
+
+        boardPanY =
+            originalPanY
+            +
+            (
+                event.clientY
+                -
+                panStartY
+            );
+
+
+        updateWorldTransform();
+
+    }
+);
+
+
+window.addEventListener(
+    "mouseup",
+    () => {
+
+        panning = false;
+
+        memeCanvas.style.cursor =
+            "grab";
+
+    }
+);
+
+
+/* =====================================================
+   보드 열기
 ===================================================== */
 
 memeButton.addEventListener(
@@ -2782,7 +2756,7 @@ memeButton.addEventListener(
 
 
 /* =====================================================
-   MEME BOARD CLOSE
+   보드 닫기
 ===================================================== */
 
 closeMeme.addEventListener(
@@ -2796,16 +2770,12 @@ closeMeme.addEventListener(
         selectedImage =
             null;
 
-        sizePanel.classList.remove(
-            "show"
-        );
-
     }
 );
 
 
 /* =====================================================
-   IMAGE UPLOAD BUTTON
+   이미지 추가
 ===================================================== */
 
 addImage.addEventListener(
@@ -2819,7 +2789,7 @@ addImage.addEventListener(
 
 
 /* =====================================================
-   IMAGE UPLOAD
+   이미지 업로드
 ===================================================== */
 
 imageInput.addEventListener(
@@ -2876,7 +2846,10 @@ imageInput.addEventListener(
                                 * 200,
 
                             width:
-                                240
+                                240,
+
+                            backgroundRemoved:
+                                false
 
                         };
 
@@ -2904,10 +2877,6 @@ imageInput.addEventListener(
         );
 
 
-        /*
-           같은 파일을 다시 선택할 수 있게
-        */
-
         imageInput.value =
             "";
 
@@ -2916,7 +2885,7 @@ imageInput.addEventListener(
 
 
 /* =====================================================
-   SAVE MEME DATA
+   이미지 저장
 ===================================================== */
 
 function saveMemeImages() {
@@ -2934,9 +2903,9 @@ function saveMemeImages() {
     catch(error) {
 
         alert(
-            "이미지가 너무 많거나 너무 커서 저장할 수 없습니다.\n"
+            "저장 공간이 부족합니다.\n\n"
             +
-            "큰 이미지를 몇 장 삭제해 주세요."
+            "이미지가 너무 크거나 많을 수 있어요."
         );
 
     }
@@ -2945,7 +2914,7 @@ function saveMemeImages() {
 
 
 /* =====================================================
-   CREATE IMAGE
+   이미지 생성
 ===================================================== */
 
 function createMemeImage(data) {
@@ -2980,13 +2949,13 @@ function createMemeImage(data) {
         data.id;
 
 
-    memeCanvas.appendChild(
+    memeWorld.appendChild(
         img
     );
 
 
     /*
-       클릭
+       이미지 선택
     */
 
     img.addEventListener(
@@ -3005,16 +2974,25 @@ function createMemeImage(data) {
 
 
     /*
-       드래그
+       이미지 드래그
+       - 보드 확대율을 고려
     */
 
     let dragging =
         false;
 
-    let offsetX =
+
+    let dragStartX =
         0;
 
-    let offsetY =
+    let dragStartY =
+        0;
+
+
+    let originalX =
+        0;
+
+    let originalY =
         0;
 
 
@@ -3022,27 +3000,28 @@ function createMemeImage(data) {
         "mousedown",
         event => {
 
-            /*
-               클릭 후 드래그
-            */
+            event.stopPropagation();
 
             dragging =
                 true;
 
 
-            offsetX =
-                event.clientX
-                -
-                img.offsetLeft;
+            dragStartX =
+                event.clientX;
+
+            dragStartY =
+                event.clientY;
 
 
-            offsetY =
-                event.clientY
-                -
-                img.offsetTop;
+            originalX =
+                data.x;
+
+            originalY =
+                data.y;
 
 
-            event.preventDefault();
+            img.style.cursor =
+                "grabbing";
 
         }
     );
@@ -3059,25 +3038,28 @@ function createMemeImage(data) {
             }
 
 
-            const rect =
-                memeCanvas
-                .getBoundingClientRect();
-
-
             data.x =
-                event.clientX
-                -
-                rect.left
-                -
-                offsetX;
+                originalX
+                +
+                (
+                    event.clientX
+                    -
+                    dragStartX
+                )
+                /
+                boardZoom;
 
 
             data.y =
-                event.clientY
-                -
-                rect.top
-                -
-                offsetY;
+                originalY
+                +
+                (
+                    event.clientY
+                    -
+                    dragStartY
+                )
+                /
+                boardZoom;
 
 
             img.style.left =
@@ -3087,9 +3069,6 @@ function createMemeImage(data) {
             img.style.top =
                 data.y + "px";
 
-
-            saveMemeImages();
-
         }
     );
 
@@ -3098,72 +3077,20 @@ function createMemeImage(data) {
         "mouseup",
         () => {
 
+            if (dragging) {
+
+                saveMemeImages();
+
+            }
+
+
             dragging =
                 false;
 
-        }
-    );
 
+            img.style.cursor =
+                "grab";
 
-    /*
-       마우스 휠 확대/축소
-    */
-
-    img.addEventListener(
-        "wheel",
-        event => {
-
-            event.preventDefault();
-
-
-            let newWidth =
-                data.width;
-
-
-            if (
-                event.deltaY < 0
-            ) {
-
-                newWidth +=
-                    20;
-
-            }
-            else {
-
-                newWidth -=
-                    20;
-
-            }
-
-
-            newWidth =
-                Math.max(
-                    50,
-                    Math.min(
-                        800,
-                        newWidth
-                    )
-                );
-
-
-            data.width =
-                newWidth;
-
-
-            img.style.width =
-                newWidth + "px";
-
-
-            sizeSlider.value =
-                newWidth;
-
-
-            saveMemeImages();
-
-        },
-        {
-            passive:
-                false
         }
     );
 
@@ -3171,17 +3098,13 @@ function createMemeImage(data) {
 
 
 /* =====================================================
-   SELECT IMAGE
+   이미지 선택
 ===================================================== */
 
 function selectMemeImage(
     data,
     element
 ) {
-
-    /*
-       이전 선택 해제
-    */
 
     document
         .querySelectorAll(
@@ -3210,60 +3133,11 @@ function selectMemeImage(
 
     };
 
-
-    sizePanel.classList.add(
-        "show"
-    );
-
-
-    sizeSlider.value =
-        data.width;
-
 }
 
 
 /* =====================================================
-   SIZE SLIDER
-===================================================== */
-
-sizeSlider.addEventListener(
-    "input",
-    () => {
-
-        if (
-            !selectedImage
-        ) {
-
-            return;
-
-        }
-
-
-        const data =
-            selectedImage.data;
-
-        const img =
-            selectedImage.element;
-
-
-        data.width =
-            Number(
-                sizeSlider.value
-            );
-
-
-        img.style.width =
-            data.width + "px";
-
-
-        saveMemeImages();
-
-    }
-);
-
-
-/* =====================================================
-   DELETE IMAGE
+   선택 이미지 삭제
 ===================================================== */
 
 deleteImage.addEventListener(
@@ -3301,11 +3175,6 @@ deleteImage.addEventListener(
             null;
 
 
-        sizePanel.classList.remove(
-            "show"
-        );
-
-
         saveMemeImages();
 
     }
@@ -3313,7 +3182,7 @@ deleteImage.addEventListener(
 
 
 /* =====================================================
-   CANVAS CLICK
+   캔버스 클릭
 ===================================================== */
 
 memeCanvas.addEventListener(
@@ -3340,11 +3209,6 @@ memeCanvas.addEventListener(
             selectedImage =
                 null;
 
-
-            sizePanel.classList.remove(
-                "show"
-            );
-
         }
 
     }
@@ -3352,12 +3216,12 @@ memeCanvas.addEventListener(
 
 
 /* =====================================================
-   RENDER ALL IMAGES
+   모든 이미지 렌더링
 ===================================================== */
 
 function renderAllImages() {
 
-    document
+    memeWorld
         .querySelectorAll(
             ".meme-image"
         )
@@ -3381,7 +3245,460 @@ function renderAllImages() {
 
 
 /* =====================================================
-   RESIZE WINDOW
+   =====================================================
+   흰색 배경 제거
+   =====================================================
+===================================================== */
+
+/*
+   이미지의 가장자리에서 시작하여
+   흰색에 가까운 영역을 찾아 투명하게 만든다.
+
+   따라서 캐릭터 내부의 흰색까지
+   무조건 지우는 방식이 아니다.
+*/
+
+
+function removeWhiteBackground(
+    imageDataURL
+) {
+
+    return new Promise(
+        resolve => {
+
+            const img =
+                new Image();
+
+
+            img.onload =
+                () => {
+
+                    const canvas =
+                        document.createElement(
+                            "canvas"
+                        );
+
+
+                    const ctx =
+                        canvas.getContext(
+                            "2d"
+                        );
+
+
+                    canvas.width =
+                        img.naturalWidth;
+
+
+                    canvas.height =
+                        img.naturalHeight;
+
+
+                    ctx.drawImage(
+                        img,
+                        0,
+                        0
+                    );
+
+
+                    const imageData =
+                        ctx.getImageData(
+                            0,
+                            0,
+                            canvas.width,
+                            canvas.height
+                        );
+
+
+                    const pixels =
+                        imageData.data;
+
+
+                    const width =
+                        canvas.width;
+
+                    const height =
+                        canvas.height;
+
+
+                    /*
+                       방문 여부
+                    */
+
+                    const visited =
+                        new Uint8Array(
+                            width * height
+                        );
+
+
+                    /*
+                       큐
+                    */
+
+                    const queue = [];
+
+
+                    /*
+                       흰색 판단
+
+                       숫자가 작을수록
+                       더 엄격하게 흰색만 제거
+                    */
+
+                    function isWhite(
+                        index
+                    ) {
+
+                        const r =
+                            pixels[index];
+
+                        const g =
+                            pixels[index + 1];
+
+                        const b =
+                            pixels[index + 2];
+
+                        const a =
+                            pixels[index + 3];
+
+
+                        if (a === 0) {
+
+                            return true;
+
+                        }
+
+
+                        return (
+                            r > 235 &&
+                            g > 235 &&
+                            b > 235
+                        );
+
+                    }
+
+
+                    /*
+                       가장자리 픽셀 넣기
+                    */
+
+                    function addPixel(
+                        x,
+                        y
+                    ) {
+
+                        if (
+                            x < 0 ||
+                            y < 0 ||
+                            x >= width ||
+                            y >= height
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const pos =
+                            y * width + x;
+
+
+                        if (
+                            visited[pos]
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const index =
+                            pos * 4;
+
+
+                        if (
+                            !isWhite(index)
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        visited[pos] =
+                            1;
+
+
+                        queue.push(
+                            pos
+                        );
+
+                    }
+
+
+                    /*
+                       위/아래/왼쪽/오른쪽
+                    */
+
+                    for (
+                        let x = 0;
+                        x < width;
+                        x++
+                    ) {
+
+                        addPixel(
+                            x,
+                            0
+                        );
+
+                        addPixel(
+                            x,
+                            height - 1
+                        );
+
+                    }
+
+
+                    for (
+                        let y = 0;
+                        y < height;
+                        y++
+                    ) {
+
+                        addPixel(
+                            0,
+                            y
+                        );
+
+                        addPixel(
+                            width - 1,
+                            y
+                        );
+
+                    }
+
+
+                    /*
+                       Flood Fill
+                    */
+
+                    let index = 0;
+
+
+                    while (
+                        index <
+                        queue.length
+                    ) {
+
+                        const pos =
+                            queue[index++];
+
+
+                        const x =
+                            pos % width;
+
+
+                        const y =
+                            Math.floor(
+                                pos / width
+                            );
+
+
+                        const pixelIndex =
+                            pos * 4;
+
+
+                        /*
+                           투명하게 만들기
+                        */
+
+                        pixels[
+                            pixelIndex + 3
+                        ] = 0;
+
+
+                        /*
+                           주변 픽셀
+                        */
+
+                        addPixel(
+                            x + 1,
+                            y
+                        );
+
+                        addPixel(
+                            x - 1,
+                            y
+                        );
+
+                        addPixel(
+                            x,
+                            y + 1
+                        );
+
+                        addPixel(
+                            x,
+                            y - 1
+                        );
+
+                    }
+
+
+                    ctx.putImageData(
+                        imageData,
+                        0,
+                        0
+                    );
+
+
+                    resolve(
+                        canvas.toDataURL(
+                            "image/png"
+                        )
+                    );
+
+                };
+
+
+            img.src =
+                imageDataURL;
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   배경 제거 버튼
+===================================================== */
+
+removeBackground.addEventListener(
+    "click",
+    async () => {
+
+        if (
+            !selectedImage
+        ) {
+
+            alert(
+                "먼저 배경을 제거할 이미지를 클릭해 주세요."
+            );
+
+            return;
+
+        }
+
+
+        const data =
+            selectedImage.data;
+
+
+        const element =
+            selectedImage.element;
+
+
+        if (
+            data.backgroundRemoved
+        ) {
+
+            alert(
+                "이 이미지는 이미 배경을 제거했습니다."
+            );
+
+            return;
+
+        }
+
+
+        removeBackground.disabled =
+            true;
+
+
+        removeBackground.textContent =
+            "⏳ 처리 중...";
+
+
+        try {
+
+            const newImage =
+                await removeWhiteBackground(
+                    data.src
+                );
+
+
+            data.src =
+                newImage;
+
+
+            data.backgroundRemoved =
+                true;
+
+
+            /*
+               현재 선택된 이미지 교체
+            */
+
+            element.src =
+                newImage;
+
+
+            saveMemeImages();
+
+
+        }
+        catch(error) {
+
+            console.error(
+                error
+            );
+
+
+            alert(
+                "배경 제거 중 문제가 발생했습니다."
+            );
+
+        }
+
+
+        removeBackground.disabled =
+            false;
+
+
+        removeBackground.textContent =
+            "🤍 배경 제거";
+
+    }
+);
+
+
+/* =====================================================
+   ESC로 짤방 보드 닫기
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+            &&
+            memeBoard.classList.contains(
+                "open"
+            )
+        ) {
+
+            memeBoard.classList.remove(
+                "open"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   창 크기 변경
 ===================================================== */
 
 window.addEventListener(
