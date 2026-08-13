@@ -8,7 +8,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link
   href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Gowun+Dodum&display=swap"
   rel="stylesheet"
@@ -16,1076 +15,968 @@
 
 <style>
 
-/* =====================================================
+/* =========================================================
    기본
-===================================================== */
+========================================================= */
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    background: #111;
-    color: white;
-    font-family:
-        "Fredoka",
-        "Gowun Dodum",
-        sans-serif;
-    overflow-x: hidden;
+  margin: 0;
+  background: #111;
+  color: white;
+  font-family: "Fredoka", "Gowun Dodum", sans-serif;
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font-family: inherit;
 }
 
 
-/* =====================================================
+/* =========================================================
    카운트다운
-===================================================== */
+========================================================= */
 
 .time-section {
-    width: 100%;
-    height: 100vh;
-    height: 100svh;
-    min-height: 100vh;
-    min-height: 100svh;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    text-align: center;
+  position: relative;
+  overflow: hidden;
 
-    position: relative;
-    overflow: hidden;
+  padding: 30px 20px;
 
-    padding: 30px 20px;
+  transition: background 1.5s ease;
 }
 
 .page-title {
-    position: absolute;
+  position: absolute;
 
-    top: 8vh;
-    left: 20px;
-    right: 20px;
+  top: 7vh;
+  left: 20px;
+  right: 20px;
 
-    font-size: clamp(38px, 6vw, 80px);
+  text-align: center;
 
-    font-weight: 700;
+  font-size: clamp(38px, 6vw, 82px);
 
-    line-height: 1.1;
+  font-weight: 700;
 
-    letter-spacing: -2px;
+  line-height: 1.05;
 
-    text-shadow:
-        3px 4px 0 rgba(0,0,0,.18);
+  letter-spacing: -3px;
 
-    z-index: 10;
+  text-shadow:
+    4px 5px 0 rgba(0,0,0,.2);
+
+  z-index: 5;
 }
 
 .unit {
-    font-size: clamp(17px, 2.5vw, 29px);
+  font-size: clamp(16px, 2.4vw, 30px);
 
-    font-weight: 600;
+  letter-spacing: 8px;
 
-    letter-spacing: 8px;
+  font-weight: 600;
 
-    margin-bottom: 20px;
+  margin-bottom: 18px;
 
-    color: rgba(255,255,255,.65);
+  color: rgba(255,255,255,.7);
 }
 
 .number {
-    width: 100%;
+  width: 100%;
 
-    padding: 0 10px;
+  text-align: center;
 
-    font-size: clamp(50px, 12vw, 160px);
+  padding: 0 10px;
 
-    font-weight: 700;
+  font-size: clamp(48px, 12vw, 165px);
 
-    line-height: 1;
+  line-height: 1;
 
-    letter-spacing: -3px;
+  font-weight: 700;
 
-    font-variant-numeric: tabular-nums;
+  letter-spacing: -4px;
 
-    white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 
-    overflow: hidden;
+  white-space: nowrap;
 
-    text-shadow:
-        4px 7px 0 rgba(0,0,0,.18);
+  overflow: hidden;
+
+  text-shadow:
+    5px 7px 0 rgba(0,0,0,.18);
 }
 
 .description {
-    margin-top: 25px;
+  margin-top: 24px;
 
-    font-size: clamp(17px, 2.5vw, 27px);
+  font-size: clamp(16px, 2.3vw, 27px);
 
-    font-weight: 500;
-
-    color: rgba(255,255,255,.65);
+  color: rgba(255,255,255,.65);
 }
 
 
-/* =====================================================
+/* =========================================================
    배경
-===================================================== */
+========================================================= */
 
 .years {
-    background:
-        linear-gradient(
-            180deg,
-            #172b48,
-            #29425e
-        );
+  background: linear-gradient(180deg, #172b48, #29425e);
 }
 
 .months {
-    background:
-        linear-gradient(
-            180deg,
-            #29425e,
-            #443e68
-        );
+  background: linear-gradient(180deg, #29425e, #443e68);
 }
 
 .weeks {
-    background:
-        linear-gradient(
-            180deg,
-            #443e68,
-            #59466a
-        );
+  background: linear-gradient(180deg, #443e68, #59466a);
 }
 
 .days {
-    background:
-        linear-gradient(
-            180deg,
-            #59466a,
-            #6d514d
-        );
+  background: linear-gradient(180deg, #59466a, #6d514d);
 }
 
 .hours {
-    background:
-        linear-gradient(
-            180deg,
-            #6d514d,
-            #78513c
-        );
+  background: linear-gradient(180deg, #6d514d, #78513c);
 }
 
 .minutes {
-    background:
-        linear-gradient(
-            180deg,
-            #78513c,
-            #52694f
-        );
+  background: linear-gradient(180deg, #78513c, #52694f);
 }
 
 .seconds {
-    background:
-        linear-gradient(
-            180deg,
-            #52694f,
-            #263f40
-        );
+  background: linear-gradient(180deg, #52694f, #263f40);
 }
 
 
-/* =====================================================
+/* =========================================================
    오른쪽 메뉴
-===================================================== */
+========================================================= */
 
-.site-menu {
-    position: fixed;
+.menu {
+  position: fixed;
 
-    right: 18px;
-    bottom: 18px;
+  right: 18px;
+  bottom: 18px;
 
-    z-index: 9000;
+  z-index: 10000;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    gap: 9px;
+  gap: 9px;
 }
 
 .menu-button {
-    width: 62px;
-    height: 62px;
+  width: 60px;
+  height: 60px;
 
-    border: 3px solid #4e3927;
+  border: 3px solid #4b392a;
 
-    border-radius: 10px;
+  border-radius: 10px;
 
-    background: #f4d58d;
+  background: #f4d58d;
 
-    color: #4e3927;
+  color: #4b392a;
 
-    font-size: 26px;
+  font-size: 25px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    box-shadow:
-        4px 5px 0 #38291d;
+  box-shadow:
+    4px 5px 0 #38291d;
 
-    transition: .2s;
+  transition: .18s;
 }
 
 .menu-button:hover {
-    transform:
-        translateY(-3px)
-        rotate(-3deg);
+  transform:
+    translateY(-3px)
+    rotate(-3deg);
 
-    box-shadow:
-        6px 7px 0 #38291d;
+  box-shadow:
+    6px 7px 0 #38291d;
+}
+
+.menu-button:active {
+  transform:
+    translate(2px,2px);
+
+  box-shadow:
+    2px 2px 0 #38291d;
 }
 
 
-/* =====================================================
-   일기 패널
-===================================================== */
+/* =========================================================
+   공통 패널
+========================================================= */
 
-.diary-panel {
-    position: fixed;
+.panel {
+  position: fixed;
 
-    right: 95px;
-    bottom: 18px;
+  left: 50%;
+  top: 50%;
 
-    width:
-        min(
-            390px,
-            calc(100vw - 115px)
-        );
+  width: min(600px, calc(100vw - 35px));
 
-    background: #fff4c9;
+  max-height: 82vh;
 
-    color: #493827;
+  overflow-y: auto;
 
-    border: 4px solid #5b402b;
+  transform:
+    translate(-50%,-50%)
+    scale(.92);
 
-    border-radius: 8px;
+  opacity: 0;
 
-    padding: 22px;
+  pointer-events: none;
 
-    z-index: 8999;
+  z-index: 15000;
 
-    box-shadow:
-        8px 9px 0 rgba(0,0,0,.35);
+  background: #fff5d4;
 
+  color: #493827;
+
+  border: 4px solid #5b402b;
+
+  border-radius: 9px;
+
+  padding: 24px;
+
+  box-shadow:
+    10px 12px 0 rgba(0,0,0,.38);
+
+  transition: .2s;
+}
+
+.panel.open {
+  opacity: 1;
+
+  pointer-events: auto;
+
+  transform:
+    translate(-50%,-50%)
+    scale(1);
+}
+
+.panel-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-bottom: 12px;
+
+  border-bottom: 2px dashed #b49a68;
+
+  margin-bottom: 18px;
+}
+
+.panel-header h2 {
+  margin: 0;
+
+  font-size: 25px;
+}
+
+.close {
+  border: none;
+
+  background: transparent;
+
+  color: #493827;
+
+  font-size: 28px;
+
+  cursor: pointer;
+}
+
+.action-button {
+  border: 3px solid #4b392a;
+
+  border-radius: 6px;
+
+  background: #dfb967;
+
+  color: #493827;
+
+  padding: 10px 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    3px 3px 0 #4b392a;
+}
+
+.action-button:active {
+  transform: translate(2px,2px);
+
+  box-shadow:
+    1px 1px 0 #4b392a;
+}
+
+.small-button {
+  border: 2px solid #4b392a;
+
+  background: white;
+
+  color: #493827;
+
+  border-radius: 5px;
+
+  padding: 7px 10px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   새우
+========================================================= */
+
+.shrimp-window {
+  text-align: center;
+}
+
+.shrimp-tank {
+  width: 100%;
+  height: 270px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border: 5px solid #52656c;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #a8e2ee,
+      #4b9caf
+    );
+
+  box-shadow:
+    inset 0 0 30px rgba(255,255,255,.3);
+}
+
+.bubble {
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  border: 2px solid rgba(255,255,255,.7);
+
+  border-radius: 50%;
+
+  animation:
+    bubbleUp 5s linear infinite;
+}
+
+@keyframes bubbleUp {
+  from {
+    transform: translateY(250px);
+    opacity: .1;
+  }
+
+  50% {
+    opacity: .8;
+  }
+
+  to {
+    transform: translateY(-30px);
     opacity: 0;
+  }
+}
 
+.shrimp {
+  position: absolute;
+
+  left: 50%;
+  top: 52%;
+
+  transform:
+    translate(-50%,-50%);
+
+  font-size: 90px;
+
+  filter:
+    drop-shadow(
+      3px 5px 3px
+      rgba(0,0,0,.18)
+    );
+
+  animation:
+    shrimpFloat 2.5s ease-in-out infinite;
+
+  cursor: pointer;
+
+  user-select: none;
+}
+
+@keyframes shrimpFloat {
+  0%,100% {
     transform:
-        translateY(20px)
-        scale(.95);
+      translate(-50%,-50%)
+      rotate(-3deg);
+  }
 
-    pointer-events: none;
-
-    transition: .2s;
-}
-
-.diary-panel.open {
-    opacity: 1;
-
+  50% {
     transform:
-        translateY(0)
-        scale(1);
-
-    pointer-events: auto;
+      translate(-50%,-57%)
+      rotate(3deg);
+  }
 }
 
-.diary-header {
-    display: flex;
+.shrimp-name {
+  margin-top: 15px;
 
-    justify-content: space-between;
+  font-size: 20px;
 
-    align-items: center;
-
-    border-bottom:
-        2px dashed #b49a68;
-
-    padding-bottom: 12px;
-
-    margin-bottom: 15px;
+  font-weight: 600;
 }
 
-.diary-header h2 {
-    margin: 0;
-    font-size: 23px;
-}
+.shrimp-message {
+  margin-top: 8px;
 
-.close-button {
-    border: none;
+  min-height: 25px;
 
-    background: transparent;
-
-    color: #493827;
-
-    font-size: 25px;
-
-    cursor: pointer;
-}
-
-.diary-label {
-    display: block;
-
-    margin-top: 12px;
-    margin-bottom: 5px;
-
-    font-size: 14px;
-
-    font-weight: bold;
-}
-
-.diary-textarea {
-    width: 100%;
-
-    height: 125px;
-
-    resize: none;
-
-    border:
-        2px solid #bba477;
-
-    border-radius: 5px;
-
-    padding: 10px;
-
-    background: #fffbea;
-
-    color: #493827;
-
-    font-family:
-        "Gowun Dodum",
-        sans-serif;
-
-    font-size: 15px;
-
-    outline: none;
-}
-
-.save-diary {
-    width: 100%;
-
-    margin-top: 15px;
-
-    padding: 11px;
-
-    border: 3px solid #4e3927;
-
-    border-radius: 5px;
-
-    background: #dfb967;
-
-    color: #4e3927;
-
-    font-family:
-        "Fredoka",
-        sans-serif;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    box-shadow:
-        3px 3px 0 #4e3927;
-}
-
-.save-diary:active {
-    transform:
-        translate(2px,2px);
-
-    box-shadow:
-        1px 1px 0 #4e3927;
+  color: #806b4e;
 }
 
 
-/* =====================================================
-   풍선
-===================================================== */
+/* =========================================================
+   랜덤
+========================================================= */
 
-#balloon-area {
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 500;
+.random-box {
+  text-align: center;
 }
 
-.balloon-wrapper {
-    position: absolute;
+.random-display {
+  min-height: 170px;
 
-    width: 130px;
-    height: 180px;
+  display: flex;
 
-    pointer-events: auto;
+  align-items: center;
+  justify-content: center;
 
-    cursor: pointer;
+  text-align: center;
 
-    user-select: none;
+  padding: 25px;
+
+  margin-bottom: 20px;
+
+  border: 3px dashed #b49a68;
+
+  border-radius: 8px;
+
+  background: #fffbea;
+
+  font-family:
+    "Gowun Dodum",
+    sans-serif;
+
+  font-size: 25px;
+
+  line-height: 1.5;
 }
 
-.balloon {
-    position: absolute;
+.random-button {
+  font-size: 20px;
 
-    left: 10px;
-    top: 0;
-
-    width: 105px;
-    height: 125px;
-
-    border-radius:
-        50% 50% 48% 48%;
-
-    box-shadow:
-
-        inset
-        -13px
-        -15px
-        20px
-        rgba(0,0,0,.13),
-
-        inset
-        12px
-        10px
-        12px
-        rgba(255,255,255,.35),
-
-        4px
-        7px
-        0
-        rgba(0,0,0,.15);
-}
-
-.balloon::after {
-    content: "";
-
-    position: absolute;
-
-    left: 43px;
-    bottom: -10px;
-
-    width: 18px;
-    height: 18px;
-
-    background: inherit;
-
-    transform: rotate(45deg);
-}
-
-.balloon::before {
-    content: "";
-
-    position: absolute;
-
-    width: 25px;
-    height: 38px;
-
-    left: 18px;
-    top: 17px;
-
-    background:
-        rgba(255,255,255,.38);
-
-    border-radius: 50%;
-
-    transform: rotate(25deg);
-}
-
-.balloon-text {
-    position: absolute;
-
-    left: 15px;
-    right: 15px;
-
-    top: 43px;
-
-    text-align: center;
-
-    color: white;
-
-    font-family:
-        "Gowun Dodum",
-        sans-serif;
-
-    font-size: 13px;
-
-    line-height: 1.3;
-
-    font-weight: bold;
-
-    z-index: 2;
-
-    overflow: hidden;
-
-    display: -webkit-box;
-
-    -webkit-line-clamp: 3;
-
-    -webkit-box-orient: vertical;
-
-    text-shadow:
-        1px 1px 2px
-        rgba(0,0,0,.25);
-}
-
-.balloon-string {
-    position: absolute;
-
-    left: 62px;
-    top: 132px;
-
-    width: 2px;
-    height: 47px;
-
-    background:
-        rgba(255,255,255,.75);
-
-    transform: rotate(3deg);
-
-    transform-origin: top;
-}
-
-.balloon-knot {
-    position: absolute;
-
-    left: 53px;
-    top: 117px;
-
-    width: 18px;
-    height: 18px;
-
-    background: inherit;
-
-    transform: rotate(45deg);
-
-    z-index: 1;
-}
-
-.balloon.red {
-    background:
-        linear-gradient(
-            135deg,
-            #ff7c8c,
-            #d94763
-        );
-}
-
-.balloon.blue {
-    background:
-        linear-gradient(
-            135deg,
-            #75c9ff,
-            #4786d9
-        );
-}
-
-.balloon.yellow {
-    background:
-        linear-gradient(
-            135deg,
-            #ffe77b,
-            #e8b832
-        );
-}
-
-.balloon.purple {
-    background:
-        linear-gradient(
-            135deg,
-            #c99cff,
-            #8961c9
-        );
-}
-
-.balloon.green {
-    background:
-        linear-gradient(
-            135deg,
-            #82dfa2,
-            #43a96d
-        );
+  padding:
+    14px 30px;
 }
 
 
-/* =====================================================
-   일기 보기
-===================================================== */
+/* =========================================================
+   발견 기록
+========================================================= */
 
-.diary-view {
-    position: fixed;
+.discovery-grid {
+  display: grid;
 
-    left: 50%;
-    top: 50%;
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(145px,1fr)
+    );
 
-    width:
-        min(
-            430px,
-            calc(100vw - 40px)
-        );
-
-    background: #fff4c9;
-
-    color: #493827;
-
-    border: 4px solid #5b402b;
-
-    border-radius: 8px;
-
-    padding: 25px;
-
-    z-index: 10000;
-
-    box-shadow:
-        9px 10px 0
-        rgba(0,0,0,.4);
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.9);
-
-    transition: .2s;
+  gap: 10px;
 }
 
-.diary-view.show {
-    opacity: 1;
+.discovery-card {
+  min-height: 90px;
 
-    pointer-events: auto;
+  padding: 12px;
 
-    transform:
-        translate(-50%,-50%)
-        scale(1);
+  background: #fffbea;
+
+  border:
+    2px solid #c4ad7e;
+
+  border-radius: 7px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
 }
 
-.diary-view-date {
-    font-size: 14px;
+.discovery-card.locked {
+  filter: grayscale(1);
 
-    color: #927957;
-
-    margin-bottom: 12px;
-
-    border-bottom:
-        2px dashed #b49a68;
-
-    padding-bottom: 8px;
+  opacity: .55;
 }
 
-.diary-view-text {
-    font-family:
-        "Gowun Dodum",
-        sans-serif;
+.discovery-icon {
+  font-size: 25px;
 
-    white-space: pre-wrap;
-
-    line-height: 1.7;
-
-    min-height: 80px;
-
-    word-break: break-word;
+  margin-bottom: 6px;
 }
 
-.view-buttons {
-    display: flex;
-
-    gap: 10px;
-
-    margin-top: 20px;
-}
-
-.delete-diary,
-.close-view {
-    flex: 1;
-
-    padding: 10px;
-
-    border-radius: 5px;
-
-    font-family:
-        "Fredoka",
-        sans-serif;
-
-    font-weight: 600;
-
-    cursor: pointer;
-}
-
-.delete-diary {
-    border:
-        3px solid #7b3131;
-
-    background: #ef9999;
-
-    color: #572020;
-}
-
-.close-view {
-    border:
-        3px solid #4e3927;
-
-    background: #dfb967;
-
-    color: #4e3927;
+.discovery-name {
+  font-size: 13px;
 }
 
 
-/* =====================================================
-   =====================================================
-   짤방 보드
-===================================================== */
+/* =========================================================
+   통계
+========================================================= */
+
+.stats-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
+
+  gap: 10px;
+}
+
+.stat {
+  background: #fffbea;
+
+  border:
+    2px solid #c4ad7e;
+
+  border-radius: 7px;
+
+  padding: 15px;
+
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 28px;
+
+  font-weight: 700;
+}
+
+.stat-label {
+  color: #806b4e;
+
+  font-size: 13px;
+
+  margin-top: 3px;
+}
+
+
+/* =========================================================
+   설정
+========================================================= */
+
+.setting-row {
+  margin-bottom: 18px;
+}
+
+.setting-row label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-weight: 600;
+}
+
+.setting-row input {
+  width: 100%;
+
+  padding: 11px;
+
+  border:
+    2px solid #bba477;
+
+  border-radius: 5px;
+
+  background: #fffbea;
+
+  color: #493827;
+
+  font-size: 16px;
+}
+
+.setting-actions {
+  display: flex;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   사진 보드
+========================================================= */
 
 #meme-board {
-    position: fixed;
+  position: fixed;
 
-    inset: 0;
+  inset: 0;
 
-    background: white;
+  display: none;
 
-    color: #222;
+  z-index: 20000;
 
-    z-index: 20000;
+  background: white;
 
-    display: none;
+  color: #222;
 
-    overflow: hidden;
+  overflow: hidden;
 }
 
 #meme-board.open {
-    display: block;
+  display: block;
 }
 
-
-/* =====================================================
-   짤방 헤더
-===================================================== */
-
 .meme-header {
-    position: absolute;
+  position: absolute;
 
-    top: 0;
-    left: 0;
-    right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
 
-    height: 64px;
+  height: 64px;
 
-    background: #f3f3f3;
+  display: flex;
 
-    border-bottom:
-        2px solid #222;
+  align-items: center;
 
-    display: flex;
+  gap: 7px;
 
-    align-items: center;
+  padding: 8px 12px;
 
-    gap: 8px;
+  background: #f3f3f3;
 
-    padding: 10px 15px;
+  border-bottom:
+    2px solid #222;
 
-    z-index: 30000;
+  z-index: 30000;
 }
 
 .meme-title {
-    font-weight: 700;
+  font-size: 20px;
 
-    font-size: 20px;
+  font-weight: 700;
 
-    margin-right: auto;
+  margin-right: auto;
 }
 
 .meme-control {
-    border:
-        2px solid #222;
+  border:
+    2px solid #222;
 
-    background: white;
+  background: white;
 
-    color: #222;
+  color: #222;
 
-    border-radius: 5px;
+  border-radius: 5px;
 
-    padding: 8px 12px;
+  padding: 8px 11px;
 
-    font-family:
-        "Fredoka",
-        sans-serif;
+  cursor: pointer;
 
-    font-size: 14px;
-
-    cursor: pointer;
-
-    box-shadow:
-        2px 2px 0 #222;
-}
-
-.meme-control:hover {
-    background: #eeeeee;
+  box-shadow:
+    2px 2px 0 #222;
 }
 
 .meme-control:active {
-    transform:
-        translate(2px,2px);
+  transform:
+    translate(2px,2px);
 
-    box-shadow: none;
+  box-shadow: none;
 }
-
-
-/* =====================================================
-   줌 표시
-===================================================== */
 
 .zoom-display {
-    min-width: 65px;
+  min-width: 55px;
 
-    text-align: center;
+  text-align: center;
 
-    font-weight: 600;
-
-    font-size: 14px;
+  font-weight: 600;
 }
-
-
-/* =====================================================
-   짤방 캔버스
-===================================================== */
 
 #meme-canvas {
-    position: absolute;
+  position: absolute;
 
-    left: 0;
-    top: 64px;
+  top: 64px;
+  left: 0;
 
-    width: 100%;
-    height:
-        calc(100% - 64px);
+  width: 100%;
+  height: calc(100% - 64px);
 
-    overflow: hidden;
+  overflow: hidden;
 
-    background: white;
+  background: white;
 
-    cursor: grab;
+  cursor: grab;
 }
-
-
-/*
-   실제 확대/축소되는 공간
-*/
 
 #meme-world {
-    position: absolute;
+  position: absolute;
 
-    left: 0;
-    top: 0;
+  left: 0;
+  top: 0;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    transform-origin:
-        0 0;
+  transform-origin: 0 0;
 }
-
-
-/* =====================================================
-   이미지
-===================================================== */
 
 .meme-image {
-    position: absolute;
+  position: absolute;
 
-    width: 240px;
-    height: auto;
+  width: 240px;
 
-    left: 100px;
-    top: 100px;
+  height: auto;
 
-    cursor: grab;
+  cursor: grab;
 
-    user-select: none;
+  user-select: none;
 
-    box-shadow:
-        0 3px 12px
-        rgba(0,0,0,.18);
-
-    border:
-        1px solid
-        rgba(0,0,0,.1);
-}
-
-.meme-image:active {
-    cursor: grabbing;
+  box-shadow:
+    0 3px 12px
+    rgba(0,0,0,.18);
 }
 
 .meme-image.selected {
-    outline:
-        3px dashed #333;
+  outline:
+    3px dashed #333;
 
-    outline-offset: 4px;
+  outline-offset: 4px;
 }
-
-
-/* =====================================================
-   이미지 배경 제거 전/후 표시
-===================================================== */
-
-.image-status {
-    position: absolute;
-
-    left: 15px;
-    top: 15px;
-
-    background:
-        rgba(255,255,255,.95);
-
-    border:
-        1px solid #bbb;
-
-    padding:
-        7px 10px;
-
-    font-size: 12px;
-
-    color: #555;
-
-    z-index: 2000;
-
-    pointer-events: none;
-}
-
-
-/* =====================================================
-   도움말
-===================================================== */
 
 .meme-help {
-    position: absolute;
+  position: absolute;
 
-    left: 15px;
-    bottom: 12px;
+  left: 12px;
+  bottom: 10px;
 
-    padding:
-        7px 10px;
+  background:
+    rgba(255,255,255,.9);
 
-    background:
-        rgba(255,255,255,.9);
+  border:
+    1px solid #aaa;
 
-    border:
-        1px solid #bbb;
+  padding: 7px 9px;
 
-    font-size: 12px;
+  font-size: 12px;
 
-    color: #555;
+  color: #555;
 
-    z-index: 30000;
+  z-index: 30000;
 
-    pointer-events: none;
+  pointer-events: none;
 }
 
 
-/* =====================================================
-   크기 패널 제거 대신 배경 제거 안내
-===================================================== */
+/* =========================================================
+   비밀 버튼
+========================================================= */
 
-.remove-bg-button {
-    display: none;
+.secret-dot {
+  position: fixed;
+
+  left: 8px;
+  bottom: 7px;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: rgba(255,255,255,.07);
+
+  cursor: pointer;
+
+  z-index: 9999;
+}
+
+.secret-dot:hover {
+  background:
+    rgba(255,255,255,.3);
 }
 
 
-/* =====================================================
+/* =========================================================
+   토스트
+========================================================= */
+
+.toast {
+  position: fixed;
+
+  left: 50%;
+  bottom: 35px;
+
+  transform:
+    translateX(-50%)
+    translateY(20px);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: 50000;
+
+  background:
+    rgba(25,25,25,.92);
+
+  color: white;
+
+  padding:
+    13px 20px;
+
+  border-radius: 8px;
+
+  font-family:
+    "Gowun Dodum",
+    sans-serif;
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.3);
+
+  transition: .25s;
+}
+
+.toast.show {
+  opacity: 1;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+
+/* =========================================================
    모바일
-===================================================== */
+========================================================= */
 
 @media (max-width: 600px) {
 
-    .page-title {
-        top: 7vh;
+  .page-title {
+    top: 7vh;
 
-        font-size:
-            clamp(
-                34px,
-                9vw,
-                56px
-            );
-    }
+    font-size:
+      clamp(
+        33px,
+        9vw,
+        58px
+      );
+  }
 
-    .number {
-        font-size:
-            clamp(
-                45px,
-                14vw,
-                95px
-            );
-    }
+  .number {
+    font-size:
+      clamp(
+        44px,
+        14vw,
+        95px
+      );
+  }
 
-    .unit {
-        font-size: 16px;
+  .unit {
+    font-size: 15px;
 
-        letter-spacing: 6px;
-    }
+    letter-spacing: 5px;
+  }
 
-    .site-menu {
-        right: 12px;
-        bottom: 12px;
-    }
+  .menu {
+    right: 10px;
+    bottom: 10px;
+  }
 
-    .menu-button {
-        width: 54px;
-        height: 54px;
+  .menu-button {
+    width: 53px;
+    height: 53px;
 
-        font-size: 22px;
-    }
+    font-size: 22px;
+  }
 
-    .diary-panel {
-        right: 76px;
-        bottom: 12px;
+  .panel {
+    width:
+      calc(100vw - 25px);
 
-        width:
-            calc(
-                100vw - 88px
-            );
-    }
+    padding: 17px;
+  }
 
-    .meme-header {
-        height: 58px;
+  .meme-title {
+    display: none;
+  }
 
-        padding: 8px;
-    }
+  .meme-header {
+    height: 58px;
 
-    .meme-title {
-        display: none;
-    }
+    padding: 7px;
+  }
 
-    .meme-control {
-        padding:
-            7px 8px;
+  .meme-control {
+    padding:
+      7px 8px;
 
-        font-size: 12px;
-    }
+    font-size: 12px;
+  }
 
-    .zoom-display {
-        min-width: 45px;
-        font-size: 12px;
-    }
+  #meme-canvas {
+    top: 58px;
 
-    #meme-canvas {
-        top: 58px;
+    height:
+      calc(100% - 58px);
+  }
 
-        height:
-            calc(
-                100% - 58px
-            );
-    }
+  .stats-grid {
+    grid-template-columns:
+      1fr;
+  }
 }
 
 </style>
@@ -1095,495 +986,916 @@ body {
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
      카운트다운
-===================================================== -->
+========================================================= -->
 
 <section class="time-section years">
 
-    <div class="page-title">
-        준수가 한국으로 돌아가기까지...
-    </div>
+  <div class="page-title">
+    준수가 한국으로 돌아가기까지...
+  </div>
 
-    <div class="unit">
-        YEARS
-    </div>
+  <div class="unit">
+    YEARS
+  </div>
 
-    <div
-        class="number"
-        id="years">
-        0.0
-    </div>
+  <div
+    class="number"
+    id="years">
+    0.0
+  </div>
 
-    <div class="description">
-        년으로 보면
-    </div>
+  <div class="description">
+    년으로 보면
+  </div>
 
 </section>
 
 
 <section class="time-section months">
 
-    <div class="unit">
-        MONTHS
-    </div>
+  <div class="unit">
+    MONTHS
+  </div>
 
-    <div
-        class="number"
-        id="months">
-        0.0
-    </div>
+  <div
+    class="number"
+    id="months">
+    0.0
+  </div>
 
-    <div class="description">
-        달로 보면
-    </div>
+  <div class="description">
+    달로 보면
+  </div>
 
 </section>
 
 
 <section class="time-section weeks">
 
-    <div class="unit">
-        WEEKS
-    </div>
+  <div class="unit">
+    WEEKS
+  </div>
 
-    <div
-        class="number"
-        id="weeks">
-        0.0
-    </div>
+  <div
+    class="number"
+    id="weeks">
+    0.0
+  </div>
 
-    <div class="description">
-        주일로 보면
-    </div>
+  <div class="description">
+    주로 보면
+  </div>
 
 </section>
 
 
 <section class="time-section days">
 
-    <div class="unit">
-        DAYS
-    </div>
+  <div class="unit">
+    DAYS
+  </div>
 
-    <div
-        class="number"
-        id="days">
-        0.0
-    </div>
+  <div
+    class="number"
+    id="days">
+    0.0
+  </div>
 
-    <div class="description">
-        일로 보면
-    </div>
+  <div class="description">
+    일로 보면
+  </div>
 
 </section>
 
 
 <section class="time-section hours">
 
-    <div class="unit">
-        HOURS
-    </div>
+  <div class="unit">
+    HOURS
+  </div>
 
-    <div
-        class="number"
-        id="hours">
-        0.0
-    </div>
+  <div
+    class="number"
+    id="hours">
+    0.0
+  </div>
 
-    <div class="description">
-        시간으로 보면
-    </div>
+  <div class="description">
+    시간으로 보면
+  </div>
 
 </section>
 
 
 <section class="time-section minutes">
 
-    <div class="unit">
-        MINUTES
-    </div>
+  <div class="unit">
+    MINUTES
+  </div>
 
-    <div
-        class="number"
-        id="minutes">
-        0.0
-    </div>
+  <div
+    class="number"
+    id="minutes">
+    0.0
+  </div>
 
-    <div class="description">
-        분으로 보면
-    </div>
+  <div class="description">
+    분으로 보면
+  </div>
 
 </section>
 
 
 <section class="time-section seconds">
 
-    <div class="unit">
-        SECONDS
-    </div>
+  <div class="unit">
+    SECONDS
+  </div>
 
-    <div
-        class="number"
-        id="seconds">
-        0.0
-    </div>
+  <div
+    class="number"
+    id="seconds">
+    0.0
+  </div>
 
-    <div class="description">
-        초로 보면
-    </div>
+  <div class="description">
+    초로 보면
+  </div>
 
 </section>
 
 
-<!-- =====================================================
-     풍선
-===================================================== -->
+<!-- =========================================================
+     오른쪽 메뉴
+========================================================= -->
 
-<div id="balloon-area"></div>
+<div class="menu">
 
+  <button
+    class="menu-button"
+    id="shrimpButton"
+    title="새우">
+    🦐
+  </button>
 
-<!-- =====================================================
-     메뉴
-===================================================== -->
+  <button
+    class="menu-button"
+    id="randomButton"
+    title="뭔가 뽑기">
+    🎁
+  </button>
 
-<div class="site-menu">
+  <button
+    class="menu-button"
+    id="discoveryButton"
+    title="발견 기록">
+    🔎
+  </button>
 
-    <button
-        class="menu-button"
-        id="diaryButton"
-        title="일기">
+  <button
+    class="menu-button"
+    id="statsButton"
+    title="통계">
+    📊
+  </button>
 
-        📔
+  <button
+    class="menu-button"
+    id="photoButton"
+    title="사진">
+    🖼️
+  </button>
 
-    </button>
-
-    <button
-        class="menu-button"
-        id="memeButton"
-        title="짤방">
-
-        🖼️
-
-    </button>
+  <button
+    class="menu-button"
+    id="settingsButton"
+    title="설정">
+    ⚙️
+  </button>
 
 </div>
 
 
-<!-- =====================================================
-     일기 입력
-===================================================== -->
+<!-- =========================================================
+     새우 패널
+========================================================= -->
 
 <div
-    class="diary-panel"
-    id="diaryPanel">
+  class="panel"
+  id="shrimpPanel">
 
-    <div class="diary-header">
+  <div class="panel-header">
 
-        <h2>
-            ✎ 오늘의 일기
-        </h2>
+    <h2>
+      🦐 새우의 방
+    </h2>
 
-        <button
-            class="close-button"
-            id="closeDiary">
+    <button
+      class="close"
+      data-close="shrimpPanel">
+      ×
+    </button>
 
-            ×
+  </div>
 
-        </button>
+
+  <div class="shrimp-window">
+
+    <div
+      class="shrimp-tank"
+      id="shrimpTank">
+
+      <div
+        class="shrimp"
+        id="shrimp">
+        🦐
+      </div>
 
     </div>
 
-    <label class="diary-label">
-        오늘의 기록
+
+    <div
+      class="shrimp-name"
+      id="shrimpName">
+      이름 없는 새우
+    </div>
+
+
+    <div
+      class="shrimp-message"
+      id="shrimpMessage">
+      ...
+    </div>
+
+
+    <br>
+
+
+    <button
+      class="action-button"
+      id="nameShrimp">
+      새우 이름 짓기
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     랜덤 패널
+========================================================= -->
+
+<div
+  class="panel"
+  id="randomPanel">
+
+  <div class="panel-header">
+
+    <h2>
+      🎁 뭔가 들어있다
+    </h2>
+
+    <button
+      class="close"
+      data-close="randomPanel">
+      ×
+    </button>
+
+  </div>
+
+
+  <div class="random-box">
+
+    <div
+      class="random-display"
+      id="randomDisplay">
+
+      버튼을 눌러보세요.
+
+    </div>
+
+
+    <button
+      class="action-button random-button"
+      id="drawRandom">
+
+      🎁 열어보기
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     발견 기록
+========================================================= -->
+
+<div
+  class="panel"
+  id="discoveryPanel">
+
+  <div class="panel-header">
+
+    <h2>
+      🔎 발견 기록
+    </h2>
+
+    <button
+      class="close"
+      data-close="discoveryPanel">
+      ×
+    </button>
+
+  </div>
+
+
+  <p>
+    사이트를 돌아다니다 보면
+    새로운 것이 추가될지도 모릅니다.
+  </p>
+
+
+  <div
+    class="discovery-grid"
+    id="discoveryGrid">
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     통계
+========================================================= -->
+
+<div
+  class="panel"
+  id="statsPanel">
+
+  <div class="panel-header">
+
+    <h2>
+      📊 이상하게 상세한 통계
+    </h2>
+
+    <button
+      class="close"
+      data-close="statsPanel">
+      ×
+    </button>
+
+  </div>
+
+
+  <div class="stats-grid">
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+        id="statVisits">
+        0
+      </div>
+
+      <div class="stat-label">
+        방문 횟수
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+        id="statTime">
+        0분
+      </div>
+
+      <div class="stat-label">
+        사이트에서 보낸 시간
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+        id="statRandom">
+        0
+      </div>
+
+      <div class="stat-label">
+        뭔가를 뽑은 횟수
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+        id="statDiscoveries">
+        0
+      </div>
+
+      <div class="stat-label">
+        발견한 것
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+        id="statPhotos">
+        0
+      </div>
+
+      <div class="stat-label">
+        저장한 사진
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+        id="statShrimp">
+        0
+      </div>
+
+      <div class="stat-label">
+        새우와 함께한 시간(분)
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     설정
+========================================================= -->
+
+<div
+  class="panel"
+  id="settingsPanel">
+
+  <div class="panel-header">
+
+    <h2>
+      ⚙️ 설정
+    </h2>
+
+    <button
+      class="close"
+      data-close="settingsPanel">
+      ×
+    </button>
+
+  </div>
+
+
+  <div class="setting-row">
+
+    <label>
+      한국으로 돌아가는 날짜
     </label>
 
-    <textarea
-        id="diaryText"
-        class="diary-textarea"
-        placeholder="오늘 있었던 일을 적어보세요..."
-    ></textarea>
+    <input
+      type="datetime-local"
+      id="targetInput">
+
+  </div>
+
+
+  <div class="setting-actions">
 
     <button
-        class="save-diary"
-        id="saveDiary">
+      class="action-button"
+      id="saveTarget">
 
-        🎈 풍선으로 남기기
+      저장
 
     </button>
 
-</div>
+
+    <button
+      class="small-button"
+      id="resetData">
+
+      데이터 초기화
+
+    </button>
+
+  </div>
 
 
-<!-- =====================================================
-     일기 보기
-===================================================== -->
-
-<div
-    class="diary-view"
-    id="diaryView">
-
-    <div
-        class="diary-view-date"
-        id="diaryViewDate">
-    </div>
-
-    <div
-        class="diary-view-text"
-        id="diaryViewText">
-    </div>
-
-    <div class="view-buttons">
-
-        <button
-            class="delete-diary"
-            id="deleteDiary">
-
-            🗑 삭제
-
-        </button>
-
-        <button
-            class="close-view"
-            id="closeView">
-
-            닫기
-
-        </button>
-
-    </div>
+  <p style="
+    margin-top:18px;
+    color:#806b4e;
+    font-size:13px;
+  ">
+    목표 날짜와 사이트 데이터는
+    이 브라우저에만 저장됩니다.
+  </p>
 
 </div>
 
 
-<!-- =====================================================
-     짤방 보드
-===================================================== -->
+<!-- =========================================================
+     사진 보드
+========================================================= -->
 
 <div
-    id="meme-board">
+  id="meme-board">
 
+  <div class="meme-header">
 
-    <div class="meme-header">
-
-        <div class="meme-title">
-            🖼️ 짤방 보관소
-        </div>
-
-
-        <input
-            type="file"
-            id="image-input"
-            accept="image/*"
-            multiple
-            hidden
-        >
-
-
-        <button
-            class="meme-control"
-            id="add-image">
-
-            ＋ 이미지
-
-        </button>
-
-
-        <button
-            class="meme-control"
-            id="remove-background">
-
-            🤍 배경 제거
-
-        </button>
-
-
-        <button
-            class="meme-control"
-            id="zoom-out">
-
-            −
-
-        </button>
-
-
-        <div
-            class="zoom-display"
-            id="zoom-display">
-
-            100%
-
-        </div>
-
-
-        <button
-            class="meme-control"
-            id="zoom-in">
-
-            ＋
-
-        </button>
-
-
-        <button
-            class="meme-control"
-            id="zoom-reset">
-
-            100%
-
-        </button>
-
-
-        <button
-            class="meme-control"
-            id="delete-image">
-
-            🗑 삭제
-
-        </button>
-
-
-        <button
-            class="meme-control"
-            id="close-meme">
-
-            ← 돌아가기
-
-        </button>
-
+    <div class="meme-title">
+      🖼️ 사진 보관소
     </div>
 
 
-    <div id="meme-canvas">
+    <input
+      type="file"
+      id="imageInput"
+      accept="image/*"
+      multiple
+      hidden
+    >
 
-        <div id="meme-world"></div>
 
-        <div class="meme-help">
+    <button
+      class="meme-control"
+      id="addImage">
+      ＋ 이미지
+    </button>
 
-            🖱️ 휠 → 전체 확대/축소<br>
-            드래그 → 화면 이동<br>
-            이미지 클릭 → 선택<br>
-            🤍 → 흰색 배경 제거
 
-        </div>
+    <button
+      class="meme-control"
+      id="removeBackground">
+      🤍 흰색 제거
+    </button>
+
+
+    <button
+      class="meme-control"
+      id="deleteImage">
+      🗑 삭제
+    </button>
+
+
+    <button
+      class="meme-control"
+      id="zoomOut">
+      −
+    </button>
+
+
+    <div
+      class="zoom-display"
+      id="zoomDisplay">
+      100%
+    </div>
+
+
+    <button
+      class="meme-control"
+      id="zoomIn">
+      ＋
+    </button>
+
+
+    <button
+      class="meme-control"
+      id="zoomReset">
+      100%
+    </button>
+
+
+    <button
+      class="meme-control"
+      id="closePhoto">
+      ←
+    </button>
+
+  </div>
+
+
+  <div id="memeCanvas">
+
+    <div id="memeWorld"></div>
+
+
+    <div class="meme-help">
+
+      🖱️ 휠 → 사이트 확대/축소<br>
+      드래그 → 화면 이동<br>
+      이미지 클릭 → 선택
 
     </div>
 
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     숨겨진 버튼
+========================================================= -->
+
+<button
+  class="secret-dot"
+  id="secretDot"
+  aria-label="..."
+>
+</button>
+
+
+<!-- =========================================================
+     토스트
+========================================================= -->
+
+<div
+  class="toast"
+  id="toast">
 </div>
 
 
 <script>
 
-/* =====================================================
+/* =========================================================
+   저장 데이터
+========================================================= */
+
+const STORAGE = {
+
+  target:
+    "jun_target_date",
+
+  visits:
+    "jun_visits",
+
+  totalTime:
+    "jun_total_time",
+
+  random:
+    "jun_random_count",
+
+  discoveries:
+    "jun_discoveries",
+
+  shrimpName:
+    "jun_shrimp_name",
+
+  shrimpTime:
+    "jun_shrimp_time",
+
+  photos:
+    "jun_photos",
+
+  secretClicks:
+    "jun_secret_clicks"
+
+};
+
+
+/* =========================================================
+   기본값
+========================================================= */
+
+let targetDate =
+  localStorage.getItem(
+    STORAGE.target
+  );
+
+
+/*
+   첫 방문이면 1년 후를 임시 목표로 사용.
+   사용자가 설정에서 변경 가능.
+*/
+
+if (!targetDate) {
+
+  const firstTarget =
+    new Date();
+
+  firstTarget.setFullYear(
+    firstTarget.getFullYear() + 1
+  );
+
+  targetDate =
+    firstTarget.toISOString();
+
+  localStorage.setItem(
+    STORAGE.target,
+    targetDate
+  );
+
+}
+
+
+let visits =
+  Number(
+    localStorage.getItem(
+      STORAGE.visits
+    ) || 0
+  );
+
+
+let totalTime =
+  Number(
+    localStorage.getItem(
+      STORAGE.totalTime
+    ) || 0
+  );
+
+
+let randomCount =
+  Number(
+    localStorage.getItem(
+      STORAGE.random
+    ) || 0
+  );
+
+
+let shrimpTime =
+  Number(
+    localStorage.getItem(
+      STORAGE.shrimpTime
+    ) || 0
+  );
+
+
+let secretClicks =
+  Number(
+    localStorage.getItem(
+      STORAGE.secretClicks
+    ) || 0
+  );
+
+
+let discoveries =
+  JSON.parse(
+    localStorage.getItem(
+      STORAGE.discoveries
+    ) || "[]"
+  );
+
+
+let photos =
+  JSON.parse(
+    localStorage.getItem(
+      STORAGE.photos
+    ) || "[]"
+  );
+
+
+let shrimpName =
+  localStorage.getItem(
+    STORAGE.shrimpName
+  ) || "이름 없는 새우";
+
+
+/* =========================================================
+   방문 기록
+========================================================= */
+
+visits++;
+
+localStorage.setItem(
+  STORAGE.visits,
+  visits
+);
+
+
+/* =========================================================
    카운트다운
-===================================================== */
-
-const targetDate =
-    new Date(
-        2027,
-        11,
-        31,
-        23,
-        59,
-        59,
-        999
-    );
-
+========================================================= */
 
 const SECOND = 1000;
-const MINUTE = SECOND * 60;
-const HOUR = MINUTE * 60;
-const DAY = HOUR * 24;
-const WEEK = DAY * 7;
-const YEAR = DAY * 365.2425;
-const MONTH = YEAR / 12;
+
+const MINUTE =
+  SECOND * 60;
+
+const HOUR =
+  MINUTE * 60;
+
+const DAY =
+  HOUR * 24;
+
+const WEEK =
+  DAY * 7;
+
+const YEAR =
+  DAY * 365.2425;
+
+const MONTH =
+  YEAR / 12;
 
 
-function formatNumber(number) {
+function numberFormat(value) {
 
-    return number.toLocaleString(
-        "en-US",
-        {
-            minimumFractionDigits: 1,
-            maximumFractionDigits: 1
-        }
-    );
+  return value.toLocaleString(
+    "en-US",
+    {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1
+    }
+  );
 
 }
 
 
 function updateCountdown() {
 
-    const now =
-        new Date();
+  const now =
+    Date.now();
 
-    let remaining =
-        targetDate.getTime()
-        -
-        now.getTime();
+  const target =
+    new Date(
+      targetDate
+    ).getTime();
 
-
-    if (remaining < 0) {
-
-        remaining = 0;
-
-    }
+  let remaining =
+    target - now;
 
 
-    document.getElementById(
-        "years"
-    ).textContent =
-        formatNumber(
-            remaining / YEAR
-        );
+  if (remaining < 0) {
+    remaining = 0;
+  }
 
 
-    document.getElementById(
-        "months"
-    ).textContent =
-        formatNumber(
-            remaining / MONTH
-        );
+  document.getElementById(
+    "years"
+  ).textContent =
+    numberFormat(
+      remaining / YEAR
+    );
 
 
-    document.getElementById(
-        "weeks"
-    ).textContent =
-        formatNumber(
-            remaining / WEEK
-        );
+  document.getElementById(
+    "months"
+  ).textContent =
+    numberFormat(
+      remaining / MONTH
+    );
 
 
-    document.getElementById(
-        "days"
-    ).textContent =
-        formatNumber(
-            remaining / DAY
-        );
+  document.getElementById(
+    "weeks"
+  ).textContent =
+    numberFormat(
+      remaining / WEEK
+    );
 
 
-    document.getElementById(
-        "hours"
-    ).textContent =
-        formatNumber(
-            remaining / HOUR
-        );
+  document.getElementById(
+    "days"
+  ).textContent =
+    numberFormat(
+      remaining / DAY
+    );
 
 
-    document.getElementById(
-        "minutes"
-    ).textContent =
-        formatNumber(
-            remaining / MINUTE
-        );
+  document.getElementById(
+    "hours"
+  ).textContent =
+    numberFormat(
+      remaining / HOUR
+    );
 
 
-    document.getElementById(
-        "seconds"
-    ).textContent =
-        formatNumber(
-            remaining / SECOND
-        );
+  document.getElementById(
+    "minutes"
+  ).textContent =
+    numberFormat(
+      remaining / MINUTE
+    );
+
+
+  document.getElementById(
+    "seconds"
+  ).textContent =
+    numberFormat(
+      remaining / SECOND
+    );
 
 }
 
@@ -1591,2140 +1903,2442 @@ function updateCountdown() {
 updateCountdown();
 
 setInterval(
-    updateCountdown,
-    100
+  updateCountdown,
+  100
 );
 
 
-/* =====================================================
-   일기
-===================================================== */
+/* =========================================================
+   패널
+========================================================= */
 
-const diaryButton =
-    document.getElementById(
-        "diaryButton"
-    );
+function openPanel(id) {
 
-const diaryPanel =
-    document.getElementById(
-        "diaryPanel"
-    );
+  document
+    .getElementById(id)
+    .classList.add("open");
 
-const closeDiary =
-    document.getElementById(
-        "closeDiary"
-    );
-
-const saveDiary =
-    document.getElementById(
-        "saveDiary"
-    );
-
-const diaryText =
-    document.getElementById(
-        "diaryText"
-    );
+}
 
 
-let diaries =
-    JSON.parse(
-        localStorage.getItem(
-            "junDiary"
-        ) || "[]"
-    );
+function closePanel(id) {
+
+  document
+    .getElementById(id)
+    .classList.remove("open");
+
+}
 
 
-let selectedDiaryId =
-    null;
+document
+  .querySelectorAll("[data-close]")
+  .forEach(button => {
 
+    button.addEventListener(
+      "click",
+      () => {
 
-diaryButton.addEventListener(
-    "click",
-    () => {
-
-        diaryPanel.classList.toggle(
-            "open"
+        closePanel(
+          button.dataset.close
         );
 
-    }
-);
-
-
-closeDiary.addEventListener(
-    "click",
-    () => {
-
-        diaryPanel.classList.remove(
-            "open"
-        );
-
-    }
-);
-
-
-/* =====================================================
-   풍선
-===================================================== */
-
-const balloonArea =
-    document.getElementById(
-        "balloon-area"
+      }
     );
 
+  });
 
-const balloonColors = [
-    "red",
-    "blue",
-    "yellow",
-    "purple",
-    "green"
+
+/* =========================================================
+   버튼 연결
+========================================================= */
+
+document
+  .getElementById("shrimpButton")
+  .onclick = () =>
+    openPanel("shrimpPanel");
+
+
+document
+  .getElementById("randomButton")
+  .onclick = () =>
+    openPanel("randomPanel");
+
+
+document
+  .getElementById("discoveryButton")
+  .onclick = () => {
+
+    renderDiscoveries();
+
+    openPanel(
+      "discoveryPanel"
+    );
+
+  };
+
+
+document
+  .getElementById("statsButton")
+  .onclick = () => {
+
+    updateStats();
+
+    openPanel(
+      "statsPanel"
+    );
+
+  };
+
+
+document
+  .getElementById("settingsButton")
+  .onclick = () => {
+
+    loadSettings();
+
+    openPanel(
+      "settingsPanel"
+    );
+
+  };
+
+
+/* =========================================================
+   새우
+========================================================= */
+
+const shrimpMessages = [
+
+  "음...",
+
+  "안녕.",
+
+  "오늘도 왔네.",
+
+  "👀",
+
+  "뭐 하고 있어?",
+
+  "여기 꽤 조용하네.",
+
+  "나는 그냥 헤엄치고 있어.",
+
+  "방금 뭔가 본 것 같은데...",
+
+  "배고파.",
+
+  "오늘의 운세는... 새우.",
+
+  "흠.",
+
+  "좋은 하루 보내.",
+
+  "쉿.",
+
+  "아무것도 아니야.",
+
+  "나를 계속 보고 있으면 어색해.",
+
+  "..."
+
 ];
 
 
-let balloons = [];
+const shrimpElement =
+  document.getElementById(
+    "shrimp"
+  );
 
 
-function random(min, max) {
+const shrimpMessage =
+  document.getElementById(
+    "shrimpMessage"
+  );
 
-    return Math.random()
-        * (max - min)
-        + min;
+
+const shrimpNameElement =
+  document.getElementById(
+    "shrimpName"
+  );
+
+
+shrimpNameElement.textContent =
+  shrimpName;
+
+
+function shrimpTalk() {
+
+  const message =
+    shrimpMessages[
+      Math.floor(
+        Math.random()
+        *
+        shrimpMessages.length
+      )
+    ];
+
+
+  shrimpMessage.textContent =
+    "🦐 " + message;
 
 }
 
 
-function createBalloon(diary) {
-
-    const wrapper =
-        document.createElement(
-            "div"
-        );
-
-    wrapper.className =
-        "balloon-wrapper";
+shrimpElement.onclick =
+  shrimpTalk;
 
 
-    const balloon =
-        document.createElement(
-            "div"
-        );
+setInterval(
+  () => {
 
-    balloon.className =
-        "balloon "
-        +
-        balloonColors[
-            Math.floor(
-                Math.random()
-                *
-                balloonColors.length
-            )
-        ];
+    if (
+      document
+        .getElementById(
+          "shrimpPanel"
+        )
+        .classList.contains("open")
+    ) {
 
+      shrimpTalk();
 
-    const text =
-        document.createElement(
-            "div"
-        );
+    }
 
-    text.className =
-        "balloon-text";
-
-    text.textContent =
-        diary.text.length > 55
-        ? diary.text.substring(
-            0,
-            55
-        ) + "..."
-        : diary.text;
+  },
+  10000
+);
 
 
-    const knot =
-        document.createElement(
-            "div"
-        );
+/* =========================================================
+   새우 이름
+========================================================= */
 
-    knot.className =
-        "balloon-knot";
+document
+  .getElementById("nameShrimp")
+  .onclick = () => {
 
-
-    const string =
-        document.createElement(
-            "div"
-        );
-
-    string.className =
-        "balloon-string";
-
-
-    balloon.appendChild(
-        text
-    );
-
-    balloon.appendChild(
-        knot
-    );
-
-    wrapper.appendChild(
-        balloon
-    );
-
-    wrapper.appendChild(
-        string
-    );
-
-
-    const x =
-        random(
-            20,
-            Math.max(
-                21,
-                window.innerWidth - 160
-            )
-        );
-
-
-    const y =
-        random(
-            100,
-            Math.max(
-                101,
-                window.innerHeight - 220
-            )
-        );
-
-
-    wrapper.style.left =
-        x + "px";
-
-    wrapper.style.top =
-        y + "px";
-
-
-    const data = {
-
-        element:
-            wrapper,
-
-        x:
-            x,
-
-        y:
-            y,
-
-        vx:
-            random(
-                -.7,
-                .7
-            ),
-
-        vy:
-            random(
-                -.7,
-                .7
-            ),
-
-        diary:
-            diary
-
-    };
+    const name =
+      prompt(
+        "새우의 이름을 지어주세요.",
+        shrimpName
+      );
 
 
     if (
-        Math.abs(data.vx) < .25
+      name === null
+      ||
+      !name.trim()
     ) {
 
-        data.vx =
-            data.vx < 0
-            ? -.4
-            : .4;
+      return;
+
+    }
+
+
+    shrimpName =
+      name.trim();
+
+
+    shrimpNameElement.textContent =
+      shrimpName;
+
+
+    localStorage.setItem(
+      STORAGE.shrimpName,
+      shrimpName
+    );
+
+
+    showToast(
+      `🦐 이제 이 새우의 이름은 "${shrimpName}"입니다.`
+    );
+
+  };
+
+
+/* =========================================================
+   새우 수조 버블
+========================================================= */
+
+const tank =
+  document.getElementById(
+    "shrimpTank"
+  );
+
+
+for (
+  let i = 0;
+  i < 12;
+  i++
+) {
+
+  const bubble =
+    document.createElement(
+      "div"
+    );
+
+
+  bubble.className =
+    "bubble";
+
+
+  bubble.style.left =
+    Math.random() * 100 + "%";
+
+
+  bubble.style.animationDelay =
+    Math.random() * 5 + "s";
+
+
+  bubble.style.animationDuration =
+    3 + Math.random() * 4 + "s";
+
+
+  tank.appendChild(
+    bubble
+  );
+
+}
+
+
+/* =========================================================
+   랜덤 이벤트
+========================================================= */
+
+/*
+   일부러 전체 목록을 화면에 보여주지 않는다.
+
+   여기 있는 이벤트들은 사이트의 숨겨진 세계를
+   구성하기 위한 것.
+
+   ??? 이벤트도 일부러 섞어놓음.
+*/
+
+const randomEvents = [
+
+  {
+    rarity: "normal",
+    text: "오늘의 색깔은 🟣 보라색입니다."
+  },
+
+  {
+    rarity: "normal",
+    text: "오늘은 무언가 하나를 평소와 다르게 해보세요."
+  },
+
+  {
+    rarity: "normal",
+    text: "지금 주변에서 가장 가까운 물건을 한번 살펴보세요."
+  },
+
+  {
+    rarity: "normal",
+    text: "오늘의 행운 숫자는 " +
+      Math.floor(
+        Math.random() * 100
+      ) + "입니다."
+  },
+
+  {
+    rarity: "normal",
+    text: "오늘의 기분은... 음... 아무튼 나쁘지 않습니다."
+  },
+
+  {
+    rarity: "normal",
+    text: "잠깐 창밖을 봐도 좋을 것 같아요."
+  },
+
+  {
+    rarity: "rare",
+    text: "🦐 새우가 당신을 바라보고 있습니다."
+  },
+
+  {
+    rarity: "rare",
+    text: "당신은 지금 이 사이트의 아주 작은 비밀을 발견했습니다."
+  },
+
+  {
+    rarity: "rare",
+    text: "오늘은 좋은 일이 하나 생길지도 모릅니다."
+  },
+
+  {
+    rarity: "rare",
+    text: "이 메시지가 나온 확률은 별로 중요하지 않습니다."
+  },
+
+  {
+    rarity: "secret",
+    text: "🔎 무언가가 당신을 기억했습니다."
+  },
+
+  {
+    rarity: "secret",
+    text: "🦐 ...새우가 뭔가 알고 있는 것 같습니다."
+  },
+
+  {
+    rarity: "secret",
+    text: "당신은 이곳에서 조금 이상한 것을 발견했습니다."
+  },
+
+  {
+    rarity: "mystery",
+    text: "???"
+  },
+
+  {
+    rarity: "mystery",
+    text: "██████████"
+  },
+
+  {
+    rarity: "mystery",
+    text: "아직은 이 메시지를 볼 때가 아닙니다."
+  }
+
+];
+
+
+function chooseRandomEvent() {
+
+  /*
+     일반 이벤트가 가장 많이 나오고
+     뒤로 갈수록 희귀해짐.
+  */
+
+  const roll =
+    Math.random();
+
+
+  let pool;
+
+
+  if (
+    roll < .68
+  ) {
+
+    pool =
+      randomEvents.filter(
+        e =>
+          e.rarity === "normal"
+      );
+
+  }
+
+  else if (
+    roll < .90
+  ) {
+
+    pool =
+      randomEvents.filter(
+        e =>
+          e.rarity === "rare"
+      );
+
+  }
+
+  else if (
+    roll < .98
+  ) {
+
+    pool =
+      randomEvents.filter(
+        e =>
+          e.rarity === "secret"
+      );
+
+  }
+
+  else {
+
+    pool =
+      randomEvents.filter(
+        e =>
+          e.rarity === "mystery"
+      );
+
+  }
+
+
+  return pool[
+    Math.floor(
+      Math.random()
+      *
+      pool.length
+    )
+  ];
+
+}
+
+
+/* =========================================================
+   발견 목록
+========================================================= */
+
+const discoveryDefinitions = [
+
+  {
+    id: "first_random",
+    icon: "🎁",
+    name: "첫 번째 뽑기"
+  },
+
+  {
+    id: "rare_event",
+    icon: "✨",
+    name: "희귀한 것을 만남"
+  },
+
+  {
+    id: "secret_event",
+    icon: "🔐",
+    name: "비밀 발견"
+  },
+
+  {
+    id: "mystery",
+    icon: "???",
+    name: "???"
+  },
+
+  {
+    id: "shrimp",
+    icon: "🦐",
+    name: "새우와 만남"
+  },
+
+  {
+    id: "photo",
+    icon: "🖼️",
+    name: "첫 번째 사진"
+  },
+
+  {
+    id: "secret_click",
+    icon: "🕵️",
+    name: "이상한 버튼"
+  },
+
+  {
+    id: "five_random",
+    icon: "🎰",
+    name: "다섯 번 뽑기"
+  },
+
+  {
+    id: "ten_random",
+    icon: "🎲",
+    name: "열 번 뽑기"
+  },
+
+  {
+    id: "???",
+    icon: "◌",
+    name: "???"
+  }
+
+];
+
+
+function hasDiscovery(id) {
+
+  return discoveries.includes(
+    id
+  );
+
+}
+
+
+function addDiscovery(id) {
+
+  if (
+    hasDiscovery(id)
+  ) {
+
+    return;
+
+  }
+
+
+  discoveries.push(
+    id
+  );
+
+
+  localStorage.setItem(
+    STORAGE.discoveries,
+    JSON.stringify(
+      discoveries
+    )
+  );
+
+
+  showToast(
+    "🔎 새로운 것을 발견했습니다."
+  );
+
+}
+
+
+function renderDiscoveries() {
+
+  const grid =
+    document.getElementById(
+      "discoveryGrid"
+    );
+
+
+  grid.innerHTML =
+    "";
+
+
+  discoveryDefinitions
+    .forEach(item => {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      card.className =
+        "discovery-card";
+
+
+      if (
+        !hasDiscovery(
+          item.id
+        )
+      ) {
+
+        card.classList.add(
+          "locked"
+        );
+
+      }
+
+
+      const icon =
+        document.createElement(
+          "div"
+        );
+
+
+      icon.className =
+        "discovery-icon";
+
+
+      icon.textContent =
+        hasDiscovery(item.id)
+        ? item.icon
+        : "???";
+
+
+      const name =
+        document.createElement(
+          "div"
+        );
+
+
+      name.className =
+        "discovery-name";
+
+
+      name.textContent =
+        hasDiscovery(item.id)
+        ? item.name
+        : "아직 발견하지 못함";
+
+
+      card.appendChild(
+        icon
+      );
+
+
+      card.appendChild(
+        name
+      );
+
+
+      grid.appendChild(
+        card
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   랜덤 실행
+========================================================= */
+
+document
+  .getElementById("drawRandom")
+  .onclick = () => {
+
+    randomCount++;
+
+
+    localStorage.setItem(
+      STORAGE.random,
+      randomCount
+    );
+
+
+    addDiscovery(
+      "first_random"
+    );
+
+
+    if (
+      randomCount >= 5
+    ) {
+
+      addDiscovery(
+        "five_random"
+      );
 
     }
 
 
     if (
-        Math.abs(data.vy) < .25
+      randomCount >= 10
     ) {
 
-        data.vy =
-            data.vy < 0
-            ? -.4
-            : .4;
+      addDiscovery(
+        "ten_random"
+      );
 
     }
 
 
-    balloons.push(
-        data
-    );
-
-    balloonArea.appendChild(
-        wrapper
-    );
+    const display =
+      document.getElementById(
+        "randomDisplay"
+      );
 
 
-    wrapper.addEventListener(
-        "click",
+    display.textContent =
+      "..." ;
+
+
+    /*
+       약간 슬롯머신 같은 느낌
+    */
+
+    let flashes = 0;
+
+
+    const animation =
+      setInterval(
         () => {
 
-            showDiary(
-                diary
+          const fake =
+            randomEvents[
+              Math.floor(
+                Math.random()
+                *
+                randomEvents.length
+              )
+            ];
+
+
+          display.textContent =
+            fake.text;
+
+
+          flashes++;
+
+
+          if (
+            flashes >= 10
+          ) {
+
+            clearInterval(
+              animation
             );
 
-        }
+
+            const event =
+              chooseRandomEvent();
+
+
+            display.textContent =
+              event.text;
+
+
+            if (
+              event.rarity ===
+              "rare"
+            ) {
+
+              addDiscovery(
+                "rare_event"
+              );
+
+            }
+
+
+            if (
+              event.rarity ===
+              "secret"
+            ) {
+
+              addDiscovery(
+                "secret_event"
+              );
+
+            }
+
+
+            if (
+              event.rarity ===
+              "mystery"
+            ) {
+
+              addDiscovery(
+                "mystery"
+              );
+
+            }
+
+
+            if (
+              event.text.includes(
+                "새우"
+              )
+            ) {
+
+              addDiscovery(
+                "shrimp"
+              );
+
+            }
+
+          }
+
+        },
+        70
+      );
+
+  };
+
+
+/* =========================================================
+   통계
+========================================================= */
+
+function updateStats() {
+
+  document.getElementById(
+    "statVisits"
+  ).textContent =
+    visits;
+
+
+  document.getElementById(
+    "statTime"
+  ).textContent =
+    formatTime(
+      totalTime
+    );
+
+
+  document.getElementById(
+    "statRandom"
+  ).textContent =
+    randomCount;
+
+
+  document.getElementById(
+    "statDiscoveries"
+  ).textContent =
+    discoveries.length;
+
+
+  document.getElementById(
+    "statPhotos"
+  ).textContent =
+    photos.length;
+
+
+  document.getElementById(
+    "statShrimp"
+  ).textContent =
+    Math.floor(
+      shrimpTime / 60
     );
 
 }
 
 
-saveDiary.addEventListener(
-    "click",
-    () => {
+function formatTime(seconds) {
 
-        const text =
-            diaryText.value.trim();
+  if (
+    seconds < 60
+  ) {
+
+    return (
+      Math.floor(
+        seconds
+      )
+      +
+      "초"
+    );
+
+  }
 
 
-        if (!text) {
+  if (
+    seconds < 3600
+  ) {
 
-            alert(
-                "일기를 적어주세요!"
-            );
+    return (
+      Math.floor(
+        seconds / 60
+      )
+      +
+      "분"
+    );
 
-            return;
+  }
+
+
+  return (
+    Math.floor(
+      seconds / 3600
+    )
+    +
+    "시간"
+  );
+
+}
+
+
+/* =========================================================
+   사이트 이용 시간
+========================================================= */
+
+let sessionSeconds = 0;
+
+
+setInterval(
+  () => {
+
+    sessionSeconds++;
+
+    totalTime++;
+
+    shrimpTime++;
+
+
+    localStorage.setItem(
+      STORAGE.totalTime,
+      totalTime
+    );
+
+
+    localStorage.setItem(
+      STORAGE.shrimpTime,
+      shrimpTime
+    );
+
+  },
+  1000
+);
+
+
+/* =========================================================
+   설정
+========================================================= */
+
+function loadSettings() {
+
+  const input =
+    document.getElementById(
+      "targetInput"
+    );
+
+
+  const date =
+    new Date(
+      targetDate
+    );
+
+
+  const local =
+    new Date(
+      date.getTime()
+      -
+      date.getTimezoneOffset()
+      *
+      60000
+    )
+    .toISOString()
+    .slice(
+      0,
+      16
+    );
+
+
+  input.value =
+    local;
+
+}
+
+
+document
+  .getElementById("saveTarget")
+  .onclick = () => {
+
+    const input =
+      document.getElementById(
+        "targetInput"
+      );
+
+
+    if (
+      !input.value
+    ) {
+
+      alert(
+        "날짜를 선택해주세요."
+      );
+
+      return;
+
+    }
+
+
+    targetDate =
+      new Date(
+        input.value
+      ).toISOString();
+
+
+    localStorage.setItem(
+      STORAGE.target,
+      targetDate
+    );
+
+
+    updateCountdown();
+
+
+    showToast(
+      "⏳ 목표 날짜가 저장되었습니다."
+    );
+
+  };
+
+
+/* =========================================================
+   데이터 초기화
+========================================================= */
+
+document
+  .getElementById("resetData")
+  .onclick = () => {
+
+    const answer =
+      confirm(
+        "사이트의 저장 데이터를 전부 삭제할까요?\n\n"
+        +
+        "목표 날짜, 새우 이름, 사진, 발견 기록, 통계가 모두 초기화됩니다."
+      );
+
+
+    if (!answer) {
+
+      return;
+
+    }
+
+
+    Object.values(
+      STORAGE
+    ).forEach(
+      key =>
+        localStorage.removeItem(
+          key
+        )
+    );
+
+
+    location.reload();
+
+  };
+
+
+/* =========================================================
+   토스트
+========================================================= */
+
+let toastTimer;
+
+
+function showToast(
+  message
+) {
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+
+  toast.textContent =
+    message;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    toastTimer
+  );
+
+
+  toastTimer =
+    setTimeout(
+      () => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      2500
+    );
+
+}
+
+
+/* =========================================================
+   사진 보드
+========================================================= */
+
+const photoButton =
+  document.getElementById(
+    "photoButton"
+  );
+
+
+const memeBoard =
+  document.getElementById(
+    "meme-board"
+  );
+
+
+const closePhoto =
+  document.getElementById(
+    "closePhoto"
+  );
+
+
+const imageInput =
+  document.getElementById(
+    "imageInput"
+  );
+
+
+const addImage =
+  document.getElementById(
+    "addImage"
+  );
+
+
+const memeCanvas =
+  document.getElementById(
+    "memeCanvas"
+  );
+
+
+const memeWorld =
+  document.getElementById(
+    "memeWorld"
+  );
+
+
+const deleteImage =
+  document.getElementById(
+    "deleteImage"
+  );
+
+
+const removeBackground =
+  document.getElementById(
+    "removeBackground"
+  );
+
+
+const zoomIn =
+  document.getElementById(
+    "zoomIn"
+  );
+
+
+const zoomOut =
+  document.getElementById(
+    "zoomOut"
+  );
+
+
+const zoomReset =
+  document.getElementById(
+    "zoomReset"
+  );
+
+
+const zoomDisplay =
+  document.getElementById(
+    "zoomDisplay"
+  );
+
+
+let selectedImage =
+  null;
+
+
+let boardZoom =
+  Number(
+    localStorage.getItem(
+      "jun_board_zoom"
+    ) || 1
+  );
+
+
+let panX =
+  Number(
+    localStorage.getItem(
+      "jun_pan_x"
+    ) || 0
+  );
+
+
+let panY =
+  Number(
+    localStorage.getItem(
+      "jun_pan_y"
+    ) || 0
+  );
+
+
+function updateWorld() {
+
+  memeWorld.style.transform =
+    `translate(${panX}px,${panY}px) scale(${boardZoom})`;
+
+
+  zoomDisplay.textContent =
+    Math.round(
+      boardZoom * 100
+    )
+    +
+    "%";
+
+
+  localStorage.setItem(
+    "jun_board_zoom",
+    boardZoom
+  );
+
+
+  localStorage.setItem(
+    "jun_pan_x",
+    panX
+  );
+
+
+  localStorage.setItem(
+    "jun_pan_y",
+    panY
+  );
+
+}
+
+
+updateWorld();
+
+
+photoButton.onclick =
+  () => {
+
+    memeBoard.classList.add(
+      "open"
+    );
+
+    renderImages();
+
+  };
+
+
+closePhoto.onclick =
+  () => {
+
+    memeBoard.classList.remove(
+      "open"
+    );
+
+  };
+
+
+addImage.onclick =
+  () => {
+
+    imageInput.click();
+
+  };
+
+
+/* =========================================================
+   사진 업로드
+========================================================= */
+
+imageInput.addEventListener(
+  "change",
+  event => {
+
+    const files =
+      Array.from(
+        event.target.files
+      );
+
+
+    files.forEach(
+      file => {
+
+        if (
+          !file.type.startsWith(
+            "image/"
+          )
+        ) {
+
+          return;
 
         }
 
 
-        const now =
-            new Date();
+        const reader =
+          new FileReader();
 
 
-        const diary = {
+        reader.onload =
+          e => {
 
-            id:
-                Date.now(),
+            const data = {
 
-            date:
-                now.toLocaleDateString(
-                    "ko-KR",
-                    {
-                        year:
-                            "numeric",
+              id:
+                Date.now()
+                +
+                Math.random(),
 
-                        month:
-                            "2-digit",
+              src:
+                e.target.result,
 
-                        day:
-                            "2-digit"
-                    }
-                ),
+              x:
+                100
+                +
+                Math.random()
+                * 200,
 
-            text:
-                text
+              y:
+                100
+                +
+                Math.random()
+                * 200,
+
+              width:
+                240
+
+            };
+
+
+            photos.push(
+              data
+            );
+
+
+            savePhotos();
+
+            renderImages();
+
+          };
+
+
+        reader.readAsDataURL(
+          file
+        );
+
+      }
+    );
+
+
+    imageInput.value =
+      "";
+
+  }
+);
+
+
+/* =========================================================
+   사진 저장
+========================================================= */
+
+function savePhotos() {
+
+  try {
+
+    localStorage.setItem(
+      STORAGE.photos,
+      JSON.stringify(
+        photos
+      )
+    );
+
+  }
+
+  catch(error) {
+
+    alert(
+      "사진 저장 공간이 부족합니다.\n"
+      +
+      "사진을 조금 삭제해주세요."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   사진 렌더링
+========================================================= */
+
+function renderImages() {
+
+  memeWorld.innerHTML =
+    "";
+
+
+  photos.forEach(
+    data => {
+
+      createImage(
+        data
+      );
+
+    }
+  );
+
+}
+
+
+function createImage(
+  data
+) {
+
+  const img =
+    document.createElement(
+      "img"
+    );
+
+
+  img.className =
+    "meme-image";
+
+
+  img.src =
+    data.src;
+
+
+  img.style.left =
+    data.x + "px";
+
+
+  img.style.top =
+    data.y + "px";
+
+
+  img.style.width =
+    data.width + "px";
+
+
+  memeWorld.appendChild(
+    img
+  );
+
+
+  img.addEventListener(
+    "click",
+    event => {
+
+      event.stopPropagation();
+
+
+      document
+        .querySelectorAll(
+          ".meme-image.selected"
+        )
+        .forEach(
+          x =>
+            x.classList.remove(
+              "selected"
+            )
+        );
+
+
+      img.classList.add(
+        "selected"
+      );
+
+
+      selectedImage = {
+
+        data:
+          data,
+
+        element:
+          img
+
+      };
+
+    }
+  );
+
+
+  let dragging = false;
+
+  let startX = 0;
+
+  let startY = 0;
+
+  let originalX = 0;
+
+  let originalY = 0;
+
+
+  img.addEventListener(
+    "mousedown",
+    event => {
+
+      event.stopPropagation();
+
+
+      dragging = true;
+
+
+      startX =
+        event.clientX;
+
+
+      startY =
+        event.clientY;
+
+
+      originalX =
+        data.x;
+
+
+      originalY =
+        data.y;
+
+
+      img.style.cursor =
+        "grabbing";
+
+    }
+  );
+
+
+  window.addEventListener(
+    "mousemove",
+    event => {
+
+      if (!dragging) {
+        return;
+      }
+
+
+      data.x =
+        originalX
+        +
+        (
+          event.clientX
+          -
+          startX
+        )
+        /
+        boardZoom;
+
+
+      data.y =
+        originalY
+        +
+        (
+          event.clientY
+          -
+          startY
+        )
+        /
+        boardZoom;
+
+
+      img.style.left =
+        data.x + "px";
+
+
+      img.style.top =
+        data.y + "px";
+
+    }
+  );
+
+
+  window.addEventListener(
+    "mouseup",
+    () => {
+
+      if (dragging) {
+        savePhotos();
+      }
+
+
+      dragging = false;
+
+
+      img.style.cursor =
+        "grab";
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   사진 삭제
+========================================================= */
+
+deleteImage.onclick =
+  () => {
+
+    if (
+      !selectedImage
+    ) {
+
+      alert(
+        "먼저 사진을 클릭해주세요."
+      );
+
+      return;
+
+    }
+
+
+    const id =
+      selectedImage.data.id;
+
+
+    photos =
+      photos.filter(
+        x =>
+          x.id !== id
+      );
+
+
+    selectedImage.element.remove();
+
+
+    selectedImage =
+      null;
+
+
+    savePhotos();
+
+  };
+
+
+/* =========================================================
+   사이트 줌
+========================================================= */
+
+function changeZoom(
+  amount
+) {
+
+  boardZoom =
+    Math.max(
+      .25,
+
+      Math.min(
+        4,
+
+        boardZoom + amount
+      )
+    );
+
+
+  updateWorld();
+
+}
+
+
+zoomIn.onclick =
+  () =>
+    changeZoom(.25);
+
+
+zoomOut.onclick =
+  () =>
+    changeZoom(-.25);
+
+
+zoomReset.onclick =
+  () => {
+
+    boardZoom = 1;
+
+    panX = 0;
+
+    panY = 0;
+
+    updateWorld();
+
+  };
+
+
+memeCanvas.addEventListener(
+  "wheel",
+  event => {
+
+    event.preventDefault();
+
+
+    const oldZoom =
+      boardZoom;
+
+
+    const direction =
+      event.deltaY < 0
+      ? 1
+      : -1;
+
+
+    const newZoom =
+      Math.max(
+        .25,
+
+        Math.min(
+          4,
+
+          oldZoom
+          +
+          direction
+          *
+          .1
+        )
+      );
+
+
+    const rect =
+      memeCanvas.getBoundingClientRect();
+
+
+    const mouseX =
+      event.clientX
+      -
+      rect.left;
+
+
+    const mouseY =
+      event.clientY
+      -
+      rect.top;
+
+
+    const worldX =
+      (
+        mouseX - panX
+      )
+      /
+      oldZoom;
+
+
+    const worldY =
+      (
+        mouseY - panY
+      )
+      /
+      oldZoom;
+
+
+    boardZoom =
+      newZoom;
+
+
+    panX =
+      mouseX
+      -
+      worldX
+      *
+      boardZoom;
+
+
+    panY =
+      mouseY
+      -
+      worldY
+      *
+      boardZoom;
+
+
+    updateWorld();
+
+  },
+  {
+    passive: false
+  }
+);
+
+
+/* =========================================================
+   사진 보드 이동
+========================================================= */
+
+let panning = false;
+
+let panStartX = 0;
+
+let panStartY = 0;
+
+let startPanX = 0;
+
+let startPanY = 0;
+
+
+memeCanvas.addEventListener(
+  "mousedown",
+  event => {
+
+    if (
+      event.target.classList.contains(
+        "meme-image"
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    panning = true;
+
+
+    panStartX =
+      event.clientX;
+
+
+    panStartY =
+      event.clientY;
+
+
+    startPanX =
+      panX;
+
+
+    startPanY =
+      panY;
+
+
+    memeCanvas.style.cursor =
+      "grabbing";
+
+  }
+);
+
+
+window.addEventListener(
+  "mousemove",
+  event => {
+
+    if (!panning) {
+      return;
+    }
+
+
+    panX =
+      startPanX
+      +
+      (
+        event.clientX
+        -
+        panStartX
+      );
+
+
+    panY =
+      startPanY
+      +
+      (
+        event.clientY
+        -
+        panStartY
+      );
+
+
+    updateWorld();
+
+  }
+);
+
+
+window.addEventListener(
+  "mouseup",
+  () => {
+
+    panning = false;
+
+    memeCanvas.style.cursor =
+      "grab";
+
+  }
+);
+
+
+/* =========================================================
+   흰색 배경 제거
+========================================================= */
+
+function removeWhite(
+  dataURL
+) {
+
+  return new Promise(
+    resolve => {
+
+      const image =
+        new Image();
+
+
+      image.onload =
+        () => {
+
+          const canvas =
+            document.createElement(
+              "canvas"
+            );
+
+
+          const ctx =
+            canvas.getContext(
+              "2d"
+            );
+
+
+          canvas.width =
+            image.naturalWidth;
+
+
+          canvas.height =
+            image.naturalHeight;
+
+
+          ctx.drawImage(
+            image,
+            0,
+            0
+          );
+
+
+          const data =
+            ctx.getImageData(
+              0,
+              0,
+              canvas.width,
+              canvas.height
+            );
+
+
+          const pixels =
+            data.data;
+
+
+          const width =
+            canvas.width;
+
+
+          const height =
+            canvas.height;
+
+
+          const visited =
+            new Uint8Array(
+              width * height
+            );
+
+
+          const queue = [];
+
+
+          function white(
+            index
+          ) {
+
+            const r =
+              pixels[index];
+
+
+            const g =
+              pixels[index + 1];
+
+
+            const b =
+              pixels[index + 2];
+
+
+            const a =
+              pixels[index + 3];
+
+
+            return (
+              a > 0
+              &&
+              r > 235
+              &&
+              g > 235
+              &&
+              b > 235
+            );
+
+          }
+
+
+          function add(
+            x,
+            y
+          ) {
+
+            if (
+              x < 0 ||
+              y < 0 ||
+              x >= width ||
+              y >= height
+            ) {
+
+              return;
+
+            }
+
+
+            const position =
+              y * width + x;
+
+
+            if (
+              visited[position]
+            ) {
+
+              return;
+
+            }
+
+
+            if (
+              !white(
+                position * 4
+              )
+            ) {
+
+              return;
+
+            }
+
+
+            visited[position] =
+              1;
+
+
+            queue.push(
+              position
+            );
+
+          }
+
+
+          for (
+            let x = 0;
+            x < width;
+            x++
+          ) {
+
+            add(x,0);
+
+            add(
+              x,
+              height - 1
+            );
+
+          }
+
+
+          for (
+            let y = 0;
+            y < height;
+            y++
+          ) {
+
+            add(0,y);
+
+            add(
+              width - 1,
+              y
+            );
+
+          }
+
+
+          let index = 0;
+
+
+          while (
+            index < queue.length
+          ) {
+
+            const position =
+              queue[index++];
+
+
+            const x =
+              position % width;
+
+
+            const y =
+              Math.floor(
+                position / width
+              );
+
+
+            pixels[
+              position * 4 + 3
+            ] = 0;
+
+
+            add(
+              x + 1,
+              y
+            );
+
+            add(
+              x - 1,
+              y
+            );
+
+            add(
+              x,
+              y + 1
+            );
+
+            add(
+              x,
+              y - 1
+            );
+
+          }
+
+
+          ctx.putImageData(
+            data,
+            0,
+            0
+          );
+
+
+          resolve(
+            canvas.toDataURL(
+              "image/png"
+            )
+          );
 
         };
 
 
-        diaries.push(
-            diary
-        );
-
-
-        localStorage.setItem(
-            "junDiary",
-            JSON.stringify(
-                diaries
-            )
-        );
-
-
-        createBalloon(
-            diary
-        );
-
-
-        diaryText.value =
-            "";
-
-
-        diaryPanel.classList.remove(
-            "open"
-        );
+      image.src =
+        dataURL;
 
     }
-);
+  );
+
+}
 
 
-diaries.forEach(
-    diary => {
+removeBackground.onclick =
+  async () => {
 
-        createBalloon(
-            diary
-        );
-
-    }
-);
-
-
-/* =====================================================
-   풍선 움직임
-===================================================== */
-
-function animateBalloons() {
-
-    const width =
-        window.innerWidth;
-
-    const height =
-        window.innerHeight;
-
-
-    balloons.forEach(
-        b => {
-
-            b.x += b.vx;
-            b.y += b.vy;
-
-
-            const rect =
-                b.element
-                .getBoundingClientRect();
-
-
-            const w =
-                rect.width;
-
-            const h =
-                rect.height;
-
-
-            if (b.x <= 0) {
-
-                b.x = 0;
-
-                b.vx =
-                    Math.abs(
-                        b.vx
-                    );
-
-            }
-
-
-            if (
-                b.x + w >= width
-            ) {
-
-                b.x =
-                    width - w;
-
-                b.vx =
-                    -Math.abs(
-                        b.vx
-                    );
-
-            }
-
-
-            if (b.y <= 0) {
-
-                b.y = 0;
-
-                b.vy =
-                    Math.abs(
-                        b.vy
-                    );
-
-            }
-
-
-            if (
-                b.y + h >= height
-            ) {
-
-                b.y =
-                    height - h;
-
-                b.vy =
-                    -Math.abs(
-                        b.vy
-                    );
-
-            }
-
-
-            b.element.style.left =
-                b.x + "px";
-
-            b.element.style.top =
-                b.y + "px";
-
-        }
-    );
-
-
-    for (
-        let i = 0;
-        i < balloons.length;
-        i++
+    if (
+      !selectedImage
     ) {
 
-        for (
-            let j = i + 1;
-            j < balloons.length;
-            j++
-        ) {
+      alert(
+        "먼저 사진을 클릭해주세요."
+      );
 
-            const a =
-                balloons[i];
-
-            const b =
-                balloons[j];
-
-
-            const ar =
-                a.element
-                .getBoundingClientRect();
-
-
-            const br =
-                b.element
-                .getBoundingClientRect();
-
-
-            const hit =
-                ar.left < br.right &&
-                ar.right > br.left &&
-                ar.top < br.bottom &&
-                ar.bottom > br.top;
-
-
-            if (hit) {
-
-                const vx =
-                    a.vx;
-
-                const vy =
-                    a.vy;
-
-
-                a.vx =
-                    b.vx;
-
-                a.vy =
-                    b.vy;
-
-
-                b.vx =
-                    vx;
-
-                b.vy =
-                    vy;
-
-            }
-
-        }
+      return;
 
     }
 
 
-    requestAnimationFrame(
-        animateBalloons
-    );
+    removeBackground.disabled =
+      true;
 
-}
 
+    removeBackground.textContent =
+      "⏳ 처리 중";
 
-animateBalloons();
-
-
-/* =====================================================
-   일기 보기
-===================================================== */
-
-const diaryView =
-    document.getElementById(
-        "diaryView"
-    );
-
-const diaryViewDate =
-    document.getElementById(
-        "diaryViewDate"
-    );
-
-const diaryViewText =
-    document.getElementById(
-        "diaryViewText"
-    );
-
-const deleteDiary =
-    document.getElementById(
-        "deleteDiary"
-    );
-
-const closeView =
-    document.getElementById(
-        "closeView"
-    );
-
-
-function showDiary(diary) {
-
-    selectedDiaryId =
-        diary.id;
-
-
-    diaryViewDate.textContent =
-        "📅 " + diary.date;
-
-
-    diaryViewText.textContent =
-        diary.text;
-
-
-    diaryView.classList.add(
-        "show"
-    );
-
-}
-
-
-closeView.addEventListener(
-    "click",
-    () => {
-
-        diaryView.classList.remove(
-            "show"
-        );
-
-        selectedDiaryId =
-            null;
-
-    }
-);
-
-
-deleteDiary.addEventListener(
-    "click",
-    () => {
-
-        if (
-            selectedDiaryId === null
-        ) {
-
-            return;
-
-        }
-
-
-        if (
-            !confirm(
-                "이 일기를 삭제할까요?"
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        diaries =
-            diaries.filter(
-                diary =>
-                    diary.id !==
-                    selectedDiaryId
-            );
-
-
-        localStorage.setItem(
-            "junDiary",
-            JSON.stringify(
-                diaries
-            )
-        );
-
-
-        balloons =
-            balloons.filter(
-                balloon => {
-
-                    if (
-                        balloon.diary.id
-                        ===
-                        selectedDiaryId
-                    ) {
-
-                        balloon.element.remove();
-
-                        return false;
-
-                    }
-
-                    return true;
-
-                }
-            );
-
-
-        diaryView.classList.remove(
-            "show"
-        );
-
-
-        selectedDiaryId =
-            null;
-
-    }
-);
-
-
-/* =====================================================
-   =====================================================
-   짤방 시스템
-===================================================== */
-
-const memeButton =
-    document.getElementById(
-        "memeButton"
-    );
-
-const memeBoard =
-    document.getElementById(
-        "meme-board"
-    );
-
-const closeMeme =
-    document.getElementById(
-        "close-meme"
-    );
-
-const addImage =
-    document.getElementById(
-        "add-image"
-    );
-
-const imageInput =
-    document.getElementById(
-        "image-input"
-    );
-
-const memeCanvas =
-    document.getElementById(
-        "meme-canvas"
-    );
-
-const memeWorld =
-    document.getElementById(
-        "meme-world"
-    );
-
-const deleteImage =
-    document.getElementById(
-        "delete-image"
-    );
-
-const removeBackground =
-    document.getElementById(
-        "remove-background"
-    );
-
-const zoomIn =
-    document.getElementById(
-        "zoom-in"
-    );
-
-const zoomOut =
-    document.getElementById(
-        "zoom-out"
-    );
-
-const zoomReset =
-    document.getElementById(
-        "zoom-reset"
-    );
-
-const zoomDisplay =
-    document.getElementById(
-        "zoom-display"
-    );
-
-
-/* =====================================================
-   이미지 데이터
-===================================================== */
-
-let memeImages =
-    JSON.parse(
-        localStorage.getItem(
-            "junMemeImages"
-        ) || "[]"
-    );
-
-
-let selectedImage =
-    null;
-
-
-/* =====================================================
-   전체 보드 줌
-===================================================== */
-
-let boardZoom =
-    Number(
-        localStorage.getItem(
-            "junBoardZoom"
-        ) || 1
-    );
-
-
-let boardPanX =
-    Number(
-        localStorage.getItem(
-            "junBoardPanX"
-        ) || 0
-    );
-
-
-let boardPanY =
-    Number(
-        localStorage.getItem(
-            "junBoardPanY"
-        ) || 0
-    );
-
-
-function updateWorldTransform() {
-
-    memeWorld.style.transform =
-        `translate(
-            ${boardPanX}px,
-            ${boardPanY}px
-        )
-        scale(
-            ${boardZoom}
-        )`;
-
-
-    zoomDisplay.textContent =
-        Math.round(
-            boardZoom * 100
-        ) + "%";
-
-
-    localStorage.setItem(
-        "junBoardZoom",
-        boardZoom
-    );
-
-    localStorage.setItem(
-        "junBoardPanX",
-        boardPanX
-    );
-
-    localStorage.setItem(
-        "junBoardPanY",
-        boardPanY
-    );
-
-}
-
-
-updateWorldTransform();
-
-
-function changeZoom(amount) {
-
-    const oldZoom =
-        boardZoom;
-
-
-    boardZoom =
-        Math.max(
-            .25,
-            Math.min(
-                4,
-                boardZoom + amount
-            )
-        );
-
-
-    /*
-       마우스 휠로 확대할 때
-       화면 중앙을 기준으로 확대
-    */
-
-    const rect =
-        memeCanvas.getBoundingClientRect();
-
-
-    const centerX =
-        rect.width / 2;
-
-    const centerY =
-        rect.height / 2;
-
-
-    const worldX =
-        (centerX - boardPanX)
-        / oldZoom;
-
-
-    const worldY =
-        (centerY - boardPanY)
-        / oldZoom;
-
-
-    boardPanX =
-        centerX
-        -
-        worldX * boardZoom;
-
-
-    boardPanY =
-        centerY
-        -
-        worldY * boardZoom;
-
-
-    updateWorldTransform();
-
-}
-
-
-zoomIn.addEventListener(
-    "click",
-    () => {
-
-        changeZoom(
-            .25
-        );
-
-    }
-);
-
-
-zoomOut.addEventListener(
-    "click",
-    () => {
-
-        changeZoom(
-            -.25
-        );
-
-    }
-);
-
-
-zoomReset.addEventListener(
-    "click",
-    () => {
-
-        boardZoom = 1;
-
-        boardPanX = 0;
-
-        boardPanY = 0;
-
-        updateWorldTransform();
-
-    }
-);
-
-
-/* =====================================================
-   마우스 휠로 전체 확대
-===================================================== */
-
-memeCanvas.addEventListener(
-    "wheel",
-    event => {
-
-        /*
-           이미지 위에서도
-           전체 보드가 확대됨
-        */
-
-        event.preventDefault();
-
-
-        const oldZoom =
-            boardZoom;
-
-
-        const direction =
-            event.deltaY < 0
-            ? 1
-            : -1;
-
-
-        const newZoom =
-            Math.max(
-                .25,
-                Math.min(
-                    4,
-                    oldZoom
-                    +
-                    direction * .1
-                )
-            );
-
-
-        const rect =
-            memeCanvas
-            .getBoundingClientRect();
-
-
-        /*
-           마우스 위치를 기준으로 줌
-        */
-
-        const mouseX =
-            event.clientX
-            -
-            rect.left;
-
-
-        const mouseY =
-            event.clientY
-            -
-            rect.top;
-
-
-        const worldX =
-            (mouseX - boardPanX)
-            / oldZoom;
-
-
-        const worldY =
-            (mouseY - boardPanY)
-            / oldZoom;
-
-
-        boardZoom =
-            newZoom;
-
-
-        boardPanX =
-            mouseX
-            -
-            worldX * boardZoom;
-
-
-        boardPanY =
-            mouseY
-            -
-            worldY * boardZoom;
-
-
-        updateWorldTransform();
-
-    },
-    {
-        passive: false
-    }
-);
-
-
-/* =====================================================
-   보드 이동
-===================================================== */
-
-let panning =
-    false;
-
-let panStartX =
-    0;
-
-let panStartY =
-    0;
-
-let originalPanX =
-    0;
-
-let originalPanY =
-    0;
-
-
-memeCanvas.addEventListener(
-    "mousedown",
-    event => {
-
-        /*
-           이미지 자체를 누른 경우에는
-           이미지 이동을 우선
-        */
-
-        if (
-            event.target.classList.contains(
-                "meme-image"
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        panning = true;
-
-        memeCanvas.style.cursor =
-            "grabbing";
-
-
-        panStartX =
-            event.clientX;
-
-        panStartY =
-            event.clientY;
-
-
-        originalPanX =
-            boardPanX;
-
-        originalPanY =
-            boardPanY;
-
-    }
-);
-
-
-window.addEventListener(
-    "mousemove",
-    event => {
-
-        if (!panning) {
-
-            return;
-
-        }
-
-
-        boardPanX =
-            originalPanX
-            +
-            (
-                event.clientX
-                -
-                panStartX
-            );
-
-
-        boardPanY =
-            originalPanY
-            +
-            (
-                event.clientY
-                -
-                panStartY
-            );
-
-
-        updateWorldTransform();
-
-    }
-);
-
-
-window.addEventListener(
-    "mouseup",
-    () => {
-
-        panning = false;
-
-        memeCanvas.style.cursor =
-            "grab";
-
-    }
-);
-
-
-/* =====================================================
-   보드 열기
-===================================================== */
-
-memeButton.addEventListener(
-    "click",
-    () => {
-
-        memeBoard.classList.add(
-            "open"
-        );
-
-        renderAllImages();
-
-    }
-);
-
-
-/* =====================================================
-   보드 닫기
-===================================================== */
-
-closeMeme.addEventListener(
-    "click",
-    () => {
-
-        memeBoard.classList.remove(
-            "open"
-        );
-
-        selectedImage =
-            null;
-
-    }
-);
-
-
-/* =====================================================
-   이미지 추가
-===================================================== */
-
-addImage.addEventListener(
-    "click",
-    () => {
-
-        imageInput.click();
-
-    }
-);
-
-
-/* =====================================================
-   이미지 업로드
-===================================================== */
-
-imageInput.addEventListener(
-    "change",
-    event => {
-
-        const files =
-            Array.from(
-                event.target.files
-            );
-
-
-        files.forEach(
-            file => {
-
-                if (
-                    !file.type.startsWith(
-                        "image/"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                const reader =
-                    new FileReader();
-
-
-                reader.onload =
-                    e => {
-
-                        const imageData = {
-
-                            id:
-                                Date.now()
-                                +
-                                Math.random(),
-
-                            src:
-                                e.target.result,
-
-                            x:
-                                100
-                                +
-                                Math.random()
-                                * 200,
-
-                            y:
-                                100
-                                +
-                                Math.random()
-                                * 200,
-
-                            width:
-                                240,
-
-                            backgroundRemoved:
-                                false
-
-                        };
-
-
-                        memeImages.push(
-                            imageData
-                        );
-
-
-                        saveMemeImages();
-
-
-                        createMemeImage(
-                            imageData
-                        );
-
-                    };
-
-
-                reader.readAsDataURL(
-                    file
-                );
-
-            }
-        );
-
-
-        imageInput.value =
-            "";
-
-    }
-);
-
-
-/* =====================================================
-   이미지 저장
-===================================================== */
-
-function saveMemeImages() {
 
     try {
 
-        localStorage.setItem(
-            "junMemeImages",
-            JSON.stringify(
-                memeImages
-            )
+      const newSrc =
+        await removeWhite(
+          selectedImage.data.src
         );
 
+
+      selectedImage.data.src =
+        newSrc;
+
+
+      selectedImage.element.src =
+        newSrc;
+
+
+      savePhotos();
+
+
+      showToast(
+        "🤍 흰색 배경을 제거했습니다."
+      );
+
     }
+
     catch(error) {
 
-        alert(
-            "저장 공간이 부족합니다.\n\n"
-            +
-            "이미지가 너무 크거나 많을 수 있어요."
-        );
+      console.error(
+        error
+      );
+
+
+      alert(
+        "배경 제거에 실패했습니다."
+      );
 
     }
 
-}
+
+    removeBackground.disabled =
+      false;
 
 
-/* =====================================================
-   이미지 생성
-===================================================== */
+    removeBackground.textContent =
+      "🤍 흰색 제거";
 
-function createMemeImage(data) {
-
-    const img =
-        document.createElement(
-            "img"
-        );
+  };
 
 
-    img.className =
-        "meme-image";
+/* =========================================================
+   사진 보드 초기화
+========================================================= */
+
+renderImages();
 
 
-    img.src =
-        data.src;
+/* =========================================================
+   비밀 기능
+========================================================= */
+
+const secretDot =
+  document.getElementById(
+    "secretDot"
+  );
 
 
-    img.style.left =
-        data.x + "px";
+secretDot.onclick =
+  () => {
+
+    secretClicks++;
 
 
-    img.style.top =
-        data.y + "px";
-
-
-    img.style.width =
-        data.width + "px";
-
-
-    img.dataset.id =
-        data.id;
-
-
-    memeWorld.appendChild(
-        img
+    localStorage.setItem(
+      STORAGE.secretClicks,
+      secretClicks
     );
 
 
     /*
-       이미지 선택
+       처음 누른 순간부터 발견.
     */
 
-    img.addEventListener(
-        "click",
-        event => {
-
-            event.stopPropagation();
-
-            selectMemeImage(
-                data,
-                img
-            );
-
-        }
+    addDiscovery(
+      "secret_click"
     );
 
 
     /*
-       이미지 드래그
-       - 보드 확대율을 고려
+       특정 횟수에 도달하면
+       조금 이상한 메시지를 보여준다.
     */
 
-    let dragging =
-        false;
-
-
-    let dragStartX =
-        0;
-
-    let dragStartY =
-        0;
-
-
-    let originalX =
-        0;
-
-    let originalY =
-        0;
-
-
-    img.addEventListener(
-        "mousedown",
-        event => {
-
-            event.stopPropagation();
-
-            dragging =
-                true;
-
-
-            dragStartX =
-                event.clientX;
-
-            dragStartY =
-                event.clientY;
-
-
-            originalX =
-                data.x;
-
-            originalY =
-                data.y;
-
-
-            img.style.cursor =
-                "grabbing";
-
-        }
-    );
-
-
-    window.addEventListener(
-        "mousemove",
-        event => {
-
-            if (!dragging) {
-
-                return;
-
-            }
-
-
-            data.x =
-                originalX
-                +
-                (
-                    event.clientX
-                    -
-                    dragStartX
-                )
-                /
-                boardZoom;
-
-
-            data.y =
-                originalY
-                +
-                (
-                    event.clientY
-                    -
-                    dragStartY
-                )
-                /
-                boardZoom;
-
-
-            img.style.left =
-                data.x + "px";
-
-
-            img.style.top =
-                data.y + "px";
-
-        }
-    );
-
-
-    window.addEventListener(
-        "mouseup",
-        () => {
-
-            if (dragging) {
-
-                saveMemeImages();
-
-            }
-
-
-            dragging =
-                false;
-
-
-            img.style.cursor =
-                "grab";
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   이미지 선택
-===================================================== */
-
-function selectMemeImage(
-    data,
-    element
-) {
-
-    document
-        .querySelectorAll(
-            ".meme-image.selected"
-        )
-        .forEach(
-            img =>
-                img.classList.remove(
-                    "selected"
-                )
-        );
-
-
-    element.classList.add(
-        "selected"
-    );
-
-
-    selectedImage = {
-
-        data:
-            data,
-
-        element:
-            element
-
-    };
-
-}
-
-
-/* =====================================================
-   선택 이미지 삭제
-===================================================== */
-
-deleteImage.addEventListener(
-    "click",
-    () => {
-
-        if (
-            !selectedImage
-        ) {
-
-            alert(
-                "먼저 이미지를 클릭해 주세요."
-            );
-
-            return;
-
-        }
-
-
-        const id =
-            selectedImage.data.id;
-
-
-        memeImages =
-            memeImages.filter(
-                image =>
-                    image.id !== id
-            );
-
-
-        selectedImage.element.remove();
-
-
-        selectedImage =
-            null;
-
-
-        saveMemeImages();
+    if (
+      secretClicks === 1
+    ) {
+
+      showToast(
+        "..."
+      );
 
     }
+
+    else if (
+      secretClicks === 3
+    ) {
+
+      showToast(
+        "🕵️ 이 버튼을 왜 계속 누르고 있지?"
+      );
+
+    }
+
+    else if (
+      secretClicks === 7
+    ) {
+
+      showToast(
+        "🔓 뭔가 반응했다."
+      );
+
+    }
+
+    else if (
+      secretClicks >= 10
+      &&
+      Math.random() < .25
+    ) {
+
+      showToast(
+        "🦐 새우가 이걸 보고 있습니다."
+      );
+
+    }
+
+  };
+
+
+/* =========================================================
+   새우 발견 기록
+========================================================= */
+
+shrimpElement.addEventListener(
+  "click",
+  () => {
+
+    addDiscovery(
+      "shrimp"
+    );
+
+  }
 );
 
 
-/* =====================================================
-   캔버스 클릭
-===================================================== */
+/* =========================================================
+   사진 발견 기록
+========================================================= */
 
-memeCanvas.addEventListener(
-    "click",
-    event => {
+imageInput.addEventListener(
+  "change",
+  () => {
 
-        if (
-            event.target ===
-            memeCanvas
-        ) {
+    if (
+      photos.length > 0
+    ) {
 
-            document
-                .querySelectorAll(
-                    ".meme-image.selected"
-                )
-                .forEach(
-                    img =>
-                        img.classList.remove(
-                            "selected"
-                        )
-                );
-
-
-            selectedImage =
-                null;
-
-        }
+      addDiscovery(
+        "photo"
+      );
 
     }
+
+  }
 );
 
 
-/* =====================================================
-   모든 이미지 렌더링
-===================================================== */
-
-function renderAllImages() {
-
-    memeWorld
-        .querySelectorAll(
-            ".meme-image"
-        )
-        .forEach(
-            img =>
-                img.remove()
-        );
-
-
-    memeImages.forEach(
-        data => {
-
-            createMemeImage(
-                data
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   =====================================================
-   흰색 배경 제거
-   =====================================================
-===================================================== */
-
-/*
-   이미지의 가장자리에서 시작하여
-   흰색에 가까운 영역을 찾아 투명하게 만든다.
-
-   따라서 캐릭터 내부의 흰색까지
-   무조건 지우는 방식이 아니다.
-*/
-
-
-function removeWhiteBackground(
-    imageDataURL
-) {
-
-    return new Promise(
-        resolve => {
-
-            const img =
-                new Image();
-
-
-            img.onload =
-                () => {
-
-                    const canvas =
-                        document.createElement(
-                            "canvas"
-                        );
-
-
-                    const ctx =
-                        canvas.getContext(
-                            "2d"
-                        );
-
-
-                    canvas.width =
-                        img.naturalWidth;
-
-
-                    canvas.height =
-                        img.naturalHeight;
-
-
-                    ctx.drawImage(
-                        img,
-                        0,
-                        0
-                    );
-
-
-                    const imageData =
-                        ctx.getImageData(
-                            0,
-                            0,
-                            canvas.width,
-                            canvas.height
-                        );
-
-
-                    const pixels =
-                        imageData.data;
-
-
-                    const width =
-                        canvas.width;
-
-                    const height =
-                        canvas.height;
-
-
-                    /*
-                       방문 여부
-                    */
-
-                    const visited =
-                        new Uint8Array(
-                            width * height
-                        );
-
-
-                    /*
-                       큐
-                    */
-
-                    const queue = [];
-
-
-                    /*
-                       흰색 판단
-
-                       숫자가 작을수록
-                       더 엄격하게 흰색만 제거
-                    */
-
-                    function isWhite(
-                        index
-                    ) {
-
-                        const r =
-                            pixels[index];
-
-                        const g =
-                            pixels[index + 1];
-
-                        const b =
-                            pixels[index + 2];
-
-                        const a =
-                            pixels[index + 3];
-
-
-                        if (a === 0) {
-
-                            return true;
-
-                        }
-
-
-                        return (
-                            r > 235 &&
-                            g > 235 &&
-                            b > 235
-                        );
-
-                    }
-
-
-                    /*
-                       가장자리 픽셀 넣기
-                    */
-
-                    function addPixel(
-                        x,
-                        y
-                    ) {
-
-                        if (
-                            x < 0 ||
-                            y < 0 ||
-                            x >= width ||
-                            y >= height
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const pos =
-                            y * width + x;
-
-
-                        if (
-                            visited[pos]
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const index =
-                            pos * 4;
-
-
-                        if (
-                            !isWhite(index)
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        visited[pos] =
-                            1;
-
-
-                        queue.push(
-                            pos
-                        );
-
-                    }
-
-
-                    /*
-                       위/아래/왼쪽/오른쪽
-                    */
-
-                    for (
-                        let x = 0;
-                        x < width;
-                        x++
-                    ) {
-
-                        addPixel(
-                            x,
-                            0
-                        );
-
-                        addPixel(
-                            x,
-                            height - 1
-                        );
-
-                    }
-
-
-                    for (
-                        let y = 0;
-                        y < height;
-                        y++
-                    ) {
-
-                        addPixel(
-                            0,
-                            y
-                        );
-
-                        addPixel(
-                            width - 1,
-                            y
-                        );
-
-                    }
-
-
-                    /*
-                       Flood Fill
-                    */
-
-                    let index = 0;
-
-
-                    while (
-                        index <
-                        queue.length
-                    ) {
-
-                        const pos =
-                            queue[index++];
-
-
-                        const x =
-                            pos % width;
-
-
-                        const y =
-                            Math.floor(
-                                pos / width
-                            );
-
-
-                        const pixelIndex =
-                            pos * 4;
-
-
-                        /*
-                           투명하게 만들기
-                        */
-
-                        pixels[
-                            pixelIndex + 3
-                        ] = 0;
-
-
-                        /*
-                           주변 픽셀
-                        */
-
-                        addPixel(
-                            x + 1,
-                            y
-                        );
-
-                        addPixel(
-                            x - 1,
-                            y
-                        );
-
-                        addPixel(
-                            x,
-                            y + 1
-                        );
-
-                        addPixel(
-                            x,
-                            y - 1
-                        );
-
-                    }
-
-
-                    ctx.putImageData(
-                        imageData,
-                        0,
-                        0
-                    );
-
-
-                    resolve(
-                        canvas.toDataURL(
-                            "image/png"
-                        )
-                    );
-
-                };
-
-
-            img.src =
-                imageDataURL;
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   배경 제거 버튼
-===================================================== */
-
-removeBackground.addEventListener(
-    "click",
-    async () => {
-
-        if (
-            !selectedImage
-        ) {
-
-            alert(
-                "먼저 배경을 제거할 이미지를 클릭해 주세요."
-            );
-
-            return;
-
-        }
-
-
-        const data =
-            selectedImage.data;
-
-
-        const element =
-            selectedImage.element;
-
-
-        if (
-            data.backgroundRemoved
-        ) {
-
-            alert(
-                "이 이미지는 이미 배경을 제거했습니다."
-            );
-
-            return;
-
-        }
-
-
-        removeBackground.disabled =
-            true;
-
-
-        removeBackground.textContent =
-            "⏳ 처리 중...";
-
-
-        try {
-
-            const newImage =
-                await removeWhiteBackground(
-                    data.src
-                );
-
-
-            data.src =
-                newImage;
-
-
-            data.backgroundRemoved =
-                true;
-
-
-            /*
-               현재 선택된 이미지 교체
-            */
-
-            element.src =
-                newImage;
-
-
-            saveMemeImages();
-
-
-        }
-        catch(error) {
-
-            console.error(
-                error
-            );
-
-
-            alert(
-                "배경 제거 중 문제가 발생했습니다."
-            );
-
-        }
-
-
-        removeBackground.disabled =
-            false;
-
-
-        removeBackground.textContent =
-            "🤍 배경 제거";
-
-    }
-);
-
-
-/* =====================================================
-   ESC로 짤방 보드 닫기
-===================================================== */
+/* =========================================================
+   ESC로 패널 닫기
+========================================================= */
 
 document.addEventListener(
-    "keydown",
-    event => {
+  "keydown",
+  event => {
 
-        if (
-            event.key === "Escape"
-            &&
-            memeBoard.classList.contains(
-                "open"
-            )
-        ) {
+    if (
+      event.key !== "Escape"
+    ) {
 
-            memeBoard.classList.remove(
-                "open"
-            );
-
-        }
+      return;
 
     }
+
+
+    document
+      .querySelectorAll(
+        ".panel.open"
+      )
+      .forEach(
+        panel =>
+          panel.classList.remove(
+            "open"
+          )
+      );
+
+
+    memeBoard.classList.remove(
+      "open"
+    );
+
+  }
 );
 
 
-/* =====================================================
-   창 크기 변경
-===================================================== */
+/* =========================================================
+   초기 화면
+========================================================= */
 
-window.addEventListener(
-    "resize",
-    () => {
+renderDiscoveries();
 
-        balloons.forEach(
-            b => {
-
-                b.x =
-                    Math.min(
-                        b.x,
-                        window.innerWidth - 140
-                    );
+updateStats();
 
 
-                b.y =
-                    Math.min(
-                        b.y,
-                        window.innerHeight - 190
-                    );
+/* =========================================================
+   작은 랜덤 새우 행동
+========================================================= */
 
-            }
-        );
+setInterval(
+  () => {
+
+    if (
+      Math.random() < .3
+    ) {
+
+      shrimpTalk();
 
     }
+
+  },
+  30000
 );
 
 </script>
