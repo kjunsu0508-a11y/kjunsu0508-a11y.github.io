@@ -3,2748 +3,1122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>준수가 한국으로 돌아가기까지...</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Gowun+Dodum&display=swap"
-rel="stylesheet">
+<title>Junsoo's Room</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Press+Start+2P&display=swap');
 
 * {
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
 }
 
 body {
-    margin: 0;
-    background: #111;
-    color: white;
-    font-family:
-        "Fredoka",
-        "Gowun Dodum",
-        sans-serif;
+    font-family: 'Jua', sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.9), transparent 25%),
+        linear-gradient(135deg,#dff6ff,#f9e8ff,#fff7d6);
+    color: #252033;
     overflow-x: hidden;
+    transition: filter .5s, background .5s;
 }
 
+/* =========================
+   MAIN
+========================= */
 
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-.time-section {
-
-    width: 100%;
-
-    height: 100vh;
-    height: 100svh;
-
+#app {
     min-height: 100vh;
-    min-height: 100svh;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
     position: relative;
-
     overflow: hidden;
-
-    padding: 30px 20px;
-
-    transition:
-        background 1.5s ease;
 }
 
-
-.page-title {
-
-    position: absolute;
-
-    top: 7vh;
-
-    left: 20px;
-    right: 20px;
-
+.header {
     text-align: center;
-
-    font-size:
-        clamp(
-            38px,
-            6vw,
-            82px
-        );
-
-    font-weight: 700;
-
-    line-height: 1.05;
-
-    letter-spacing: -3px;
-
-    text-shadow:
-        4px 5px 0 rgba(0,0,0,.2);
-
-    z-index: 5;
+    padding-top: 55px;
+    position: relative;
+    z-index: 10;
 }
 
-
-.unit {
-
-    font-size:
-        clamp(
-            16px,
-            2.4vw,
-            30px
-        );
-
-    letter-spacing: 8px;
-
-    font-weight: 600;
-
-    margin-bottom: 18px;
-
-    color:
-        rgba(255,255,255,.7);
-}
-
-
-.number {
-
-    width: 100%;
-
-    text-align: center;
-
-    padding: 0 10px;
-
-    font-size:
-        clamp(
-            48px,
-            12vw,
-            165px
-        );
-
-    line-height: 1;
-
-    font-weight: 700;
-
-    letter-spacing: -4px;
-
-    font-variant-numeric:
-        tabular-nums;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-shadow:
-        5px 7px 0 rgba(0,0,0,.18);
-}
-
-
-.description {
-
-    margin-top: 24px;
-
-    font-size:
-        clamp(
-            16px,
-            2.3vw,
-            27px
-        );
-
-    color:
-        rgba(255,255,255,.65);
-}
-
-
-/* =========================================================
-   BACKGROUNDS
-========================================================= */
-
-.years {
-    background:
-        linear-gradient(
-            180deg,
-            #172b48,
-            #29425e
-        );
-}
-
-.months {
-    background:
-        linear-gradient(
-            180deg,
-            #29425e,
-            #443e68
-        );
-}
-
-.weeks {
-    background:
-        linear-gradient(
-            180deg,
-            #443e68,
-            #59466a
-        );
-}
-
-.days {
-    background:
-        linear-gradient(
-            180deg,
-            #59466a,
-            #6d514d
-        );
-}
-
-.hours {
-    background:
-        linear-gradient(
-            180deg,
-            #6d514d,
-            #78513c
-        );
-}
-
-.minutes {
-    background:
-        linear-gradient(
-            180deg,
-            #78513c,
-            #52694f
-        );
-}
-
-.seconds {
-    background:
-        linear-gradient(
-            180deg,
-            #52694f,
-            #263f40
-        );
-}
-
-
-/* =========================================================
-   ROAMING PET AREA
-========================================================= */
-
-#pet-layer {
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 9000;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   SHRIMP
-========================================================= */
-
-.roaming-shrimp {
-
-    position: absolute;
-
-    width: 72px;
-    height: 72px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    font-size: 58px;
-
-    user-select: none;
-
-    pointer-events: auto;
-
-    cursor: pointer;
-
-    filter:
-        drop-shadow(
-            3px 5px 4px
-            rgba(0,0,0,.25)
-        );
-
-    transition:
-        filter .2s;
-}
-
-
-.roaming-shrimp:hover {
-
-    filter:
-        drop-shadow(
-            3px 5px 8px
-            rgba(255,255,255,.45)
-        );
-
-}
-
-
-.shrimp-name-tag {
-
-    position: absolute;
-
-    left: 50%;
-
-    top: -18px;
-
-    transform:
-        translateX(-50%);
-
-    white-space: nowrap;
-
-    font-family:
-        "Gowun Dodum",
-        sans-serif;
-
-    font-size: 11px;
-
-    background:
-        rgba(0,0,0,.65);
-
-    color: white;
-
-    padding:
-        3px 6px;
-
-    border-radius: 5px;
-
-    pointer-events: none;
-
-    opacity: 0;
-
-    transition:
-        opacity .2s;
-}
-
-
-.roaming-shrimp:hover
-.shrimp-name-tag {
-
-    opacity: 1;
-}
-
-
-@keyframes shrimpBounce {
-
-    0%,
-    100% {
-
-        transform:
-            rotate(-6deg)
-            scale(1);
-
-    }
-
-    50% {
-
-        transform:
-            rotate(6deg)
-            scale(1.08);
-
-    }
-
-}
-
-
-.roaming-shrimp span {
-
-    animation:
-        shrimpBounce
-        1.8s
-        ease-in-out
-        infinite;
-
-}
-
-
-/* =========================================================
-   INK EVENT
-========================================================= */
-
-#ink-overlay {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 40000;
-
-    pointer-events: none;
-
-    opacity: 0;
-
-    transition:
-        opacity .35s;
-
-    overflow: hidden;
-}
-
-
-#ink-overlay.active {
-
-    opacity: 1;
-
-}
-
-
-.ink-splat {
-
-    position: absolute;
-
-    border-radius: 50% 45% 55% 40%;
-
-    transform:
-        scale(0);
-
-    animation:
-        inkAppear
-        .45s
-        ease-out
-        forwards;
-}
-
-
-@keyframes inkAppear {
-
-    to {
-
-        transform:
-            scale(1);
-
-    }
-
-}
-
-
-.ink-message {
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%,-50%)
-        rotate(-4deg);
-
-    font-size:
-        clamp(
-            40px,
-            9vw,
-            110px
-        );
-
-    font-weight: 700;
-
-    color: white;
-
-    text-shadow:
-        5px 6px 0 rgba(0,0,0,.4);
-
-    opacity: 0;
-
-    animation:
-        inkText
-        .5s
-        .25s
-        forwards;
-
-}
-
-
-@keyframes inkText {
-
-    to {
-
-        opacity: 1;
-
-    }
-
-}
-
-
-/* =========================================================
-   MENU
-========================================================= */
-
-.menu {
-
-    position: fixed;
-
-    right: 18px;
-    bottom: 18px;
-
-    z-index: 10000;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 9px;
-}
-
-
-.menu-button {
-
-    width: 60px;
-    height: 60px;
-
-    border:
-        3px solid #4b392a;
-
-    border-radius: 10px;
-
-    background:
-        #f4d58d;
-
-    color:
-        #4b392a;
-
-    font-size: 25px;
-
-    cursor: pointer;
-
-    box-shadow:
-        4px 5px 0 #38291d;
-
-    transition: .18s;
-}
-
-
-.menu-button:hover {
-
-    transform:
-        translateY(-3px)
-        rotate(-3deg);
-
-    box-shadow:
-        6px 7px 0 #38291d;
-}
-
-
-.menu-button:active {
-
-    transform:
-        translate(2px,2px);
-
-    box-shadow:
-        2px 2px 0 #38291d;
-}
-
-
-/* =========================================================
-   PANELS
-========================================================= */
-
-.panel {
-
-    position: fixed;
-
-    left: 50%;
-    top: 50%;
-
-    width:
-        min(
-            600px,
-            calc(100vw - 35px)
-        );
-
-    max-height: 82vh;
-
-    overflow-y: auto;
-
-    transform:
-        translate(-50%,-50%)
-        scale(.92);
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    z-index: 15000;
-
-    background:
-        #fff5d4;
-
-    color:
-        #493827;
-
-    border:
-        4px solid #5b402b;
-
-    border-radius: 9px;
-
-    padding: 24px;
-
-    box-shadow:
-        10px 12px 0
-        rgba(0,0,0,.38);
-
-    transition: .2s;
-}
-
-
-.panel.open {
-
-    opacity: 1;
-
-    pointer-events: auto;
-
-    transform:
-        translate(-50%,-50%)
-        scale(1);
-}
-
-
-.panel-header {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding-bottom: 12px;
-
-    border-bottom:
-        2px dashed #b49a68;
-
-    margin-bottom: 18px;
-}
-
-
-.panel-header h2 {
-
+.header h1 {
     margin: 0;
-
-    font-size: 25px;
+    font-size: clamp(40px, 7vw, 90px);
+    letter-spacing: -3px;
+    text-shadow:
+        4px 4px 0 rgba(255,255,255,.8),
+        7px 7px 0 rgba(100,80,140,.15);
 }
 
-
-.close {
-
-    border: none;
-
-    background: transparent;
-
-    color:
-        #493827;
-
-    font-size: 28px;
-
-    cursor: pointer;
-}
-
-
-.action-button {
-
-    border:
-        3px solid #4b392a;
-
-    border-radius: 6px;
-
-    background:
-        #dfb967;
-
-    color:
-        #493827;
-
-    padding:
-        10px 14px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    box-shadow:
-        3px 3px 0 #4b392a;
-}
-
-
-.action-button:active {
-
-    transform:
-        translate(2px,2px);
-
-    box-shadow:
-        1px 1px 0 #4b392a;
-}
-
-
-.small-button {
-
-    border:
-        2px solid #4b392a;
-
-    background:
-        white;
-
-    color:
-        #493827;
-
-    border-radius: 5px;
-
-    padding:
-        7px 10px;
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   SHRIMP PANEL
-========================================================= */
-
-.shrimp-window {
-
-    text-align: center;
-}
-
-
-.shrimp-info {
-
-    padding: 20px;
-
-    background:
-        #fffbea;
-
-    border:
-        2px dashed #b49a68;
-
-    border-radius: 8px;
-
-    font-family:
-        "Gowun Dodum",
-        sans-serif;
-}
-
-
-.big-shrimp {
-
-    font-size: 75px;
-
-    margin-bottom: 8px;
-}
-
-
-/* =========================================================
-   RANDOM
-========================================================= */
-
-.random-box {
-
-    text-align: center;
-}
-
-
-.random-display {
-
-    min-height: 150px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 25px;
-
-    margin-bottom: 20px;
-
-    border:
-        3px dashed #b49a68;
-
-    border-radius: 8px;
-
-    background:
-        #fffbea;
-
-    font-family:
-        "Gowun Dodum",
-        sans-serif;
-
-    font-size: 24px;
-
-    line-height: 1.5;
-}
-
-
-.random-rarity {
-
-    display: block;
-
-    margin-bottom: 8px;
-
-    font-size: 13px;
-
-    letter-spacing: 2px;
-
+.header p {
+    margin-top: 8px;
+    font-size: 18px;
     opacity: .65;
 }
 
+/* =========================
+   COUNTDOWN
+========================= */
 
-.random-button {
-
-    font-size: 20px;
-
-    padding:
-        14px 30px;
-}
-
-
-/* =========================================================
-   DISCOVERY
-========================================================= */
-
-.discovery-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fill,
-            minmax(145px,1fr)
-        );
-
-    gap: 10px;
-}
-
-
-.discovery-card {
-
-    min-height: 90px;
-
-    padding: 12px;
-
-    background:
-        #fffbea;
-
-    border:
-        2px solid #c4ad7e;
-
-    border-radius: 7px;
-
+.countdown {
+    min-height: 100vh;
+    padding: 45px 20px 80px;
     display: flex;
-
     flex-direction: column;
+    align-items: center;
+}
 
+.targetBox {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.targetBox input {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255,255,255,.8);
+    font-family: inherit;
+    font-size: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.units {
+    width: min(1200px, 95vw);
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
+    gap: 20px;
+}
+
+.unit {
+    min-height: 190px;
+    border-radius: 35px;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-
     align-items: center;
 
-    text-align: center;
+    background: rgba(255,255,255,.55);
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.08),
+        inset 0 1px 0 rgba(255,255,255,.8);
+
+    transition:
+        transform .3s,
+        background .8s;
 }
 
-
-.discovery-card.locked {
-
-    filter:
-        grayscale(1);
-
-    opacity: .55;
+.unit:hover {
+    transform: translateY(-8px) rotate(-1deg);
 }
 
-
-.discovery-icon {
-
-    font-size: 25px;
-
-    margin-bottom: 6px;
+.number {
+    font-family: 'Press Start 2P', monospace;
+    font-size: clamp(28px,5vw,55px);
+    line-height: 1.2;
+    word-break: break-all;
 }
 
-
-.discovery-name {
-
-    font-size: 13px;
+.label {
+    margin-top: 15px;
+    font-size: 22px;
+    opacity: .7;
 }
 
+/* =========================
+   SIDE MENU
+========================= */
 
-/* =========================================================
-   STATS
-========================================================= */
+.menuButton {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 1000;
 
-.stats-grid {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
 
-    display: grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap: 10px;
-}
-
-
-.stat {
-
-    background:
-        #fffbea;
-
-    border:
-        2px solid #c4ad7e;
-
-    border-radius: 7px;
-
-    padding: 15px;
-
-    text-align: center;
-}
-
-
-.stat-number {
+    background: rgba(255,255,255,.85);
+    box-shadow: 0 8px 25px rgba(0,0,0,.15);
 
     font-size: 28px;
-
-    font-weight: 700;
+    cursor: pointer;
 }
 
+.menu {
+    position: fixed;
+    right: 20px;
+    top: 90px;
+    width: 270px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
 
-.stat-label {
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(20px);
 
-    color:
-        #806b4e;
+    border-radius: 30px;
+    padding: 20px;
 
-    font-size: 13px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.2);
 
-    margin-top: 3px;
+    z-index: 999;
+
+    transform: translateX(130%);
+    transition: transform .4s;
 }
 
-
-/* =========================================================
-   SETTINGS
-========================================================= */
-
-.setting-row {
-
-    margin-bottom: 18px;
+.menu.open {
+    transform: translateX(0);
 }
 
-
-.setting-row label {
-
+.menu button,
+.menu label {
+    width: 100%;
     display: block;
 
-    margin-bottom: 7px;
+    padding: 13px;
+    margin-bottom: 9px;
 
-    font-weight: 600;
-}
+    border: none;
+    border-radius: 15px;
 
+    background: #f1edff;
+    color: #302942;
 
-.setting-row input {
-
-    width: 100%;
-
-    padding: 11px;
-
-    border:
-        2px solid #bba477;
-
-    border-radius: 5px;
-
-    background:
-        #fffbea;
-
-    color:
-        #493827;
-
+    font-family: inherit;
     font-size: 16px;
+
+    cursor: pointer;
 }
 
-
-.setting-actions {
-
-    display: flex;
-
-    gap: 10px;
-
-    flex-wrap: wrap;
+.menu button:hover,
+.menu label:hover {
+    background: #ded4ff;
 }
 
+.menuTitle {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
 
-/* =========================================================
-   PHOTO BOARD
-========================================================= */
+#imageInput {
+    display: none;
+}
 
-#meme-board {
+/* =========================
+   IMAGE BOARD
+========================= */
 
+#board {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.boardImage {
+    position: absolute;
+    max-width: 250px;
+    max-height: 250px;
+
+    pointer-events: auto;
+    cursor: move;
+
+    user-select: none;
+
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,.2));
+
+    transition: transform .15s;
+}
+
+.boardImage:hover {
+    transform: scale(1.04);
+}
+
+/* =========================
+   GAME MODE
+========================= */
+
+.gamePanel {
+    display: none;
+}
+
+body.gameMode .gamePanel {
+    display: block;
+}
+
+.gamePanel {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 900;
+
+    min-width: 190px;
+
+    padding: 15px 18px;
+
+    background: rgba(255,255,255,.9);
+    backdrop-filter: blur(15px);
+
+    border-radius: 22px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+.coin {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 15px;
+}
+
+.coinAmount {
+    font-size: 25px;
+    margin-top: 8px;
+}
+
+.gameButtons {
+    margin-top: 12px;
+}
+
+.gameButtons button {
+    border: none;
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin: 2px;
+
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* =========================
+   PET
+========================= */
+
+#pet {
+    display: none;
     position: fixed;
 
+    width: 90px;
+    height: 90px;
+
+    z-index: 300;
+
+    pointer-events: none;
+
+    filter: drop-shadow(0 8px 8px rgba(0,0,0,.18));
+
+    user-select: none;
+}
+
+body.gameMode #pet {
+    display: block;
+}
+
+/* =========================
+   SHOP
+========================= */
+
+.shop {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%) scale(.8);
+
+    width: min(420px,90vw);
+    max-height: 80vh;
+    overflow-y: auto;
+
+    background: rgba(255,255,255,.96);
+    border-radius: 30px;
+
+    padding: 25px;
+
+    box-shadow: 0 30px 100px rgba(0,0,0,.3);
+
+    z-index: 2000;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: .3s;
+}
+
+.shop.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.shop h2 {
+    text-align: center;
+}
+
+.shopItem {
+    background: #f4efff;
+    border-radius: 18px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.shopItem button {
+    border: none;
+    border-radius: 10px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* =========================
+   RANDOM EVENT
+========================= */
+
+#eventText {
+    position: fixed;
+    left: 50%;
+    top: 20%;
+
+    transform: translate(-50%,-50%) scale(.5);
+
+    padding: 20px 30px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.95);
+
+    font-size: 28px;
+    text-align: center;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.2);
+
+    z-index: 5000;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: .4s;
+}
+
+#eventText.show {
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+/* =========================
+   INK EVENT
+========================= */
+
+.ink {
+    position: fixed;
+    border-radius: 50%;
+    z-index: 4000;
+    pointer-events: none;
+
+    background: #32206f;
+
+    animation: inkPop 1.5s forwards;
+}
+
+@keyframes inkPop {
+    0% {
+        transform: scale(.1);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .85;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   SECRET
+========================= */
+
+#secret {
+    position: fixed;
     inset: 0;
 
     display: none;
 
-    z-index: 20000;
-
-    background:
-        white;
-
-    color:
-        #222;
-
-    overflow: hidden;
-}
-
-
-#meme-board.open {
-
-    display: block;
-}
-
-
-.meme-header {
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 64px;
-
-    display: flex;
-
     align-items: center;
+    justify-content: center;
 
-    gap: 7px;
+    background: rgba(20,15,35,.9);
 
-    padding:
-        8px 12px;
+    z-index: 9000;
 
-    background:
-        #f3f3f3;
-
-    border-bottom:
-        2px solid #222;
-
-    z-index: 30000;
-}
-
-
-.meme-title {
-
-    font-size: 20px;
-
-    font-weight: 700;
-
-    margin-right: auto;
-}
-
-
-.meme-control {
-
-    border:
-        2px solid #222;
-
-    background:
-        white;
-
-    color:
-        #222;
-
-    border-radius: 5px;
-
-    padding:
-        8px 11px;
-
-    cursor: pointer;
-
-    box-shadow:
-        2px 2px 0 #222;
-}
-
-
-.meme-control:active {
-
-    transform:
-        translate(2px,2px);
-
-    box-shadow: none;
-}
-
-
-.zoom-display {
-
-    min-width: 55px;
-
+    color: white;
     text-align: center;
-
-    font-weight: 600;
 }
 
-
-#meme-canvas {
-
-    position: absolute;
-
-    top: 64px;
-    left: 0;
-
-    width: 100%;
-
-    height:
-        calc(100% - 64px);
-
-    overflow: hidden;
-
-    background:
-        white;
-
-    cursor: grab;
+#secret.active {
+    display: flex;
 }
 
-
-#meme-world {
-
-    position: absolute;
-
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
-
-    transform-origin:
-        0 0;
+.secretBox {
+    font-size: 28px;
+    padding: 40px;
 }
 
-
-.meme-image {
-
-    position: absolute;
-
-    width: 240px;
-
-    height: auto;
-
-    cursor: grab;
-
-    user-select: none;
-
-    box-shadow:
-        0 3px 12px
-        rgba(0,0,0,.18);
-}
-
-
-.meme-image.selected {
-
-    outline:
-        3px dashed #333;
-
-    outline-offset: 4px;
-}
-
-
-.meme-help {
-
-    position: absolute;
-
-    left: 12px;
-    bottom: 10px;
-
-    background:
-        rgba(255,255,255,.9);
-
-    border:
-        1px solid #aaa;
-
-    padding:
-        7px 9px;
-
-    font-size: 12px;
-
-    color:
-        #555;
-
-    z-index: 30000;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   SECRET
-========================================================= */
-
-.secret-dot {
-
-    position: fixed;
-
-    left: 8px;
-    bottom: 7px;
-
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
+.secretBox button {
+    margin-top: 20px;
     border: none;
-
-    background:
-        rgba(255,255,255,.07);
-
-    cursor: pointer;
-
-    z-index: 9999;
+    padding: 12px 25px;
+    border-radius: 20px;
+    font-family: inherit;
 }
 
-
-.secret-dot:hover {
-
-    background:
-        rgba(255,255,255,.3);
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast {
-
-    position: fixed;
-
-    left: 50%;
-    bottom: 35px;
-
-    transform:
-        translateX(-50%)
-        translateY(20px);
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    z-index: 50000;
-
-    background:
-        rgba(25,25,25,.92);
-
-    color:
-        white;
-
-    padding:
-        13px 20px;
-
-    border-radius: 8px;
-
-    font-family:
-        "Gowun Dodum",
-        sans-serif;
-
-    box-shadow:
-        0 5px 20px
-        rgba(0,0,0,.3);
-
-    transition: .25s;
-}
-
-
-.toast.show {
-
-    opacity: 1;
-
-    transform:
-        translateX(-50%)
-        translateY(0);
-}
-
-
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
-@media (max-width:600px) {
+@media(max-width:600px) {
 
-    .page-title {
-
-        top: 7vh;
-
-        font-size:
-            clamp(
-                33px,
-                9vw,
-                58px
-            );
+    .header {
+        padding-top: 80px;
     }
 
-
-    .number {
-
-        font-size:
-            clamp(
-                44px,
-                14vw,
-                95px
-            );
+    .units {
+        grid-template-columns: 1fr;
     }
-
 
     .unit {
-
-        font-size: 15px;
-
-        letter-spacing: 5px;
+        min-height: 150px;
     }
 
+    .gamePanel {
+        left: 10px;
+        top: 10px;
+    }
+
+    .menuButton {
+        right: 10px;
+        top: 10px;
+    }
 
     .menu {
-
         right: 10px;
-        bottom: 10px;
     }
-
-
-    .menu-button {
-
-        width: 53px;
-        height: 53px;
-
-        font-size: 22px;
-    }
-
-
-    .panel {
-
-        width:
-            calc(100vw - 25px);
-
-        padding: 17px;
-    }
-
-
-    .meme-title {
-
-        display: none;
-    }
-
-
-    .meme-header {
-
-        height: 58px;
-
-        padding: 7px;
-    }
-
-
-    .meme-control {
-
-        padding:
-            7px 8px;
-
-        font-size: 12px;
-    }
-
-
-    #meme-canvas {
-
-        top: 58px;
-
-        height:
-            calc(100% - 58px);
-    }
-
-
-    .stats-grid {
-
-        grid-template-columns:
-            1fr;
-    }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
+<div id="app">
 
-<!-- =========================================================
-     COUNTDOWN
-========================================================= -->
+    <!-- GAME UI -->
+    <div class="gamePanel">
 
-<section class="time-section years">
+        <div class="coin">
+            🪙 RIPPLE COIN
+        </div>
 
-    <div class="page-title">
-        준수가 한국으로 돌아가기까지...
+        <div class="coinAmount" id="coinAmount">
+            0
+        </div>
+
+        <div class="gameButtons">
+            <button onclick="openGacha()">🎁 뽑기</button>
+            <button onclick="openShop()">🛒 상점</button>
+            <button onclick="randomEvent()">🎲 이벤트</button>
+        </div>
+
     </div>
 
-    <div class="unit">
-        YEARS
-    </div>
 
-    <div
-        class="number"
-        id="years">
-        0.0
-    </div>
-
-    <div class="description">
-        년으로 보면
-    </div>
-
-</section>
-
-
-<section class="time-section months">
-
-    <div class="unit">
-        MONTHS
-    </div>
-
-    <div
-        class="number"
-        id="months">
-        0.0
-    </div>
-
-    <div class="description">
-        달로 보면
-    </div>
-
-</section>
-
-
-<section class="time-section weeks">
-
-    <div class="unit">
-        WEEKS
-    </div>
-
-    <div
-        class="number"
-        id="weeks">
-        0.0
-    </div>
-
-    <div class="description">
-        주로 보면
-    </div>
-
-</section>
-
-
-<section class="time-section days">
-
-    <div class="unit">
-        DAYS
-    </div>
-
-    <div
-        class="number"
-        id="days">
-        0.0
-    </div>
-
-    <div class="description">
-        일로 보면
-    </div>
-
-</section>
-
-
-<section class="time-section hours">
-
-    <div class="unit">
-        HOURS
-    </div>
-
-    <div
-        class="number"
-        id="hours">
-        0.0
-    </div>
-
-    <div class="description">
-        시간으로 보면
-    </div>
-
-</section>
-
-
-<section class="time-section minutes">
-
-    <div class="unit">
-        MINUTES
-    </div>
-
-    <div
-        class="number"
-        id="minutes">
-        0.0
-    </div>
-
-    <div class="description">
-        분으로 보면
-    </div>
-
-</section>
-
-
-<section class="time-section seconds">
-
-    <div class="unit">
-        SECONDS
-    </div>
-
-    <div
-        class="number"
-        id="seconds">
-        0.0
-    </div>
-
-    <div class="description">
-        초로 보면
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     ROAMING PET LAYER
-========================================================= -->
-
-<div id="pet-layer"></div>
-
-
-<!-- =========================================================
-     INK
-========================================================= -->
-
-<div id="ink-overlay"></div>
-
-
-<!-- =========================================================
-     MENU
-========================================================= -->
-
-<div class="menu">
-
-    <button
-        class="menu-button"
-        id="shrimpButton"
-        title="새우">
-        🦐
+    <!-- MENU BUTTON -->
+    <button class="menuButton" onclick="toggleMenu()">
+        ☰
     </button>
 
-    <button
-        class="menu-button"
-        id="randomButton"
-        title="뽑기">
-        🎁
-    </button>
 
-    <button
-        class="menu-button"
-        id="discoveryButton"
-        title="발견">
-        🔎
-    </button>
+    <!-- SIDE MENU -->
+    <div class="menu" id="menu">
 
-    <button
-        class="menu-button"
-        id="statsButton"
-        title="통계">
-        📊
-    </button>
-
-    <button
-        class="menu-button"
-        id="photoButton"
-        title="사진">
-        🖼️
-    </button>
-
-    <button
-        class="menu-button"
-        id="settingsButton"
-        title="설정">
-        ⚙️
-    </button>
-
-</div>
-
-
-<!-- =========================================================
-     SHRIMP PANEL
-========================================================= -->
-
-<div
-    class="panel"
-    id="shrimpPanel">
-
-    <div class="panel-header">
-
-        <h2>
-            🦐 새우
-        </h2>
-
-        <button
-            class="close"
-            data-close="shrimpPanel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="shrimp-window">
-
-        <div class="shrimp-info">
-
-            <div class="big-shrimp">
-                🦐
-            </div>
-
-            <div>
-                버튼을 누르면 새우가
-                사이트에 나타납니다.
-            </div>
-
-            <br>
-
-            <div>
-                현재 새우:
-                <strong id="shrimpCount">
-                    0
-                </strong>
-                마리
-            </div>
-
+        <div class="menuTitle">
+            ✦ JUNSOO'S MENU ✦
         </div>
 
-        <br>
-
-        <button
-            class="action-button"
-            id="spawnShrimp">
-            🦐 새우 등장!
+        <button onclick="toggleGameMode()">
+            🎮 게임 모드 ON / OFF
         </button>
 
-        <button
-            class="small-button"
-            id="removeShrimp">
-            새우 모두 보내기
+        <button onclick="addCoins(10)">
+            🪙 코인 +10
         </button>
 
-        <br><br>
-
-        <button
-            class="action-button"
-            id="nameShrimp">
-            새우 이름 짓기
+        <button onclick="randomEvent()">
+            🎲 랜덤 이벤트
         </button>
 
-        <div
-            id="shrimpNameDisplay"
-            style="
-                margin-top:10px;
-                color:#806b4e;
-            ">
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     RANDOM PANEL
-========================================================= -->
-
-<div
-    class="panel"
-    id="randomPanel">
-
-    <div class="panel-header">
-
-        <h2>
-            🎁 뭔가 들어있다
-        </h2>
-
-        <button
-            class="close"
-            data-close="randomPanel">
-            ×
+        <button onclick="openShop()">
+            🛒 코인 상점
         </button>
 
-    </div>
-
-
-    <div class="random-box">
-
-        <div
-            class="random-display"
-            id="randomDisplay">
-
-            <div>
-                버튼을 눌러보세요.
-            </div>
-
-        </div>
-
-
-        <button
-            class="action-button random-button"
-            id="drawRandom">
-
-            🎁 열어보기
-
+        <button onclick="openGacha()">
+            🎁 랜덤 뽑기
         </button>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     DISCOVERY
-========================================================= -->
-
-<div
-    class="panel"
-    id="discoveryPanel">
-
-    <div class="panel-header">
-
-        <h2>
-            🔎 발견 기록
-        </h2>
-
-        <button
-            class="close"
-            data-close="discoveryPanel">
-            ×
-        </button>
-
-    </div>
-
-
-    <p>
-        여기저기 돌아다니다 보면
-        새로운 것이 나타날지도 모릅니다.
-    </p>
-
-
-    <div
-        class="discovery-grid"
-        id="discoveryGrid">
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     STATS
-========================================================= -->
-
-<div
-    class="panel"
-    id="statsPanel">
-
-    <div class="panel-header">
-
-        <h2>
-            📊 이상하게 상세한 통계
-        </h2>
-
-        <button
-            class="close"
-            data-close="statsPanel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="stats-grid">
-
-        <div class="stat">
-
-            <div
-                class="stat-number"
-                id="statVisits">
-                0
-            </div>
-
-            <div class="stat-label">
-                방문 횟수
-            </div>
-
-        </div>
-
-
-        <div class="stat">
-
-            <div
-                class="stat-number"
-                id="statTime">
-                0분
-            </div>
-
-            <div class="stat-label">
-                사이트에서 보낸 시간
-            </div>
-
-        </div>
-
-
-        <div class="stat">
-
-            <div
-                class="stat-number"
-                id="statRandom">
-                0
-            </div>
-
-            <div class="stat-label">
-                뽑은 횟수
-            </div>
-
-        </div>
-
-
-        <div class="stat">
-
-            <div
-                class="stat-number"
-                id="statDiscoveries">
-                0
-            </div>
-
-            <div class="stat-label">
-                발견한 것
-            </div>
-
-        </div>
-
-
-        <div class="stat">
-
-            <div
-                class="stat-number"
-                id="statPhotos">
-                0
-            </div>
-
-            <div class="stat-label">
-                저장한 사진
-            </div>
-
-        </div>
-
-
-        <div class="stat">
-
-            <div
-                class="stat-number"
-                id="statShrimp">
-                0
-            </div>
-
-            <div class="stat-label">
-                새우와 함께한 시간
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     SETTINGS
-========================================================= -->
-
-<div
-    class="panel"
-    id="settingsPanel">
-
-    <div class="panel-header">
-
-        <h2>
-            ⚙️ 설정
-        </h2>
-
-        <button
-            class="close"
-            data-close="settingsPanel">
-            ×
-        </button>
-
-    </div>
-
-
-    <div class="setting-row">
 
         <label>
-            한국으로 돌아가는 날짜
+            🖼️ 이미지 추가
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/*"
+                onchange="addImage(event)"
+            >
         </label>
 
-        <input
-            type="datetime-local"
-            id="targetInput">
+        <button onclick="clearImages()">
+            🗑️ 이미지 전부 삭제
+        </button>
+
+        <button onclick="zoomSite(0.1)">
+            🔍 사이트 확대
+        </button>
+
+        <button onclick="zoomSite(-0.1)">
+            🔎 사이트 축소
+        </button>
+
+        <button onclick="resetZoom()">
+            ↩️ 확대 초기화
+        </button>
+
+        <button onclick="activateSecret()">
+            ❓ 비밀 기능
+        </button>
 
     </div>
 
 
-    <div class="setting-actions">
+    <!-- HEADER -->
+    <header class="header">
 
-        <button
-            class="action-button"
-            id="saveTarget">
-            저장
-        </button>
+        <h1>
+            준수가 한국으로 돌아가기까지...
+        </h1>
 
-        <button
-            class="small-button"
-            id="resetData">
-            데이터 초기화
-        </button>
+        <p>
+            ✦ just a little corner of the internet ✦
+        </p>
 
-    </div>
-
-</div>
+    </header>
 
 
-<!-- =========================================================
-     PHOTO BOARD
-========================================================= -->
+    <!-- COUNTDOWN -->
+    <main class="countdown">
 
-<div id="meme-board">
+        <div class="targetBox">
 
-    <div class="meme-header">
+            <input
+                type="datetime-local"
+                id="targetDate"
+            >
 
-        <div class="meme-title">
-            🖼️ 사진 보관소
         </div>
 
 
-        <input
-            type="file"
-            id="imageInput"
-            accept="image/*"
-            multiple
-            hidden
-        >
+        <div class="units">
+
+            <div class="unit" id="yearBox">
+                <div class="number" id="years">
+                    0.0
+                </div>
+                <div class="label">
+                    년
+                </div>
+            </div>
 
 
-        <button
-            class="meme-control"
-            id="addImage">
-            ＋ 이미지
-        </button>
+            <div class="unit" id="monthBox">
+                <div class="number" id="months">
+                    0.0
+                </div>
+                <div class="label">
+                    달
+                </div>
+            </div>
 
 
-        <button
-            class="meme-control"
-            id="removeBackground">
-            🤍 흰색 제거
-        </button>
+            <div class="unit" id="weekBox">
+                <div class="number" id="weeks">
+                    0.0
+                </div>
+                <div class="label">
+                    주
+                </div>
+            </div>
 
 
-        <button
-            class="meme-control"
-            id="deleteImage">
-            🗑 삭제
-        </button>
+            <div class="unit" id="dayBox">
+                <div class="number" id="days">
+                    0.0
+                </div>
+                <div class="label">
+                    일
+                </div>
+            </div>
 
 
-        <button
-            class="meme-control"
-            id="zoomOut">
-            −
-        </button>
+            <div class="unit" id="hourBox">
+                <div class="number" id="hours">
+                    0.0
+                </div>
+                <div class="label">
+                    시간
+                </div>
+            </div>
 
 
-        <div
-            class="zoom-display"
-            id="zoomDisplay">
-            100%
+            <div class="unit" id="minuteBox">
+                <div class="number" id="minutes">
+                    0.0
+                </div>
+                <div class="label">
+                    분
+                </div>
+            </div>
+
+
+            <div class="unit" id="secondBox">
+                <div class="number" id="seconds">
+                    0.0
+                </div>
+                <div class="label">
+                    초
+                </div>
+            </div>
+
         </div>
 
-
-        <button
-            class="meme-control"
-            id="zoomIn">
-            ＋
-        </button>
+    </main>
 
 
-        <button
-            class="meme-control"
-            id="zoomReset">
-            100%
-        </button>
+    <!-- IMAGE BOARD -->
+    <div id="board"></div>
 
 
-        <button
-            class="meme-control"
-            id="closePhoto">
-            ←
+    <!-- SHRIMP PET -->
+    <div id="pet">
+        🦐
+    </div>
+
+
+    <!-- EVENT -->
+    <div id="eventText"></div>
+
+
+    <!-- SHOP -->
+    <div class="shop" id="shop">
+
+        <h2>
+            🛒 RIPPLE SHOP
+        </h2>
+
+        <div class="shopItem">
+            🦐 새우 속도 UP
+            <br>
+            <small>가격: 50 코인</small>
+            <br><br>
+            <button onclick="buySpeed()">
+                구매
+            </button>
+        </div>
+
+        <div class="shopItem">
+            ✨ 화면 반짝임
+            <br>
+            <small>가격: 80 코인</small>
+            <br><br>
+            <button onclick="buySparkle()">
+                구매
+            </button>
+        </div>
+
+        <div class="shopItem">
+            🎨 랜덤 배경
+            <br>
+            <small>가격: 100 코인</small>
+            <br><br>
+            <button onclick="buyBackground()">
+                구매
+            </button>
+        </div>
+
+        <div class="shopItem">
+            🦐 새우 친구 추가
+            <br>
+            <small>가격: 150 코인</small>
+            <br><br>
+            <button onclick="buyShrimp()">
+                구매
+            </button>
+        </div>
+
+        <button onclick="closeShop()">
+            닫기
         </button>
 
     </div>
 
 
-    <div id="meme-canvas">
+    <!-- SECRET -->
+    <div id="secret">
 
-        <div id="meme-world"></div>
+        <div class="secretBox">
 
-        <div class="meme-help">
+            <div>
+                🌌 SECRET MODE 🌌
+            </div>
 
-            🖱️ 휠 → 사이트 확대/축소<br>
-            드래그 → 화면 이동<br>
-            이미지 클릭 → 선택
+            <p>
+                여기까지 찾아왔네?
+            </p>
+
+            <p>
+                오늘의 비밀 보상 +100 코인!
+            </p>
+
+            <button onclick="closeSecret()">
+                돌아가기
+            </button>
 
         </div>
 
     </div>
 
-</div>
-
-
-<!-- SECRET -->
-
-<button
-    class="secret-dot"
-    id="secretDot"
-    aria-label="비밀">
-</button>
-
-
-<!-- TOAST -->
-
-<div
-    class="toast"
-    id="toast">
 </div>
 
 
 <script>
 
-/* =========================================================
-   STORAGE
-========================================================= */
+/* =========================================
+   COUNTDOWN
+========================================= */
 
-const STORAGE = {
+const targetInput = document.getElementById("targetDate");
 
-    target:
-        "jun_target_date",
+let savedTarget = localStorage.getItem("targetDate");
 
-    visits:
-        "jun_visits",
+if(savedTarget) {
+    targetInput.value = savedTarget;
+}
 
-    totalTime:
-        "jun_total_time",
-
-    random:
-        "jun_random_count",
-
-    discoveries:
-        "jun_discoveries",
-
-    shrimpName:
-        "jun_shrimp_name",
-
-    shrimpTime:
-        "jun_shrimp_time",
-
-    photos:
-        "jun_photos",
-
-    secretClicks:
-        "jun_secret_clicks"
-
-};
-
-
-/* =========================================================
-   DATA
-========================================================= */
-
-let targetDate =
-    localStorage.getItem(
-        STORAGE.target
-    );
-
-
-if (!targetDate) {
-
-    const firstTarget =
-        new Date();
-
-    firstTarget.setFullYear(
-        firstTarget.getFullYear() + 1
-    );
-
-    targetDate =
-        firstTarget.toISOString();
+targetInput.addEventListener("change", () => {
 
     localStorage.setItem(
-        STORAGE.target,
-        targetDate
+        "targetDate",
+        targetInput.value
     );
 
-}
+    updateCountdown();
 
-
-let visits =
-    Number(
-        localStorage.getItem(
-            STORAGE.visits
-        ) || 0
-    );
-
-
-let totalTime =
-    Number(
-        localStorage.getItem(
-            STORAGE.totalTime
-        ) || 0
-    );
-
-
-let randomCount =
-    Number(
-        localStorage.getItem(
-            STORAGE.random
-        ) || 0
-    );
-
-
-let shrimpTime =
-    Number(
-        localStorage.getItem(
-            STORAGE.shrimpTime
-        ) || 0
-    );
-
-
-let secretClicks =
-    Number(
-        localStorage.getItem(
-            STORAGE.secretClicks
-        ) || 0
-    );
-
-
-let discoveries =
-    JSON.parse(
-        localStorage.getItem(
-            STORAGE.discoveries
-        ) || "[]"
-    );
-
-
-let photos =
-    JSON.parse(
-        localStorage.getItem(
-            STORAGE.photos
-        ) || "[]"
-    );
-
-
-let shrimpName =
-    localStorage.getItem(
-        STORAGE.shrimpName
-    )
-    ||
-    "이름 없는 새우";
-
-
-visits++;
-
-localStorage.setItem(
-    STORAGE.visits,
-    visits
-);
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-const SECOND = 1000;
-
-const MINUTE =
-    SECOND * 60;
-
-const HOUR =
-    MINUTE * 60;
-
-const DAY =
-    HOUR * 24;
-
-const WEEK =
-    DAY * 7;
-
-const YEAR =
-    DAY * 365.2425;
-
-const MONTH =
-    YEAR / 12;
-
-
-function numberFormat(value) {
-
-    return value.toLocaleString(
-        "en-US",
-        {
-            minimumFractionDigits: 1,
-            maximumFractionDigits: 1
-        }
-    );
-
-}
+});
 
 
 function updateCountdown() {
 
+    if(!targetInput.value) return;
+
+    const target =
+        new Date(targetInput.value).getTime();
+
     const now =
         Date.now();
 
-    const target =
-        new Date(
-            targetDate
-        ).getTime();
-
-    let remaining =
-        target - now;
+    let diff =
+        Math.max(0,target-now);
 
 
-    if (remaining < 0) {
+    const second =
+        1000;
 
-        remaining = 0;
+    const minute =
+        second * 60;
 
-    }
+    const hour =
+        minute * 60;
 
+    const day =
+        hour * 24;
 
-    document.getElementById(
-        "years"
-    ).textContent =
-        numberFormat(
-            remaining / YEAR
-        );
+    const week =
+        day * 7;
 
+    const year =
+        day * 365.2425;
 
-    document.getElementById(
-        "months"
-    ).textContent =
-        numberFormat(
-            remaining / MONTH
-        );
-
-
-    document.getElementById(
-        "weeks"
-    ).textContent =
-        numberFormat(
-            remaining / WEEK
-        );
+    const month =
+        year / 12;
 
 
-    document.getElementById(
-        "days"
-    ).textContent =
-        numberFormat(
-            remaining / DAY
-        );
+    const years =
+        diff / year;
+
+    const months =
+        diff / month;
+
+    const weeks =
+        diff / week;
+
+    const days =
+        diff / day;
+
+    const hours =
+        diff / hour;
+
+    const minutes =
+        diff / minute;
+
+    const seconds =
+        diff / second;
 
 
-    document.getElementById(
-        "hours"
-    ).textContent =
-        numberFormat(
-            remaining / HOUR
-        );
+    document.getElementById("years").textContent =
+        years.toFixed(1);
+
+    document.getElementById("months").textContent =
+        months.toFixed(1);
+
+    document.getElementById("weeks").textContent =
+        weeks.toFixed(1);
+
+    document.getElementById("days").textContent =
+        days.toFixed(1);
+
+    document.getElementById("hours").textContent =
+        hours.toFixed(1);
+
+    document.getElementById("minutes").textContent =
+        minutes.toFixed(1);
+
+    document.getElementById("seconds").textContent =
+        seconds.toFixed(1);
 
 
-    document.getElementById(
-        "minutes"
-    ).textContent =
-        numberFormat(
-            remaining / MINUTE
-        );
-
-
-    document.getElementById(
-        "seconds"
-    ).textContent =
-        numberFormat(
-            remaining / SECOND
-        );
-
+    changeColors(years);
 }
 
+
+setInterval(updateCountdown,100);
 
 updateCountdown();
 
-setInterval(
-    updateCountdown,
-    100
-);
+
+/* =========================================
+   COLOR TRANSITION
+========================================= */
+
+function changeColors(years) {
+
+    const boxes =
+        document.querySelectorAll(".unit");
+
+    let hue =
+        (years * 35) % 360;
+
+    boxes.forEach((box,index) => {
+
+        const h =
+            (hue + index * 35) % 360;
+
+        box.style.background =
+            `hsla(${h},80%,92%,.58)`;
+
+    });
+}
 
 
-/* =========================================================
-   PANELS
-========================================================= */
+/* =========================================
+   MENU
+========================================= */
 
-function openPanel(id) {
+function toggleMenu() {
 
     document
-        .getElementById(id)
-        .classList.add("open");
+        .getElementById("menu")
+        .classList.toggle("open");
 
 }
 
 
-function closePanel(id) {
+/* =========================================
+   GAME MODE
+========================================= */
 
-    document
-        .getElementById(id)
-        .classList.remove("open");
-
-}
-
-
-document
-    .querySelectorAll(
-        "[data-close]"
-    )
-    .forEach(
-        button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    closePanel(
-                        button.dataset.close
-                    );
-
-                }
-            );
-
-        }
-    );
+let gameMode =
+    localStorage.getItem("gameMode") === "true";
 
 
-document
-    .getElementById(
-        "shrimpButton"
-    )
-    .onclick = () =>
-        openPanel(
-            "shrimpPanel"
-        );
+if(gameMode) {
 
-
-document
-    .getElementById(
-        "randomButton"
-    )
-    .onclick = () =>
-        openPanel(
-            "randomPanel"
-        );
-
-
-document
-    .getElementById(
-        "discoveryButton"
-    )
-    .onclick = () => {
-
-        renderDiscoveries();
-
-        openPanel(
-            "discoveryPanel"
-        );
-
-    };
-
-
-document
-    .getElementById(
-        "statsButton"
-    )
-    .onclick = () => {
-
-        updateStats();
-
-        openPanel(
-            "statsPanel"
-        );
-
-    };
-
-
-document
-    .getElementById(
-        "settingsButton"
-    )
-    .onclick = () => {
-
-        loadSettings();
-
-        openPanel(
-            "settingsPanel"
-        );
-
-    };
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimer;
-
-
-function showToast(message) {
-
-    const toast =
-        document.getElementById(
-            "toast"
-        );
-
-
-    toast.textContent =
-        message;
-
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        toastTimer
-    );
-
-
-    toastTimer =
-        setTimeout(
-            () => {
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-            2500
-        );
+    document.body.classList.add("gameMode");
 
 }
 
 
-/* =========================================================
-   DISCOVERY
-========================================================= */
+function toggleGameMode() {
 
-const discoveryDefinitions = [
+    gameMode =
+        !gameMode;
 
-    {
-        id: "first_random",
-        icon: "🎁",
-        name: "첫 번째 뽑기"
-    },
-
-    {
-        id: "five_random",
-        icon: "🎰",
-        name: "다섯 번 뽑기"
-    },
-
-    {
-        id: "ten_random",
-        icon: "🎲",
-        name: "열 번 뽑기"
-    },
-
-    {
-        id: "thirty_random",
-        icon: "🌟",
-        name: "서른 번 뽑기"
-    },
-
-    {
-        id: "rare_event",
-        icon: "✨",
-        name: "희귀한 것"
-    },
-
-    {
-        id: "super_event",
-        icon: "💫",
-        name: "초희귀한 것"
-    },
-
-    {
-        id: "legend_event",
-        icon: "👑",
-        name: "전설"
-    },
-
-    {
-        id: "secret_event",
-        icon: "🔐",
-        name: "비밀"
-    },
-
-    {
-        id: "mystery",
-        icon: "???",
-        name: "???"
-    },
-
-    {
-        id: "ink_attack",
-        icon: "🦑",
-        name: "잉크 공격"
-    },
-
-    {
-        id: "shrimp",
-        icon: "🦐",
-        name: "새우와 만남"
-    },
-
-    {
-        id: "many_shrimp",
-        icon: "🦐🦐🦐",
-        name: "새우 떼"
-    },
-
-    {
-        id: "photo",
-        icon: "🖼️",
-        name: "첫 번째 사진"
-    },
-
-    {
-        id: "secret_click",
-        icon: "🕵️",
-        name: "이상한 버튼"
-    },
-
-    {
-        id: "century",
-        icon: "💯",
-        name: "100회 뽑기"
-    }
-
-];
-
-
-function hasDiscovery(id) {
-
-    return discoveries.includes(
-        id
+    document.body.classList.toggle(
+        "gameMode",
+        gameMode
     );
-
-}
-
-
-function addDiscovery(id) {
-
-    if (
-        hasDiscovery(id)
-    ) {
-
-        return;
-
-    }
-
-
-    discoveries.push(id);
-
 
     localStorage.setItem(
-        STORAGE.discoveries,
-        JSON.stringify(
-            discoveries
-        )
+        "gameMode",
+        gameMode
     );
 
 
-    showToast(
-        "🔎 새로운 것을 발견했습니다!"
+    showEvent(
+        gameMode
+        ? "🎮 GAME MODE ON!"
+        : "🌿 게임 모드 OFF"
     );
 
 }
 
 
-function renderDiscoveries() {
+/* =========================================
+   COINS
+========================================= */
 
-    const grid =
-        document.getElementById(
-            "discoveryGrid"
-        );
-
-
-    grid.innerHTML = "";
-
-
-    discoveryDefinitions
-        .forEach(item => {
-
-            const card =
-                document.createElement(
-                    "div"
-                );
+let coins =
+    Number(
+        localStorage.getItem("coins") || 0
+    );
 
 
-            card.className =
-                "discovery-card";
+function updateCoins() {
 
-
-            if (
-                !hasDiscovery(
-                    item.id
-                )
-            ) {
-
-                card.classList.add(
-                    "locked"
-                );
-
-            }
-
-
-            const icon =
-                document.createElement(
-                    "div"
-                );
-
-
-            icon.className =
-                "discovery-icon";
-
-
-            icon.textContent =
-                hasDiscovery(item.id)
-                ? item.icon
-                : "???";
-
-
-            const name =
-                document.createElement(
-                    "div"
-                );
-
-
-            name.className =
-                "discovery-name";
-
-
-            name.textContent =
-                hasDiscovery(item.id)
-                ? item.name
-                : "아직 발견하지 못함";
-
-
-            card.appendChild(
-                icon
-            );
-
-
-            card.appendChild(
-                name
-            );
-
-
-            grid.appendChild(
-                card
-            );
-
-        });
-
-}
-
-
-/* =========================================================
-   ROAMING SHRIMP
-========================================================= */
-
-const petLayer =
     document.getElementById(
-        "pet-layer"
+        "coinAmount"
+    ).textContent = coins;
+
+    localStorage.setItem(
+        "coins",
+        coins
+    );
+
+}
+
+
+function addCoins(amount) {
+
+    coins += amount;
+
+    updateCoins();
+
+    showEvent(
+        `🪙 +${amount} COIN!`
+    );
+
+}
+
+
+updateCoins();
+
+
+/* =========================================
+   SHRIMP PET
+========================================= */
+
+const pet =
+    document.getElementById("pet");
+
+let petX =
+    Math.random() * (window.innerWidth - 100);
+
+let petY =
+    Math.random() * (window.innerHeight - 100);
+
+let petVX =
+    (Math.random() > .5 ? 1 : -1) * 1.2;
+
+let petVY =
+    (Math.random() > .5 ? 1 : -1) * 1.0;
+
+let petSpeed =
+    Number(
+        localStorage.getItem("petSpeed") || 1
     );
 
 
-let roamingShrimp = [];
+function movePet() {
+
+    if(!gameMode) return;
 
 
-const shrimpMessages = [
+    petX += petVX * petSpeed;
 
-    "안녕.",
-
-    "뭐해?",
-
-    "👀",
-
-    "나를 찾았네.",
-
-    "헤엄치는 중.",
-
-    "여기 꽤 넓다.",
-
-    "배고파.",
-
-    "쉿.",
-
-    "...",
-
-    "오늘도 왔네.",
-
-    "나는 그냥 새우야.",
-
-    "한국 가는 거 알아.",
-
-    "여기 마음에 들어.",
-
-    "잡을 수 있으면 잡아봐."
-
-];
+    petY += petVY * petSpeed;
 
 
-function createShrimp() {
-
-    if (
-        roamingShrimp.length >= 12
+    if(
+        petX < 0 ||
+        petX > window.innerWidth - 90
     ) {
 
-        showToast(
-            "🦐 새우가 너무 많아요!"
+        petVX *= -1;
+
+    }
+
+
+    if(
+        petY < 0 ||
+        petY > window.innerHeight - 90
+    ) {
+
+        petVY *= -1;
+
+    }
+
+
+    pet.style.left =
+        petX + "px";
+
+    pet.style.top =
+        petY + "px";
+
+
+    requestAnimationFrame(movePet);
+
+}
+
+
+movePet();
+
+
+/* =========================================
+   GACHA
+========================================= */
+
+function openGacha() {
+
+    if(!gameMode) {
+
+        showEvent(
+            "🎮 먼저 게임 모드를 켜줘!"
         );
 
         return;
@@ -2752,2678 +1126,715 @@ function createShrimp() {
     }
 
 
-    const element =
-        document.createElement(
-            "div"
+    const cost = 20;
+
+    if(coins < cost) {
+
+        showEvent(
+            "🪙 코인이 부족해!"
         );
 
-
-    element.className =
-        "roaming-shrimp";
-
-
-    const emoji =
-        document.createElement(
-            "span"
-        );
-
-
-    emoji.textContent =
-        "🦐";
-
-
-    const tag =
-        document.createElement(
-            "div"
-        );
-
-
-    tag.className =
-        "shrimp-name-tag";
-
-
-    tag.textContent =
-        shrimpName;
-
-
-    element.appendChild(
-        emoji
-    );
-
-
-    element.appendChild(
-        tag
-    );
-
-
-    petLayer.appendChild(
-        element
-    );
-
-
-    const maxX =
-        Math.max(
-            20,
-            window.innerWidth - 80
-        );
-
-
-    const maxY =
-        Math.max(
-            80,
-            window.innerHeight - 100
-        );
-
-
-    const shrimp = {
-
-        element,
-
-        x:
-            Math.random()
-            * maxX,
-
-        y:
-            80
-            +
-            Math.random()
-            *
-            Math.max(
-                50,
-                maxY - 80
-            ),
-
-        vx:
-            (
-                Math.random()
-                * 2
-                - 1
-            )
-            *
-            (
-                1.0
-                +
-                Math.random()
-                * 1.5
-            ),
-
-        vy:
-            (
-                Math.random()
-                * 2
-                - 1
-            )
-            *
-            (
-                1.0
-                +
-                Math.random()
-                * 1.5
-            ),
-
-        size: 72
-
-    };
-
-
-    roamingShrimp.push(
-        shrimp
-    );
-
-
-    addDiscovery(
-        "shrimp"
-    );
-
-
-    updateShrimpCount();
-
-
-    element.addEventListener(
-        "click",
-        event => {
-
-            event.stopPropagation();
-
-
-            shrimp.vx +=
-                (
-                    Math.random()
-                    * 2
-                    - 1
-                )
-                * 4;
-
-
-            shrimp.vy -= 2;
-
-
-            const message =
-                shrimpMessages[
-                    Math.floor(
-                        Math.random()
-                        *
-                        shrimpMessages.length
-                    )
-                ];
-
-
-            showToast(
-                "🦐 " + message
-            );
-
-        }
-    );
-
-}
-
-
-function removeAllShrimp() {
-
-    roamingShrimp.forEach(
-        shrimp => {
-
-            shrimp.element.remove();
-
-        }
-    );
-
-
-    roamingShrimp = [];
-
-
-    updateShrimpCount();
-
-}
-
-
-function updateShrimpCount() {
-
-    document.getElementById(
-        "shrimpCount"
-    ).textContent =
-        roamingShrimp.length;
-
-}
-
-
-function animateShrimp() {
-
-    const width =
-        window.innerWidth;
-
-
-    const height =
-        window.innerHeight;
-
-
-    for (
-        let i = 0;
-        i < roamingShrimp.length;
-        i++
-    ) {
-
-        const shrimp =
-            roamingShrimp[i];
-
-
-        shrimp.x +=
-            shrimp.vx;
-
-
-        shrimp.y +=
-            shrimp.vy;
-
-
-        /*
-           화면 가장자리 튕기기
-        */
-
-        if (
-            shrimp.x <= 0
-        ) {
-
-            shrimp.x = 0;
-
-            shrimp.vx =
-                Math.abs(
-                    shrimp.vx
-                );
-
-        }
-
-
-        if (
-            shrimp.x
-            >=
-            width - shrimp.size
-        ) {
-
-            shrimp.x =
-                width - shrimp.size;
-
-            shrimp.vx =
-                -Math.abs(
-                    shrimp.vx
-                );
-
-        }
-
-
-        if (
-            shrimp.y <= 65
-        ) {
-
-            shrimp.y = 65;
-
-            shrimp.vy =
-                Math.abs(
-                    shrimp.vy
-                );
-
-        }
-
-
-        if (
-            shrimp.y
-            >=
-            height - shrimp.size
-        ) {
-
-            shrimp.y =
-                height - shrimp.size;
-
-            shrimp.vy =
-                -Math.abs(
-                    shrimp.vy
-                );
-
-        }
-
-
-        /*
-           새우끼리 충돌
-        */
-
-        for (
-            let j = i + 1;
-            j < roamingShrimp.length;
-            j++
-        ) {
-
-            const other =
-                roamingShrimp[j];
-
-
-            const dx =
-                other.x - shrimp.x;
-
-
-            const dy =
-                other.y - shrimp.y;
-
-
-            const distance =
-                Math.sqrt(
-                    dx * dx
-                    +
-                    dy * dy
-                );
-
-
-            const minDistance =
-                64;
-
-
-            if (
-                distance > 0
-                &&
-                distance < minDistance
-            ) {
-
-                const nx =
-                    dx / distance;
-
-
-                const ny =
-                    dy / distance;
-
-
-                const push =
-                    (
-                        minDistance
-                        -
-                        distance
-                    )
-                    *
-                    .5;
-
-
-                shrimp.x -=
-                    nx * push;
-
-
-                shrimp.y -=
-                    ny * push;
-
-
-                other.x +=
-                    nx * push;
-
-
-                other.y +=
-                    ny * push;
-
-
-                /*
-                   속도 교환 느낌
-                */
-
-                const tempX =
-                    shrimp.vx;
-
-
-                const tempY =
-                    shrimp.vy;
-
-
-                shrimp.vx =
-                    other.vx;
-
-
-                shrimp.vy =
-                    other.vy;
-
-
-                other.vx =
-                    tempX;
-
-
-                other.vy =
-                    tempY;
-
-            }
-
-        }
-
-
-        /*
-           약간 자연스럽게 방향 변화
-        */
-
-        if (
-            Math.random() < .008
-        ) {
-
-            shrimp.vx +=
-                (
-                    Math.random()
-                    * 2
-                    - 1
-                )
-                * .5;
-
-
-            shrimp.vy +=
-                (
-                    Math.random()
-                    * 2
-                    - 1
-                )
-                * .5;
-
-        }
-
-
-        /*
-           속도 제한
-        */
-
-        const speed =
-            Math.sqrt(
-                shrimp.vx *
-                shrimp.vx
-                +
-                shrimp.vy *
-                shrimp.vy
-            );
-
-
-        if (
-            speed > 3
-        ) {
-
-            shrimp.vx =
-                shrimp.vx
-                /
-                speed
-                *
-                3;
-
-
-            shrimp.vy =
-                shrimp.vy
-                /
-                speed
-                *
-                3;
-
-        }
-
-
-        shrimp.element.style.left =
-            shrimp.x + "px";
-
-
-        shrimp.element.style.top =
-            shrimp.y + "px";
-
-
-        const direction =
-            shrimp.vx < 0
-            ? -1
-            : 1;
-
-
-        shrimp.element.style.transform =
-            `scaleX(${direction})`;
+        return;
 
     }
 
 
-    requestAnimationFrame(
-        animateShrimp
-    );
+    coins -= cost;
 
-}
+    updateCoins();
 
 
-animateShrimp();
+    const rewards = [
 
+        {
+            name:"꽝",
+            amount:0,
+            weight:25
+        },
 
-document
-    .getElementById(
-        "spawnShrimp"
-    )
-    .onclick = () => {
+        {
+            name:"작은 보상",
+            amount:10,
+            weight:25
+        },
 
-        createShrimp();
+        {
+            name:"코인 상자",
+            amount:30,
+            weight:20
+        },
 
-    };
+        {
+            name:"럭키 코인",
+            amount:70,
+            weight:15
+        },
 
+        {
+            name:"대박!",
+            amount:150,
+            weight:10
+        },
 
-document
-    .getElementById(
-        "removeShrimp"
-    )
-    .onclick = () => {
-
-        removeAllShrimp();
-
-        showToast(
-            "🦐 새우들이 집으로 돌아갔습니다."
-        );
-
-    };
-
-
-document
-    .getElementById(
-        "nameShrimp"
-    )
-    .onclick = () => {
-
-        const name =
-            prompt(
-                "새우의 이름을 지어주세요.",
-                shrimpName
-            );
-
-
-        if (
-            name === null
-            ||
-            !name.trim()
-        ) {
-
-            return;
-
+        {
+            name:"LEGENDARY",
+            amount:500,
+            weight:5
         }
 
+    ];
 
-        shrimpName =
-            name.trim();
 
-
-        localStorage.setItem(
-            STORAGE.shrimpName,
-            shrimpName
-        );
-
-
-        document.getElementById(
-            "shrimpNameDisplay"
-        ).textContent =
-            `현재 이름: ${shrimpName}`;
-
-
-        roamingShrimp
-            .forEach(
-                shrimp => {
-
-                    shrimp.element
-                        .querySelector(
-                            ".shrimp-name-tag"
-                        )
-                        .textContent =
-                            shrimpName;
-
-                }
-            );
-
-
-        showToast(
-            `🦐 이름이 "${shrimpName}"이 되었습니다.`
-        );
-
-    };
-
-
-document.getElementById(
-    "shrimpNameDisplay"
-).textContent =
-    `현재 이름: ${shrimpName}`;
-
-
-/* =========================================================
-   RANDOM EVENT SYSTEM
-========================================================= */
-
-/*
-   확률 합계 = 100
-*/
-
-const randomEventTable = [
-
-    /* ---------------- NORMAL 55% ---------------- */
-
-    {
-        name: "작은 별",
-        rarity: "일반",
-        weight: 10,
-        action: () => {
-
-            sparkleEffect();
-
-        }
-    },
-
-    {
-        name: "새우 한 마리",
-        rarity: "일반",
-        weight: 9,
-        action: () => {
-
-            createShrimp();
-
-        }
-    },
-
-    {
-        name: "화면 흔들림",
-        rarity: "일반",
-        weight: 8,
-        action: () => {
-
-            shakeScreen();
-
-        }
-    },
-
-    {
-        name: "행운의 숫자",
-        rarity: "일반",
-        weight: 7,
-        action: () => {
-
-            const number =
-                Math.floor(
-                    Math.random() * 100
-                );
-
-            showToast(
-                `🍀 오늘의 숫자: ${number}`
-            );
-
-        }
-    },
-
-    {
-        name: "작은 비",
-        rarity: "일반",
-        weight: 7,
-        action: () => {
-
-            confettiEffect(
-                18
-            );
-
-        }
-    },
-
-    {
-        name: "새우의 인사",
-        rarity: "일반",
-        weight: 7,
-        action: () => {
-
-            showToast(
-                "🦐 새우가 인사했습니다."
-            );
-
-        }
-    },
-
-    {
-        name: "반짝",
-        rarity: "일반",
-        weight: 7,
-        action: () => {
-
-            flashScreen();
-
-        }
-    },
-
-
-    /* ---------------- RARE 25% ---------------- */
-
-    {
-        name: "새우 세 마리",
-        rarity: "희귀",
-        weight: 7,
-        action: () => {
-
-            createShrimp();
-            createShrimp();
-            createShrimp();
-
-            addDiscovery(
-                "many_shrimp"
-            );
-
-        }
-    },
-
-    {
-        name: "별 폭발",
-        rarity: "희귀",
-        weight: 6,
-        action: () => {
-
-            confettiEffect(
-                50
-            );
-
-        }
-    },
-
-    {
-        name: "시간이 이상하다",
-        rarity: "희귀",
-        weight: 5,
-        action: () => {
-
-            const seconds =
-                document.getElementById(
-                    "seconds"
-                );
-
-
-            seconds.style.transform =
-                "rotate(180deg)";
-
-
-            setTimeout(
-                () => {
-
-                    seconds.style.transform =
-                        "";
-
-                },
-                1000
-            );
-
-        }
-    },
-
-    {
-        name: "거대한 새우",
-        rarity: "희귀",
-        weight: 4,
-        action: () => {
-
-            createGiantShrimp();
-
-        }
-    },
-
-    {
-        name: "색깔 반전",
-        rarity: "희귀",
-        weight: 3,
-        action: () => {
-
-            document.body.style.filter =
-                "hue-rotate(120deg)";
-
-
-            setTimeout(
-                () => {
-
-                    document.body.style.filter =
-                        "";
-
-                },
-                1800
-            );
-
-        }
-    },
-
-
-    /* ---------------- SUPER RARE 12% ---------------- */
-
-    {
-        name: "새우 떼",
-        rarity: "초희귀",
-        weight: 4,
-        action: () => {
-
-            for (
-                let i = 0;
-                i < 7;
-                i++
-            ) {
-
-                createShrimp();
-
-            }
-
-
-            addDiscovery(
-                "many_shrimp"
-            );
-
-        }
-    },
-
-    {
-        name: "화면 뒤집기",
-        rarity: "초희귀",
-        weight: 3,
-        action: () => {
-
-            document.body.style.transform =
-                "rotate(180deg)";
-
-
-            setTimeout(
-                () => {
-
-                    document.body.style.transform =
-                        "";
-
-                },
-                1300
-            );
-
-        }
-    },
-
-    {
-        name: "거대한 숫자",
-        rarity: "초희귀",
-        weight: 3,
-        action: () => {
-
-            const number =
-                document.querySelector(
-                    ".number"
-                );
-
-
-            number.style.transform =
-                "scale(1.4)";
-
-
-            setTimeout(
-                () => {
-
-                    number.style.transform =
-                        "";
-
-                },
-                1500
-            );
-
-        }
-    },
-
-    {
-        name: "무지개",
-        rarity: "초희귀",
-        weight: 2,
-        action: () => {
-
-            document.body.style.filter =
-                "hue-rotate(360deg)";
-
-
-            document.body.style.transition =
-                "filter 1s";
-
-
-            setTimeout(
-                () => {
-
-                    document.body.style.filter =
-                        "";
-
-                },
-                1500
-            );
-
-        }
-    },
-
-
-    /* ---------------- LEGEND 5% ---------------- */
-
-    {
-        name: "INK ATTACK",
-        rarity: "전설",
-        weight: 2,
-        action: () => {
-
-            inkAttack();
-
-        }
-    },
-
-    {
-        name: "새우 왕",
-        rarity: "전설",
-        weight: 1,
-        action: () => {
-
-            createGiantShrimp();
-
-            showToast(
-                "👑 새우의 왕이 나타났습니다."
-            );
-
-        }
-    },
-
-    {
-        name: "시간 폭발",
-        rarity: "전설",
-        weight: 1,
-        action: () => {
-
-            for (
-                let i = 0;
-                i < 20;
-                i++
-            ) {
-
-                createShrimp();
-
-            }
-
-
-            confettiEffect(
-                100
-            );
-
-        }
-    },
-
-    {
-        name: "비밀 색상",
-        rarity: "전설",
-        weight: 1,
-        action: () => {
-
-            document.body.style.filter =
-                "saturate(2) contrast(1.3)";
-
-
-            setTimeout(
-                () => {
-
-                    document.body.style.filter =
-                        "";
-
-                },
-                3000
-            );
-
-        }
-    },
-
-
-    /* ---------------- SECRET 2.5% ---------------- */
-
-    {
-        name: "숨겨진 메시지",
-        rarity: "비밀",
-        weight: 1,
-        action: () => {
-
-            secretMessage();
-
-        }
-    },
-
-    {
-        name: "???",
-        rarity: "비밀",
-        weight: .7,
-        action: () => {
-
-            showToast(
-                "..."
-            );
-
-            addDiscovery(
-                "mystery"
-            );
-
-        }
-    },
-
-    {
-        name: "새우의 비밀",
-        rarity: "비밀",
-        weight: .5,
-        action: () => {
-
-            showToast(
-                "🦐 새우는 모든 것을 알고 있습니다."
-            );
-
-        }
-    },
-
-    {
-        name: "아무 일도 없음",
-        rarity: "비밀",
-        weight: .3,
-        action: () => {
-
-            /*
-               진짜 아무 일도 하지 않음.
-            */
-
-        }
-    },
-
-
-    /* ---------------- ??? 0.5% ---------------- */
-
-    {
-        name: "████████",
-        rarity: "???",
-        weight: .2,
-        action: () => {
-
-            mysteriousEvent();
-
-        }
-    },
-
-    {
-        name: "아직 발견하면 안 되는 것",
-        rarity: "???",
-        weight: .15,
-        action: () => {
-
-            document.title =
-                "???" ;
-
-
-            setTimeout(
-                () => {
-
-                    document.title =
-                        "준수가 한국으로 돌아가기까지...";
-
-                },
-                3000
-            );
-
-        }
-    },
-
-    {
-        name: "???",
-        rarity: "???",
-        weight: .15,
-        action: () => {
-
-            document.body.style.filter =
-                "invert(1)";
-
-
-            setTimeout(
-                () => {
-
-                    document.body.style.filter =
-                        "";
-
-                },
-                800
-            );
-
-        }
-    }
-
-];
-
-
-/* =========================================================
-   WEIGHTED RANDOM
-========================================================= */
-
-function chooseWeightedEvent() {
-
-    const total =
-        randomEventTable.reduce(
-            (
-                sum,
-                event
-            ) =>
-                sum + event.weight,
+    let total =
+        rewards.reduce(
+            (a,b)=>a+b.weight,
             0
         );
 
 
     let random =
-        Math.random()
-        *
-        total;
+        Math.random() * total;
 
 
-    for (
-        const event
-        of randomEventTable
-    ) {
-
-        random -=
-            event.weight;
+    let selected;
 
 
-        if (
-            random <= 0
-        ) {
+    for(const reward of rewards) {
 
-            return event;
+        random -= reward.weight;
+
+        if(random <= 0) {
+
+            selected =
+                reward;
+
+            break;
 
         }
 
     }
 
 
-    return randomEventTable[
-        0
-    ];
+    coins += selected.amount;
+
+    updateCoins();
+
+
+    showEvent(
+        `🎁 ${selected.name}! +${selected.amount} COIN`
+    );
 
 }
 
 
-/* =========================================================
-   RANDOM DRAW
-========================================================= */
+/* =========================================
+   RANDOM EVENTS
+========================================= */
 
-let drawing = false;
+let eventCooldown = false;
 
 
-document
-    .getElementById(
-        "drawRandom"
-    )
-    .onclick = () => {
+function randomEvent() {
 
-        if (drawing) {
+    if(!gameMode) {
 
-            return;
+        showEvent(
+            "🎮 게임 모드를 먼저 켜줘!"
+        );
 
+        return;
+
+    }
+
+
+    if(eventCooldown) {
+
+        showEvent(
+            "⏳ 잠깐만..."
+        );
+
+        return;
+
+    }
+
+
+    eventCooldown = true;
+
+
+    setTimeout(() => {
+        eventCooldown = false;
+    },1500);
+
+
+    const events = [
+
+        {
+            weight:25,
+            action:() => {
+                addCoins(5);
+                showEvent("🍀 작은 행운! +5");
+            }
+        },
+
+        {
+            weight:18,
+            action:() => {
+                addCoins(20);
+                showEvent("✨ 반짝이는 코인을 발견했다! +20");
+            }
+        },
+
+        {
+            weight:12,
+            action:() => {
+                addCoins(50);
+                showEvent("💰 코인 폭탄! +50");
+            }
+        },
+
+        {
+            weight:10,
+            action:() => {
+                inkEvent();
+            }
+        },
+
+        {
+            weight:10,
+            action:() => {
+                document.body.style.transform =
+                    "rotate(2deg)";
+
+                setTimeout(()=>{
+                    document.body.style.transform =
+                        "";
+                },500);
+
+                showEvent("🌪️ 사이트가 흔들렸다!");
+            }
+        },
+
+        {
+            weight:8,
+            action:() => {
+                document.body.style.filter =
+                    "hue-rotate(120deg)";
+
+                setTimeout(()=>{
+                    document.body.style.filter =
+                        "";
+                },2500);
+
+                showEvent("🌈 세상의 색이 바뀌었다!");
+            }
+        },
+
+        {
+            weight:7,
+            action:() => {
+
+                petVX *= 3;
+                petVY *= 3;
+
+                setTimeout(()=>{
+                    petVX /= 3;
+                    petVY /= 3;
+                },3000);
+
+                showEvent("🦐 새우가 폭주했다!!!");
+
+            }
+        },
+
+        {
+            weight:5,
+            action:() => {
+
+                coins += 100;
+
+                updateCoins();
+
+                showEvent(
+                    "🎉 SUPER LUCKY! +100"
+                );
+
+            }
+        },
+
+        {
+            weight:3,
+            action:() => {
+
+                document.body.style.filter =
+                    "invert(1)";
+
+                setTimeout(()=>{
+                    document.body.style.filter =
+                        "";
+                },1000);
+
+                showEvent(
+                    "🌀 잠깐 다른 차원에 다녀왔습니다."
+                );
+
+            }
+        },
+
+        {
+            weight:2,
+            action:() => {
+
+                activateSecret();
+
+            }
         }
 
-
-        drawing = true;
-
-
-        randomCount++;
+    ];
 
 
-        localStorage.setItem(
-            STORAGE.random,
-            randomCount
+    let total =
+        events.reduce(
+            (sum,event)=>sum+event.weight,
+            0
         );
 
 
-        addDiscovery(
-            "first_random"
+    let random =
+        Math.random() * total;
+
+
+    for(const event of events) {
+
+        random -= event.weight;
+
+        if(random <= 0) {
+
+            event.action();
+
+            break;
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   EVENT MESSAGE
+========================================= */
+
+function showEvent(text) {
+
+    const box =
+        document.getElementById("eventText");
+
+    box.textContent =
+        text;
+
+    box.classList.add("show");
+
+
+    setTimeout(() => {
+
+        box.classList.remove("show");
+
+    },1800);
+
+}
+
+
+/* =========================================
+   INK EVENT
+========================================= */
+
+function inkEvent() {
+
+    showEvent(
+        "🦑 갑자기 잉크가 튀었다!!!"
+    );
+
+
+    for(let i=0;i<35;i++) {
+
+        const ink =
+            document.createElement("div");
+
+        ink.className =
+            "ink";
+
+
+        const size =
+            30 + Math.random()*120;
+
+
+        ink.style.width =
+            size+"px";
+
+        ink.style.height =
+            size+"px";
+
+        ink.style.left =
+            Math.random()*100+"vw";
+
+        ink.style.top =
+            Math.random()*100+"vh";
+
+
+        document.body.appendChild(ink);
+
+
+        setTimeout(()=>{
+            ink.remove();
+        },1500);
+
+    }
+
+}
+
+
+/* =========================================
+   SHOP
+========================================= */
+
+function openShop() {
+
+    if(!gameMode) {
+
+        showEvent(
+            "🎮 게임 모드를 먼저 켜줘!"
         );
 
+        return;
 
-        if (
-            randomCount >= 5
-        ) {
+    }
 
-            addDiscovery(
-                "five_random"
-            );
 
-        }
+    document
+        .getElementById("shop")
+        .classList.add("active");
 
+}
 
-        if (
-            randomCount >= 10
-        ) {
 
-            addDiscovery(
-                "ten_random"
-            );
+function closeShop() {
 
-        }
+    document
+        .getElementById("shop")
+        .classList.remove("active");
 
+}
 
-        if (
-            randomCount >= 30
-        ) {
 
-            addDiscovery(
-                "thirty_random"
-            );
+/* =========================================
+   SHOP ITEMS
+========================================= */
 
-        }
+function buySpeed() {
 
+    if(coins < 50) {
 
-        if (
-            randomCount >= 100
-        ) {
+        showEvent("🪙 코인이 부족해!");
 
-            addDiscovery(
-                "century"
-            );
+        return;
 
-        }
+    }
 
 
-        const display =
-            document.getElementById(
-                "randomDisplay"
-            );
+    coins -= 50;
 
+    petSpeed += .5;
 
-        display.innerHTML =
-            "<div>🎲<br>...</div>";
+    localStorage.setItem(
+        "petSpeed",
+        petSpeed
+    );
 
+    updateCoins();
 
-        let flashes = 0;
+    showEvent(
+        "🦐 새우 속도 UP!"
+    );
 
+}
 
-        const animation =
-            setInterval(
-                () => {
 
-                    const fake =
-                        randomEventTable[
-                            Math.floor(
-                                Math.random()
-                                *
-                                randomEventTable.length
-                            )
-                        ];
+function buySparkle() {
 
+    if(coins < 80) {
 
-                    display.innerHTML =
-                        `
-                        <div>
-                            <span class="random-rarity">
-                                ${fake.rarity}
-                            </span>
-                            ${fake.name}
-                        </div>
-                        `;
+        showEvent("🪙 코인이 부족해!");
 
+        return;
 
-                    flashes++;
+    }
 
 
-                    if (
-                        flashes >= 5
-                    ) {
+    coins -= 80;
 
-                        clearInterval(
-                            animation
-                        );
+    updateCoins();
 
 
-                        const event =
-                            chooseWeightedEvent();
-
-
-                        display.innerHTML =
-                            `
-                            <div>
-                                <span class="random-rarity">
-                                    ${event.rarity}
-                                </span>
-
-                                ${event.name}
-                            </div>
-                            `;
-
-
-                        if (
-                            event.rarity ===
-                            "희귀"
-                        ) {
-
-                            addDiscovery(
-                                "rare_event"
-                            );
-
-                        }
-
-
-                        if (
-                            event.rarity ===
-                            "초희귀"
-                        ) {
-
-                            addDiscovery(
-                                "super_event"
-                            );
-
-                        }
-
-
-                        if (
-                            event.rarity ===
-                            "전설"
-                        ) {
-
-                            addDiscovery(
-                                "legend_event"
-                            );
-
-                        }
-
-
-                        if (
-                            event.rarity ===
-                            "비밀"
-                        ) {
-
-                            addDiscovery(
-                                "secret_event"
-                            );
-
-                        }
-
-
-                        if (
-                            event.rarity ===
-                            "???"
-                        ) {
-
-                            addDiscovery(
-                                "mystery"
-                            );
-
-                        }
-
-
-                        event.action();
-
-
-                        updateStats();
-
-
-                        setTimeout(
-                            () => {
-
-                                drawing = false;
-
-                            },
-                            120
-                        );
-
-                    }
-
-                },
-                100
-            );
-
-    };
-
-
-/* =========================================================
-   EFFECTS
-========================================================= */
-
-function sparkleEffect() {
-
-    for (
-        let i = 0;
-        i < 20;
-        i++
-    ) {
+    for(let i=0;i<50;i++) {
 
         const star =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         star.textContent =
             "✦";
 
-
         star.style.position =
             "fixed";
 
-
         star.style.left =
-            Math.random()
-            * 100
-            + "%";
-
+            Math.random()*100+"vw";
 
         star.style.top =
-            Math.random()
-            * 100
-            + "%";
-
+            Math.random()*100+"vh";
 
         star.style.fontSize =
-            15
-            +
-            Math.random()
-            * 30
-            +
-            "px";
-
+            15+Math.random()*30+"px";
 
         star.style.zIndex =
-            "35000";
-
+            6000;
 
         star.style.pointerEvents =
             "none";
 
-
-        star.style.transition =
-            "1s";
+        document.body.appendChild(star);
 
 
-        document.body.appendChild(
-            star
-        );
-
-
-        requestAnimationFrame(
-            () => {
-
-                star.style.transform =
-                    "translateY(-80px) scale(0)";
-
-
-                star.style.opacity =
-                    "0";
-
-            }
-        );
-
-
-        setTimeout(
-            () => {
-
-                star.remove();
-
-            },
-            1100
-        );
+        setTimeout(()=>{
+            star.remove();
+        },1500);
 
     }
 
-}
 
-
-function confettiEffect(
-    amount
-) {
-
-    for (
-        let i = 0;
-        i < amount;
-        i++
-    ) {
-
-        const piece =
-            document.createElement(
-                "div"
-            );
-
-
-        piece.textContent =
-            Math.random() < .5
-            ? "✦"
-            : "•";
-
-
-        piece.style.position =
-            "fixed";
-
-
-        piece.style.left =
-            Math.random()
-            * 100
-            + "%";
-
-
-        piece.style.top =
-            "-20px";
-
-
-        piece.style.zIndex =
-            "35000";
-
-
-        piece.style.pointerEvents =
-            "none";
-
-
-        piece.style.fontSize =
-            10
-            +
-            Math.random()
-            * 25
-            +
-            "px";
-
-
-        piece.style.transition =
-            (
-                1.5
-                +
-                Math.random()
-                *
-                2
-            )
-            +
-            "s";
-
-
-        document.body.appendChild(
-            piece
-        );
-
-
-        requestAnimationFrame(
-            () => {
-
-                piece.style.transform =
-                    `
-                    translateY(
-                        ${window.innerHeight + 100}px
-                    )
-                    rotate(
-                        ${Math.random() * 720}deg
-                    )
-                    `;
-
-            }
-        );
-
-
-        setTimeout(
-            () => {
-
-                piece.remove();
-
-            },
-            4000
-        );
-
-    }
+    showEvent("✨ 반짝반짝!");
 
 }
 
 
-function shakeScreen() {
+function buyBackground() {
 
-    document.body.animate(
-        [
-            {
-                transform:
-                    "translateX(0)"
-            },
+    if(coins < 100) {
 
-            {
-                transform:
-                    "translateX(-12px)"
-            },
+        showEvent("🪙 코인이 부족해!");
 
-            {
-                transform:
-                    "translateX(12px)"
-            },
-
-            {
-                transform:
-                    "translateX(-8px)"
-            },
-
-            {
-                transform:
-                    "translateX(8px)"
-            },
-
-            {
-                transform:
-                    "translateX(0)"
-            }
-        ],
-        {
-            duration: 500
-        }
-    );
-
-}
-
-
-function flashScreen() {
-
-    const flash =
-        document.createElement(
-            "div"
-        );
-
-
-    flash.style.position =
-        "fixed";
-
-
-    flash.style.inset =
-        "0";
-
-
-    flash.style.background =
-        "white";
-
-
-    flash.style.opacity =
-        ".8";
-
-
-    flash.style.zIndex =
-        "45000";
-
-
-    flash.style.pointerEvents =
-        "none";
-
-
-    document.body.appendChild(
-        flash
-    );
-
-
-    setTimeout(
-        () => {
-
-            flash.style.transition =
-                "opacity .5s";
-
-
-            flash.style.opacity =
-                "0";
-
-
-        },
-        80
-    );
-
-
-    setTimeout(
-        () => {
-
-            flash.remove();
-
-        },
-        650
-    );
-
-}
-
-
-/* =========================================================
-   GIANT SHRIMP
-========================================================= */
-
-function createGiantShrimp() {
-
-    const shrimp =
-        document.createElement(
-            "div"
-        );
-
-
-    shrimp.style.position =
-        "fixed";
-
-
-    shrimp.style.left =
-        "50%";
-
-
-    shrimp.style.top =
-        "50%";
-
-
-    shrimp.style.transform =
-        "translate(-50%,-50%)";
-
-
-    shrimp.style.fontSize =
-        "180px";
-
-
-    shrimp.style.zIndex =
-        "38000";
-
-
-    shrimp.style.pointerEvents =
-        "none";
-
-
-    shrimp.textContent =
-        "🦐";
-
-
-    document.body.appendChild(
-        shrimp
-    );
-
-
-    shrimp.animate(
-        [
-            {
-                transform:
-                    "translate(-50%,-50%) scale(0)"
-            },
-
-            {
-                transform:
-                    "translate(-50%,-50%) scale(1.2)"
-            },
-
-            {
-                transform:
-                    "translate(-50%,-50%) scale(1)"
-            }
-        ],
-        {
-            duration: 500
-        }
-    );
-
-
-    setTimeout(
-        () => {
-
-            shrimp.animate(
-                [
-                    {
-                        opacity: 1
-                    },
-
-                    {
-                        opacity: 0
-                    }
-                ],
-                {
-                    duration: 700
-                }
-            );
-
-
-            setTimeout(
-                () => {
-
-                    shrimp.remove();
-
-                },
-                700
-            );
-
-        },
-        1800
-    );
-
-}
-
-
-/* =========================================================
-   ORIGINAL INK CHARACTER EVENT
-========================================================= */
-
-function inkAttack() {
-
-    const overlay =
-        document.getElementById(
-            "ink-overlay"
-        );
-
-
-    overlay.innerHTML =
-        "";
-
-
-    overlay.classList.add(
-        "active"
-    );
-
-
-    /*
-       중앙 메시지
-    */
-
-    const message =
-        document.createElement(
-            "div"
-        );
-
-
-    message.className =
-        "ink-message";
-
-
-    message.textContent =
-        "INK ATTACK!";
-
-
-    overlay.appendChild(
-        message
-    );
-
-
-    /*
-       잉크 방울
-    */
-
-    for (
-        let i = 0;
-        i < 55;
-        i++
-    ) {
-
-        const splat =
-            document.createElement(
-                "div"
-            );
-
-
-        splat.className =
-            "ink-splat";
-
-
-        const size =
-            30
-            +
-            Math.random()
-            *
-            230;
-
-
-        splat.style.width =
-            size
-            +
-            "px";
-
-
-        splat.style.height =
-            size
-            *
-            (
-                .6
-                +
-                Math.random()
-                *
-                .8
-            )
-            +
-            "px";
-
-
-        splat.style.left =
-            (
-                Math.random()
-                *
-                100
-            )
-            + "%";
-
-
-        splat.style.top =
-            (
-                Math.random()
-                *
-                100
-            )
-            + "%";
-
-
-        /*
-           다양한 잉크 색
-        */
-
-        const colors = [
-
-            "#111111",
-            "#34205c",
-            "#173d70",
-            "#6d2b61",
-            "#254f45"
-
-        ];
-
-
-        splat.style.background =
-            colors[
-                Math.floor(
-                    Math.random()
-                    *
-                    colors.length
-                )
-            ];
-
-
-        splat.style.animationDelay =
-            Math.random()
-            * .35
-            +
-            "s";
-
-
-        overlay.appendChild(
-            splat
-        );
+        return;
 
     }
 
 
-    addDiscovery(
-        "ink_attack"
-    );
+    coins -= 100;
+
+    updateCoins();
 
 
-    setTimeout(
-        () => {
+    const colors = [
 
-            overlay.style.opacity =
-                "0";
+        ["#ffd6e7","#d8f3ff"],
 
+        ["#d7ffd9","#fff1bd"],
 
-            setTimeout(
-                () => {
+        ["#e4d7ff","#c9f5ff"],
 
-                    overlay.classList.remove(
-                        "active"
-                    );
+        ["#ffe0c2","#e2d0ff"],
 
-                    overlay.style.opacity =
-                        "";
-
-                    overlay.innerHTML =
-                        "";
-
-                },
-                500
-            );
-
-        },
-        2300
-    );
-
-}
-
-
-/* =========================================================
-   SECRET EVENTS
-========================================================= */
-
-function secretMessage() {
-
-    const messages = [
-
-        "이 메시지를 찾았다는 건 꽤 운이 좋다는 뜻입니다.",
-
-        "아무에게도 말하지 마세요.",
-
-        "새우는 알고 있습니다.",
-
-        "여기까지 온 사람은 많지 않습니다.",
-
-        "이 사이트에는 아직 비밀이 남아 있습니다."
+        ["#c9fff3","#ffe0f1"]
 
     ];
 
 
-    const message =
-        messages[
+    const c =
+        colors[
             Math.floor(
-                Math.random()
-                *
-                messages.length
+                Math.random()*colors.length
             )
         ];
 
 
-    showToast(
-        "🔐 " + message
+    document.body.style.background =
+        `linear-gradient(135deg,${c[0]},${c[1]})`;
+
+
+    showEvent(
+        "🎨 새로운 배경을 얻었다!"
     );
 
 }
 
 
-function mysteriousEvent() {
+function buyShrimp() {
 
-    const oldTitle =
-        document.title;
+    if(coins < 150) {
 
+        showEvent("🪙 코인이 부족해!");
 
-    document.title =
-        "..." ;
+        return;
 
-
-    document.body.style.transition =
-        "filter .4s";
+    }
 
 
-    document.body.style.filter =
-        "brightness(.45)";
+    coins -= 150;
+
+    updateCoins();
 
 
-    showToast(
-        "████████"
-    );
+    const newPet =
+        document.createElement("div");
+
+    newPet.textContent =
+        "🦐";
+
+    newPet.style.position =
+        "fixed";
+
+    newPet.style.left =
+        Math.random()*80+"vw";
+
+    newPet.style.top =
+        Math.random()*80+"vh";
+
+    newPet.style.fontSize =
+        "70px";
+
+    newPet.style.zIndex =
+        "300";
+
+    newPet.style.pointerEvents =
+        "none";
+
+    document.body.appendChild(newPet);
 
 
-    setTimeout(
-        () => {
+    let x =
+        parseFloat(newPet.style.left);
 
-            document.body.style.filter =
-                "";
+    let y =
+        parseFloat(newPet.style.top);
 
+    let dx =
+        (Math.random()-.5)*2;
 
-            document.title =
-                oldTitle;
-
-        },
-        1500
-    );
-
-}
+    let dy =
+        (Math.random()-.5)*2;
 
 
-/* =========================================================
-   STATS
-========================================================= */
+    function moveNewPet() {
 
-function formatTime(seconds) {
+        x += dx;
 
-    if (
-        seconds < 60
-    ) {
+        y += dy;
 
-        return (
-            Math.floor(seconds)
-            +
-            "초"
+
+        if(x<0 || x>90)
+            dx *= -1;
+
+        if(y<0 || y>90)
+            dy *= -1;
+
+
+        newPet.style.left =
+            x+"vw";
+
+        newPet.style.top =
+            y+"vh";
+
+
+        requestAnimationFrame(
+            moveNewPet
         );
 
     }
 
 
-    if (
-        seconds < 3600
-    ) {
-
-        return (
-            Math.floor(
-                seconds / 60
-            )
-            +
-            "분"
-        );
-
-    }
+    moveNewPet();
 
 
-    return (
-        Math.floor(
-            seconds / 3600
-        )
-        +
-        "시간"
+    showEvent(
+        "🦐 새우 친구가 생겼다!"
     );
 
 }
 
 
-function updateStats() {
+/* =========================================
+   IMAGE SYSTEM
+========================================= */
 
-    document.getElementById(
-        "statVisits"
-    ).textContent =
-        visits;
+function addImage(event) {
 
+    const file =
+        event.target.files[0];
 
-    document.getElementById(
-        "statTime"
-    ).textContent =
-        formatTime(
-            totalTime
-        );
+    if(!file) return;
 
 
-    document.getElementById(
-        "statRandom"
-    ).textContent =
-        randomCount;
+    const reader =
+        new FileReader();
 
 
-    document.getElementById(
-        "statDiscoveries"
-    ).textContent =
-        discoveries.length;
+    reader.onload =
+        function(e) {
 
+            const img =
+                document.createElement("img");
 
-    document.getElementById(
-        "statPhotos"
-    ).textContent =
-        photos.length;
+            img.src =
+                e.target.result;
 
+            img.className =
+                "boardImage";
 
-    document.getElementById(
-        "statShrimp"
-    ).textContent =
-        Math.floor(
-            shrimpTime / 60
-        )
-        +
-        "분";
 
-}
+            img.style.left =
+                "50%";
 
-
-setInterval(
-    () => {
-
-        totalTime++;
-
-        shrimpTime++;
-
-
-        localStorage.setItem(
-            STORAGE.totalTime,
-            totalTime
-        );
-
-
-        localStorage.setItem(
-            STORAGE.shrimpTime,
-            shrimpTime
-        );
-
-    },
-    1000
-);
-
-
-/* =========================================================
-   SETTINGS
-========================================================= */
-
-function loadSettings() {
-
-    const input =
-        document.getElementById(
-            "targetInput"
-        );
-
-
-    const date =
-        new Date(
-            targetDate
-        );
-
-
-    const local =
-        new Date(
-            date.getTime()
-            -
-            date.getTimezoneOffset()
-            * 60000
-        )
-        .toISOString()
-        .slice(
-            0,
-            16
-        );
-
-
-    input.value =
-        local;
-
-}
-
-
-document
-    .getElementById(
-        "saveTarget"
-    )
-    .onclick = () => {
-
-        const input =
-            document.getElementById(
-                "targetInput"
-            );
-
-
-        if (
-            !input.value
-        ) {
-
-            alert(
-                "날짜를 선택해주세요."
-            );
-
-            return;
-
-        }
-
-
-        targetDate =
-            new Date(
-                input.value
-            ).toISOString();
-
-
-        localStorage.setItem(
-            STORAGE.target,
-            targetDate
-        );
-
-
-        updateCountdown();
-
-
-        showToast(
-            "⏳ 목표 날짜가 저장되었습니다."
-        );
-
-    };
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
-document
-    .getElementById(
-        "resetData"
-    )
-    .onclick = () => {
-
-        const answer =
-            confirm(
-                "저장 데이터를 전부 삭제할까요?"
-            );
-
-
-        if (!answer) {
-
-            return;
-
-        }
-
-
-        Object.values(
-            STORAGE
-        )
-        .forEach(
-            key =>
-                localStorage.removeItem(
-                    key
-                )
-        );
-
-
-        localStorage.removeItem(
-            "jun_board_zoom"
-        );
-
-        localStorage.removeItem(
-            "jun_pan_x"
-        );
-
-        localStorage.removeItem(
-            "jun_pan_y"
-        );
-
-
-        location.reload();
-
-    };
-
-
-/* =========================================================
-   PHOTO BOARD
-========================================================= */
-
-const photoButton =
-    document.getElementById(
-        "photoButton"
-    );
-
-
-const memeBoard =
-    document.getElementById(
-        "meme-board"
-    );
-
-
-const imageInput =
-    document.getElementById(
-        "imageInput"
-    );
-
-
-const memeCanvas =
-    document.getElementById(
-        "meme-canvas"
-    );
-
-
-const memeWorld =
-    document.getElementById(
-        "meme-world"
-    );
-
-
-let selectedImage =
-    null;
-
-
-let boardZoom =
-    Number(
-        localStorage.getItem(
-            "jun_board_zoom"
-        ) || 1
-    );
-
-
-let panX =
-    Number(
-        localStorage.getItem(
-            "jun_pan_x"
-        ) || 0
-    );
-
-
-let panY =
-    Number(
-        localStorage.getItem(
-            "jun_pan_y"
-        ) || 0
-    );
-
-
-function updateWorld() {
-
-    memeWorld.style.transform =
-        `
-        translate(
-            ${panX}px,
-            ${panY}px
-        )
-        scale(
-            ${boardZoom}
-        )
-        `;
-
-
-    document.getElementById(
-        "zoomDisplay"
-    ).textContent =
-        Math.round(
-            boardZoom * 100
-        )
-        +
-        "%";
-
-
-    localStorage.setItem(
-        "jun_board_zoom",
-        boardZoom
-    );
-
-
-    localStorage.setItem(
-        "jun_pan_x",
-        panX
-    );
-
-
-    localStorage.setItem(
-        "jun_pan_y",
-        panY
-    );
-
-}
-
-
-updateWorld();
-
-
-photoButton.onclick =
-    () => {
-
-        memeBoard.classList.add(
-            "open"
-        );
-
-        renderImages();
-
-    };
-
-
-document
-    .getElementById(
-        "closePhoto"
-    )
-    .onclick =
-    () => {
-
-        memeBoard.classList.remove(
-            "open"
-        );
-
-    };
-
-
-document
-    .getElementById(
-        "addImage"
-    )
-    .onclick =
-    () => {
-
-        imageInput.click();
-
-    };
-
-
-imageInput.addEventListener(
-    "change",
-    event => {
-
-        const files =
-            Array.from(
-                event.target.files
-            );
-
-
-        files.forEach(
-            file => {
-
-                if (
-                    !file.type.startsWith(
-                        "image/"
-                    )
-                ) {
-
-                    return;
-
-                }
-
-
-                const reader =
-                    new FileReader();
-
-
-                reader.onload =
-                    e => {
-
-                        const data = {
-
-                            id:
-                                Date.now()
-                                +
-                                Math.random(),
-
-                            src:
-                                e.target.result,
-
-                            x:
-                                100
-                                +
-                                Math.random()
-                                * 200,
-
-                            y:
-                                100
-                                +
-                                Math.random()
-                                * 200,
-
-                            width:
-                                240
-
-                        };
-
-
-                        photos.push(
-                            data
-                        );
-
-
-                        savePhotos();
-
-                        renderImages();
-
-
-                        addDiscovery(
-                            "photo"
-                        );
-
-                    };
-
-
-                reader.readAsDataURL(
-                    file
-                );
-
-            }
-        );
-
-
-        imageInput.value =
-            "";
-
-    }
-);
-
-
-function savePhotos() {
-
-    try {
-
-        localStorage.setItem(
-            STORAGE.photos,
-            JSON.stringify(
-                photos
-            )
-        );
-
-    }
-
-    catch(error) {
-
-        alert(
-            "사진 저장 공간이 부족합니다."
-        );
-
-    }
-
-}
-
-
-function renderImages() {
-
-    memeWorld.innerHTML =
-        "";
-
-
-    photos.forEach(
-        data => {
-
-            createImage(
-                data
-            );
-
-        }
-    );
-
-}
-
-
-function createImage(
-    data
-) {
-
-    const img =
-        document.createElement(
-            "img"
-        );
-
-
-    img.className =
-        "meme-image";
-
-
-    img.src =
-        data.src;
-
-
-    img.style.left =
-        data.x + "px";
-
-
-    img.style.top =
-        data.y + "px";
-
-
-    img.style.width =
-        data.width + "px";
-
-
-    memeWorld.appendChild(
-        img
-    );
-
-
-    img.addEventListener(
-        "click",
-        event => {
-
-            event.stopPropagation();
+            img.style.top =
+                "50%";
 
 
             document
-                .querySelectorAll(
-                    ".meme-image.selected"
-                )
-                .forEach(
-                    x =>
-                        x.classList.remove(
-                            "selected"
-                        )
-                );
+                .getElementById("board")
+                .appendChild(img);
 
 
-            img.classList.add(
-                "selected"
-            );
+            makeDraggable(img);
+
+            saveImages();
+
+        };
 
 
-            selectedImage = {
+    reader.readAsDataURL(file);
 
-                data,
+}
 
-                element:
-                    img
 
-            };
-
-        }
-    );
-
+function makeDraggable(element) {
 
     let dragging =
         false;
 
-
-    let startX = 0;
-    let startY = 0;
-
-    let originalX = 0;
-    let originalY = 0;
+    let offsetX = 0;
+    let offsetY = 0;
 
 
-    img.addEventListener(
+    element.addEventListener(
         "mousedown",
-        event => {
-
-            event.stopPropagation();
-
+        e => {
 
             dragging = true;
 
+            offsetX =
+                e.clientX -
+                element.getBoundingClientRect().left;
 
-            startX =
-                event.clientX;
-
-
-            startY =
-                event.clientY;
-
-
-            originalX =
-                data.x;
-
-
-            originalY =
-                data.y;
+            offsetY =
+                e.clientY -
+                element.getBoundingClientRect().top;
 
         }
     );
@@ -5431,45 +1842,16 @@ function createImage(
 
     window.addEventListener(
         "mousemove",
-        event => {
+        e => {
 
-            if (!dragging) {
-
-                return;
-
-            }
+            if(!dragging) return;
 
 
-            data.x =
-                originalX
-                +
-                (
-                    event.clientX
-                    -
-                    startX
-                )
-                /
-                boardZoom;
+            element.style.left =
+                (e.clientX-offsetX)+"px";
 
-
-            data.y =
-                originalY
-                +
-                (
-                    event.clientY
-                    -
-                    startY
-                )
-                /
-                boardZoom;
-
-
-            img.style.left =
-                data.x + "px";
-
-
-            img.style.top =
-                data.y + "px";
+            element.style.top =
+                (e.clientY-offsetY)+"px";
 
         }
     );
@@ -5479,17 +1861,9 @@ function createImage(
         "mouseup",
         () => {
 
-            if (
-                dragging
-            ) {
+            dragging = false;
 
-                savePhotos();
-
-            }
-
-
-            dragging =
-                false;
+            saveImages();
 
         }
     );
@@ -5497,759 +1871,258 @@ function createImage(
 }
 
 
-document
-    .getElementById(
-        "deleteImage"
-    )
-    .onclick =
-    () => {
+function saveImages() {
 
-        if (
-            !selectedImage
-        ) {
+    const images =
+        [...document.querySelectorAll(".boardImage")];
 
-            alert(
-                "사진을 먼저 선택해주세요."
-            );
+    const data =
+        images.map(img => ({
 
-            return;
+            src:img.src,
 
-        }
+            left:img.style.left,
 
+            top:img.style.top
 
-        photos =
-            photos.filter(
-                photo =>
-                    photo.id
-                    !==
-                    selectedImage.data.id
-            );
+        }));
 
 
-        selectedImage.element.remove();
-
-
-        selectedImage =
-            null;
-
-
-        savePhotos();
-
-    };
-
-
-/* =========================================================
-   WHITE BACKGROUND REMOVAL
-========================================================= */
-
-async function removeWhiteBackground(
-    dataURL
-) {
-
-    return new Promise(
-        resolve => {
-
-            const image =
-                new Image();
-
-
-            image.onload =
-                () => {
-
-                    const canvas =
-                        document.createElement(
-                            "canvas"
-                        );
-
-
-                    const ctx =
-                        canvas.getContext(
-                            "2d"
-                        );
-
-
-                    canvas.width =
-                        image.naturalWidth;
-
-
-                    canvas.height =
-                        image.naturalHeight;
-
-
-                    ctx.drawImage(
-                        image,
-                        0,
-                        0
-                    );
-
-
-                    const imageData =
-                        ctx.getImageData(
-                            0,
-                            0,
-                            canvas.width,
-                            canvas.height
-                        );
-
-
-                    const pixels =
-                        imageData.data;
-
-
-                    const width =
-                        canvas.width;
-
-
-                    const height =
-                        canvas.height;
-
-
-                    const visited =
-                        new Uint8Array(
-                            width * height
-                        );
-
-
-                    const queue = [];
-
-
-                    function isWhite(
-                        index
-                    ) {
-
-                        return (
-
-                            pixels[index] > 235
-
-                            &&
-
-                            pixels[index + 1] > 235
-
-                            &&
-
-                            pixels[index + 2] > 235
-
-                            &&
-
-                            pixels[index + 3] > 0
-
-                        );
-
-                    }
-
-
-                    function add(
-                        x,
-                        y
-                    ) {
-
-                        if (
-                            x < 0
-                            ||
-                            y < 0
-                            ||
-                            x >= width
-                            ||
-                            y >= height
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        const pos =
-                            y * width
-                            +
-                            x;
-
-
-                        if (
-                            visited[pos]
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        if (
-                            !isWhite(
-                                pos * 4
-                            )
-                        ) {
-
-                            return;
-
-                        }
-
-
-                        visited[pos] =
-                            1;
-
-
-                        queue.push(
-                            pos
-                        );
-
-                    }
-
-
-                    for (
-                        let x = 0;
-                        x < width;
-                        x++
-                    ) {
-
-                        add(x,0);
-
-                        add(
-                            x,
-                            height - 1
-                        );
-
-                    }
-
-
-                    for (
-                        let y = 0;
-                        y < height;
-                        y++
-                    ) {
-
-                        add(0,y);
-
-                        add(
-                            width - 1,
-                            y
-                        );
-
-                    }
-
-
-                    let index = 0;
-
-
-                    while (
-                        index < queue.length
-                    ) {
-
-                        const pos =
-                            queue[index++];
-
-
-                        const x =
-                            pos % width;
-
-
-                        const y =
-                            Math.floor(
-                                pos / width
-                            );
-
-
-                        pixels[
-                            pos * 4 + 3
-                        ] = 0;
-
-
-                        add(
-                            x + 1,
-                            y
-                        );
-
-                        add(
-                            x - 1,
-                            y
-                        );
-
-                        add(
-                            x,
-                            y + 1
-                        );
-
-                        add(
-                            x,
-                            y - 1
-                        );
-
-                    }
-
-
-                    ctx.putImageData(
-                        imageData,
-                        0,
-                        0
-                    );
-
-
-                    resolve(
-                        canvas.toDataURL(
-                            "image/png"
-                        )
-                    );
-
-                };
-
-
-            image.src =
-                dataURL;
-
-        }
+    localStorage.setItem(
+        "boardImages",
+        JSON.stringify(data)
     );
 
 }
 
 
-document
-    .getElementById(
-        "removeBackground"
-    )
-    .onclick =
-    async () => {
+function loadImages() {
 
-        if (
-            !selectedImage
-        ) {
-
-            alert(
-                "사진을 먼저 선택해주세요."
-            );
-
-            return;
-
-        }
+    const data =
+        JSON.parse(
+            localStorage.getItem(
+                "boardImages"
+            ) || "[]"
+        );
 
 
-        const button =
-            document.getElementById(
-                "removeBackground"
-            );
+    data.forEach(item => {
+
+        const img =
+            document.createElement("img");
+
+        img.src =
+            item.src;
+
+        img.className =
+            "boardImage";
+
+        img.style.left =
+            item.left;
+
+        img.style.top =
+            item.top;
 
 
-        button.disabled =
-            true;
+        document
+            .getElementById("board")
+            .appendChild(img);
 
 
-        button.textContent =
-            "⏳ 처리 중";
+        makeDraggable(img);
+
+    });
+
+}
 
 
-        try {
+function clearImages() {
 
-            const newSrc =
-                await removeWhiteBackground(
-                    selectedImage.data.src
-                );
-
-
-            selectedImage.data.src =
-                newSrc;
+    document
+        .getElementById("board")
+        .innerHTML = "";
 
 
-            selectedImage.element.src =
-                newSrc;
+    localStorage.removeItem(
+        "boardImages"
+    );
+
+}
 
 
-            savePhotos();
+loadImages();
 
 
-            showToast(
-                "🤍 흰색 배경을 제거했습니다."
-            );
+/* =========================================
+   SITE ZOOM
+========================================= */
 
-        }
-
-        catch(error) {
-
-            console.error(
-                error
-            );
-
-
-            alert(
-                "배경 제거에 실패했습니다."
-            );
-
-        }
+let siteZoom =
+    Number(
+        localStorage.getItem(
+            "siteZoom"
+        ) || 1
+    );
 
 
-        button.disabled =
-            false;
+function applyZoom() {
+
+    document.body.style.zoom =
+        siteZoom;
+
+}
 
 
-        button.textContent =
-            "🤍 흰색 제거";
+function zoomSite(amount) {
 
-    };
+    siteZoom += amount;
 
 
-/* =========================================================
-   BOARD ZOOM
-========================================================= */
-
-function changeZoom(
-    amount
-) {
-
-    boardZoom =
+    siteZoom =
         Math.max(
-            .25,
+            .5,
             Math.min(
-                4,
-                boardZoom + amount
+                2,
+                siteZoom
             )
         );
 
 
-    updateWorld();
+    localStorage.setItem(
+        "siteZoom",
+        siteZoom
+    );
+
+
+    applyZoom();
 
 }
 
 
-document
-    .getElementById(
-        "zoomIn"
-    )
-    .onclick =
-    () =>
-        changeZoom(.25);
+function resetZoom() {
 
+    siteZoom = 1;
 
-document
-    .getElementById(
-        "zoomOut"
-    )
-    .onclick =
-    () =>
-        changeZoom(-.25);
+    localStorage.setItem(
+        "siteZoom",
+        siteZoom
+    );
 
+    applyZoom();
 
-document
-    .getElementById(
-        "zoomReset"
-    )
-    .onclick =
-    () => {
+}
 
-        boardZoom = 1;
 
-        panX = 0;
+applyZoom();
 
-        panY = 0;
 
-        updateWorld();
+/* =========================================
+   SECRET
+========================================= */
 
-    };
+function activateSecret() {
 
+    document
+        .getElementById("secret")
+        .classList.add("active");
 
-memeCanvas.addEventListener(
-    "wheel",
-    event => {
 
-        event.preventDefault();
+    coins += 100;
 
+    updateCoins();
 
-        const direction =
-            event.deltaY < 0
-            ? 1
-            : -1;
+}
 
 
-        const oldZoom =
-            boardZoom;
+function closeSecret() {
 
+    document
+        .getElementById("secret")
+        .classList.remove("active");
 
-        const newZoom =
-            Math.max(
-                .25,
-                Math.min(
-                    4,
-                    oldZoom
-                    +
-                    direction
-                    *
-                    .1
-                )
-            );
+}
 
 
-        const rect =
-            memeCanvas.getBoundingClientRect();
+/* =========================================
+   KEYBOARD SECRET
+========================================= */
 
-
-        const mouseX =
-            event.clientX
-            -
-            rect.left;
-
-
-        const mouseY =
-            event.clientY
-            -
-            rect.top;
-
-
-        const worldX =
-            (
-                mouseX - panX
-            )
-            /
-            oldZoom;
-
-
-        const worldY =
-            (
-                mouseY - panY
-            )
-            /
-            oldZoom;
-
-
-        boardZoom =
-            newZoom;
-
-
-        panX =
-            mouseX
-            -
-            worldX
-            *
-            boardZoom;
-
-
-        panY =
-            mouseY
-            -
-            worldY
-            *
-            boardZoom;
-
-
-        updateWorld();
-
-    },
-    {
-        passive:false
-    }
-);
-
-
-/* =========================================================
-   BOARD PAN
-========================================================= */
-
-let panning = false;
-
-let panStartX = 0;
-let panStartY = 0;
-
-let startPanX = 0;
-let startPanY = 0;
-
-
-memeCanvas.addEventListener(
-    "mousedown",
-    event => {
-
-        if (
-            event.target.classList.contains(
-                "meme-image"
-            )
-        ) {
-
-            return;
-
-        }
-
-
-        panning = true;
-
-
-        panStartX =
-            event.clientX;
-
-
-        panStartY =
-            event.clientY;
-
-
-        startPanX =
-            panX;
-
-
-        startPanY =
-            panY;
-
-    }
-);
-
-
-window.addEventListener(
-    "mousemove",
-    event => {
-
-        if (!panning) {
-
-            return;
-
-        }
-
-
-        panX =
-            startPanX
-            +
-            (
-                event.clientX
-                -
-                panStartX
-            );
-
-
-        panY =
-            startPanY
-            +
-            (
-                event.clientY
-                -
-                panStartY
-            );
-
-
-        updateWorld();
-
-    }
-);
-
-
-window.addEventListener(
-    "mouseup",
-    () => {
-
-        panning = false;
-
-    }
-);
-
-
-/* =========================================================
-   SECRET BUTTON
-========================================================= */
-
-document
-    .getElementById(
-        "secretDot"
-    )
-    .onclick =
-    () => {
-
-        secretClicks++;
-
-
-        localStorage.setItem(
-            STORAGE.secretClicks,
-            secretClicks
-        );
-
-
-        addDiscovery(
-            "secret_click"
-        );
-
-
-        if (
-            secretClicks === 1
-        ) {
-
-            showToast(
-                "..."
-            );
-
-        }
-
-        else if (
-            secretClicks === 3
-        ) {
-
-            showToast(
-                "🕵️ 왜 계속 누르고 있지?"
-            );
-
-        }
-
-        else if (
-            secretClicks === 7
-        ) {
-
-            showToast(
-                "🔓 뭔가 반응했다."
-            );
-
-        }
-
-        else if (
-            secretClicks >= 10
-            &&
-            Math.random() < .25
-        ) {
-
-            showToast(
-                "🦐 새우가 보고 있습니다."
-            );
-
-        }
-
-    };
-
-
-/* =========================================================
-   ESC
-========================================================= */
+let secretCode = "";
 
 document.addEventListener(
     "keydown",
-    event => {
+    e => {
 
-        if (
-            event.key !== "Escape"
-        ) {
+        secretCode +=
+            e.key.toLowerCase();
 
-            return;
+        if(secretCode.length > 20) {
+
+            secretCode =
+                secretCode.slice(-20);
 
         }
 
 
-        document
-            .querySelectorAll(
-                ".panel.open"
-            )
-            .forEach(
-                panel =>
-                    panel.classList.remove(
-                        "open"
-                    )
-            );
+        if(
+            secretCode.includes("ripple")
+        ) {
 
+            secretCode = "";
 
-        document
-            .getElementById(
-                "meme-board"
-            )
-            .classList.remove(
-                "open"
-            );
+            activateSecret();
+
+        }
 
     }
 );
 
 
-/* =========================================================
-   INITIALIZE
-========================================================= */
+/* =========================================
+   PERIODIC RANDOM EVENTS
+========================================= */
 
-renderDiscoveries();
+setInterval(() => {
 
-updateStats();
+    if(
+        gameMode &&
+        Math.random() < .12
+    ) {
+
+        randomEvent();
+
+    }
+
+},30000);
+
+
+/* =========================================
+   SAVE GAME
+========================================= */
+
+window.addEventListener(
+    "beforeunload",
+    () => {
+
+        localStorage.setItem(
+            "coins",
+            coins
+        );
+
+        localStorage.setItem(
+            "gameMode",
+            gameMode
+        );
+
+        localStorage.setItem(
+            "petSpeed",
+            petSpeed
+        );
+
+        saveImages();
+
+    }
+);
 
 </script>
 
